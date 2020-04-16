@@ -76,7 +76,7 @@ def extract_job(start, last):
         soup = BeautifulSoup(html, 'html.parser')
 
 
-        job_info = soup.findAll('div', 'title')
+        job_info = soup.findAll('h2', 'title')
 
         dates = soup.findAll('span', 'date')
         companies = soup.select('div.sjcl > div > span.company')
@@ -90,7 +90,7 @@ def extract_job(start, last):
         today_list = []
         job_des_url_list = []
 
-
+        print(job_info)
         for job, date, company in tqdm(zip(job_info, dates, companies), total=len(job_info), desc=' -- GET DATA'):
             try:
                 title = job.a['title']
