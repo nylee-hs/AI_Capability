@@ -8,9 +8,9 @@ import requests
 from datetime import datetime, timedelta
 import os
 
-LIMIT = 50
+LIMIT = 15
 directory = 'data\\indeed\\'  ## 수집 데이터 저장 폴더
-AGE = 7 ## 데이터 수집 기간(7일전까지)
+AGE = 1 ## 데이터 수집 기간(7일전까지)
 QUERY = 'artificial+intelligence'
 # URL = f"https://www.indeed.com/jobs?q=" + QUERY + "&limit={LIMIT}&sort=date&start="
 URL = f"https://www.indeed.com/jobs?as_and=artificial+intelligence&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=all&st=&as_src=&salary=&fromage={AGE}&limit={LIMIT}&sort=date&psf=advsrch&from=advancedsearch"
@@ -54,7 +54,7 @@ def extract_job(start, last):
     # for page in range(start, last):
     for page in range(start, last):
         print('PAGE NUM: ' + str(page))
-        search_url = 'https://www.indeed.com/jobs?q=artificial+intelligence&limit=50&sort=date&fromage='+str(AGE)+'&start=' + str(page * 50)
+        search_url = f'https://www.indeed.com/jobs?q=artificial+intelligence&limit={LIMIT}&sort=date&filter=0&fromage='+str(AGE)+'&start=' + str(page * LIMIT)
         print(' - URL: ' + search_url)
         html = requests.get(search_url, headers=html_header)
         # html = urllib.request.urlopen(search_url)
@@ -86,59 +86,140 @@ def extract_job(start, last):
         title_list = []
         date_list = []
         company_list = []
+        company_employees_list = []
+        company_industry_list = []
+        company_revenues_list = []
         description_list = []
         today_list = []
         job_des_url_list = []
 
-        print(job_info)
+        # # print(job_info)
         for job, date, company in tqdm(zip(job_info, dates, companies), total=len(job_info), desc=' -- GET DATA'):
             try:
-                title = job.a['title']
+                job_des_url = job.a['href']
+                return_text = get_details(job_des_url=job_des_url)
+                title = return_text[0]
                 title_list.append(title)
+                c_info = []
+                try:
+                    company_url = company.a['href']
+                    c_info = get_company_info(company_url)
+                except:
+                    c_info = ['NA', 'NA', 'NA']
                 company = company.text.strip()
                 company_list.append(company)
-                job_des_url = job.a['href']
+
+                company_employees_list.append(c_info[0])
+                company_industry_list.append(c_info[1])
+                company_revenues_list.append(c_info[2])
                 job_des_url_list.append(job_des_url)
-                description = get_description(job_des_url=job_des_url)
+                description = return_text[1]
                 description_list.append(description)
                 date = date.text
                 date_list.append(date)
                 today_list.append(today)
                 # print(title, " || ", "https://www.indeed.com" + job_des_url)
 
-            except:
-                print('Error occurred!')
-                title_list.append('NaN')
-                company_list.append('NaN')
-                job_des_url_list.append('NaN')
-                description_list.append('NaN')
-                date_list.append('NaN')
+            except Exception as ex:
+                print('Error!', title, ex)
+                title_list.append('NA')
+                company_list.append('NA')
+                job_des_url_list.append('NA')
+                description_list.append('NA')
+                date_list.append('NA')
                 today_list.append(today)
+                company_employees_list.append('NA')
+                company_industry_list.append('NA')
+                company_revenues_list.append('NA')
+
                 pass
 
         #             if(title == 'Artificial Intelligence Engineer (Specialist)' and company == 'Fulcrum'):
         #                 print(title, company, description)
 
-        df = pd.DataFrame({'job_title': title_list, 'company': company_list, 'url': job_des_url_list, 'job_description': description_list, 'published_date': date_list, 'scrap_date': today_list})
+        df = pd.DataFrame({'job_title': title_list, 'company': company_list, 'url': job_des_url_list, 'job_description': description_list, 'published_date': date_list, 'scrap_date': today_list, 'company_employees': company_employees_list,
+                           'company_industry': company_industry_list, 'company_revenue': company_revenues_list})
         save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d")+"_indeed_data.csv")
 
 
     return df
 
 
-def get_description(job_des_url):
+def get_company_info(company_url): ## 기업 정보 받아오기
+    html = urllib.request.urlopen('https://indeed.com'+company_url)
+    soup = BeautifulSoup(html, 'html.parser')
+
+    ## 기업 정보 페이지에 정보 디스플레이 화면이 2가지가 있어 종류에 따라 csize_a와 csize_b로 수집한 후 최종적으로 csize 변수에 저장
+    c_info = []
+    com_info_b1 = soup.select('div.cmp-AboutMetadata-itemTitle')
+    com_info_b2 = soup.select('div.cmp-AboutMetadata-itemCotent')
+    com_info_a = soup.select('div.cmp-AboutSection-grid')
+
+    if(len(com_info_a) >= 1):
+
+        csize = soup.select('div.cmp-FormattedEmployeeRange')[0].text
+        cindustry = soup.select('div.cmp-AboutSection-gridText--small')[0].text
+        crevenue = soup.select('div.cmp-FormattedRevenueRange')[0].text
+        c_info.append(csize)
+        c_info.append(cindustry)
+        c_info.append(crevenue)
+    elif(len(com_info_a) < 1 and len(com_info_b1) >= 1):
+        temp1 = [item.text for item in com_info_b1]
+        temp2 = [item.text for item in com_info_b2]
+        dic_com = dict(zip(temp1, temp2))
+
+
+        # if dic_com.get('Headquarters'):
+        #     c_info.append(dic_com['Headquarters'])
+        # else:
+        #     c_info.append('NA')
+        if dic_com.get('Employees'):
+            c_info.append(dic_com['Employees'])
+        else:
+            c_info.append('NA')
+        if dic_com.get('Industry'):
+            c_info.append(dic_com['Industry'])
+        else:
+            c_info.append('NA')
+        if dic_com.get('Revenue'):
+            c_info.append(dic_com['Revenue'])
+        else:
+            c_info.append('NA')
+
+    else:
+        csize = 'NA'
+        cindustry = 'NA'
+        crevenue = 'NA'
+        c_info.append(csize)
+        c_info.append(cindustry)
+        c_info.append(crevenue)
+
+    return c_info
+
+
+
+
+def get_details(job_des_url):
     html = urllib.request.urlopen('https://www.indeed.com' + job_des_url)
     soup = BeautifulSoup(html, 'html.parser')
 
+    # description 받아오기
     description = soup.select('div.jobsearch-jobDescriptionText')
     return_text = ''
     if len(description) is 0:  # 일부 페이지의 경우 상세페이지의 구조가 다르게 나타남.
         description = soup.select('div.jobDetailDescription')
+        # print(description)
         for t in description:
             return_text = return_text + t.text
     else:
         return_text = description[0].text
-    return return_text
+
+    # job title 받아오기
+    title = soup.select('h3.jobsearch-JobInfoHeader-title')
+
+    return_list = [title[0].text, return_text]
+
+    return return_list
 
 
 def load_csv(file):
@@ -183,7 +264,7 @@ def html_file_check(filename='indeed_data_check.csv'):
             company_list.append(company)
             job_des_url = job.a['href']
             job_des_url_list.append(job_des_url)
-            description = get_description(job_des_url=job_des_url)
+            description = get_details(job_des_url=job_des_url)
             description_list.append(description)
             date = date.text
             date_list.append(date)
@@ -208,7 +289,7 @@ def html_file_check(filename='indeed_data_check.csv'):
 
 
 def load_csv(file_name):
-    col_names = ['job_title', 'company', 'url', 'job_description', 'published_date', 'scrap_date']
+    col_names = ['job_title', 'company', 'url', 'job_description', 'published_date', 'scrap_date', 'company_employees', 'company_industry', 'company_revenue']
     df = pd.read_csv(file_name, delimiter=',', names=col_names, encoding='utf-8-sig')
 
     return df
@@ -217,8 +298,11 @@ def load_csv(file_name):
 def main():
     pages = resultCount()
     extract_job(0, pages)
-    # return df
 
+    # get_details('/rc/clk?jk=f4837c61ead9b1ea&fccid=2525cc4a9a704809&vjs=3')
+    # return df
+    # print(get_company_info('https://www.indeed.com/cmp/UBS?from=SERP&fromjk=a92d0d0ba1e8396a&jcid=1c76c3a36f6c7557&attributionid=serp-linkcompanyname'))
+    # print(get_company_info('https://www.indeed.com/cmp/Woods-Hole-Oceanographic-Institution'))
 
 if __name__ == '__main__':
     main()
