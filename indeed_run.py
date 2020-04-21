@@ -7,13 +7,14 @@ from tqdm import tqdm
 import requests
 from datetime import datetime, timedelta
 import os
+import json
 
-LIMIT = 15
-directory = 'data\\indeed\\'  ## 수집 데이터 저장 폴더
-AGE = 1 ## 데이터 수집 기간(7일전까지)
-QUERY = 'artificial+intelligence'
-# URL = f"https://www.indeed.com/jobs?q=" + QUERY + "&limit={LIMIT}&sort=date&start="
-URL = f"https://www.indeed.com/jobs?as_and=artificial+intelligence&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=all&st=&as_src=&salary=&fromage={AGE}&limit={LIMIT}&sort=date&psf=advsrch&from=advancedsearch"
+# LIMIT = 15
+# directory = 'data\\indeed\\'  ## 수집 데이터 저장 폴더
+# AGE = 1 ## 데이터 수집 기간(7일전까지)
+# QUERY = 'artificial+intelligence'
+# # URL = f"https://www.indeed.com/jobs?q=" + QUERY + "&limit={LIMIT}&sort=date&start="
+# URL = f"https://www.indeed.com/jobs?as_and=artificial+intelligence&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=all&st=&as_src=&salary=&fromage={AGE}&limit={LIMIT}&sort=date&psf=advsrch&from=advancedsearch"
 
 html_header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -23,18 +24,26 @@ html_header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb
 
 # print(URL)
 
+def get_conf():
+    with open('indeed_config.json', 'r', encoding='utf-8') as f:
+        con_file = json.loads(f.read())
+
+    return con_file
 
 def resultCount():
     global html_header
+    limit = get_conf()['CONFIGURE']['LIMIT']
+    age = get_conf()['CONFIGURE']['AGE']
+    url = f"https://www.indeed.com/jobs?as_and=artificial+intelligence&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=all&st=&as_src=&salary=&fromage={age}&limit={limit}&sort=date&psf=advsrch&from=advancedsearch"
 
     header = html_header
-    response = requests.get(URL, headers=header)
+    response = requests.get(url, headers=header)
     soup = BeautifulSoup(response.text, 'html.parser')
     #     print(soup)
     #     pagination = soup.findAll('div.resultsTop > div.showing')
     pagination = soup.select('div#searchCountPages')[0].text.strip().split()[3].replace(',', '')
-    pages = (int(pagination) // LIMIT)
-    lefts = (int(pagination) % LIMIT)
+    pages = (int(pagination) // limit)
+    lefts = (int(pagination) % limit)
     if lefts > 0:
         pages = pages + 1
     print("Total count = " + pagination)
@@ -45,8 +54,9 @@ def resultCount():
 #     print(results)
 
 def extract_job(start, last):
-    global directory
-    global AGE
+    directory = get_conf()['CONFIGURE']['DIRECTORY']
+    age = get_conf()['CONFIGURE']['AGE']
+    limit = get_conf()['CONFIGURE']['LIMIT']
     global html_header
 
     today = datetime.today()
@@ -54,14 +64,14 @@ def extract_job(start, last):
     # for page in range(start, last):
     for page in range(start, last):
         print('PAGE NUM: ' + str(page))
-        search_url = f'https://www.indeed.com/jobs?q=artificial+intelligence&limit={LIMIT}&sort=date&filter=0&fromage='+str(AGE)+'&start=' + str(page * LIMIT)
+        search_url = f'https://www.indeed.com/jobs?q=artificial+intelligence&limit={limit}&sort=date&filter=0&fromage='+str(age)+'&start=' + str(page * limit)
         print(' - URL: ' + search_url)
         html = requests.get(search_url, headers=html_header)
         # html = urllib.request.urlopen(search_url)
         try:
             if not os.path.exists(os.getcwd() + directory):
                 os.makedirs(directory)
-                print(' - Creating directory is completed.')
+                print(' - New directory is created.')
         except OSError:
 
             print(' - Directory is existed.')
@@ -235,57 +245,57 @@ def save_csv(dataFrame, file_name):
     print(' ** File saved.\n')
 
 
-def html_file_check(filename='indeed_data_check.csv'):
-    today = datetime.today()
-    html_file = open('doc.html', 'rb')
-    html = html_file.read()
-    html_file.close()
-
-    soup = BeautifulSoup(html, 'html.parser')
-
-    job_info = soup.findAll('div', 'title')
-    dates = soup.findAll('span', 'date')
-    companies = soup.select('div.sjcl > div > span.company')
-
-    info = zip(job_info, dates, companies)
-
-    title_list = []
-    date_list = []
-    company_list = []
-    description_list = []
-    today_list = []
-    job_des_url_list = []
-
-    for job, date, company in tqdm(info, desc="job(" + str("0") + ") : "):
-        try:
-            title = job.a['title']
-            title_list.append(title)
-            company = company.text.strip()
-            company_list.append(company)
-            job_des_url = job.a['href']
-            job_des_url_list.append(job_des_url)
-            description = get_details(job_des_url=job_des_url)
-            description_list.append(description)
-            date = date.text
-            date_list.append(date)
-            today_list.append(today)
-            print(title, " || ", 'https://www.indeed.com' + job_des_url)
-        except:
-            print('Error occurred!')
-            title_list.append('NaN')
-            company_list.append('NaN')
-            job_des_url_list.append('NaN')
-            description_list.append('NaN')
-            date_list.append('NaN')
-            today_list.append(today)
-            pass
+# def html_file_check(filename='indeed_data_check.csv'):
+#     today = datetime.today()
+#     html_file = open('doc.html', 'rb')
+#     html = html_file.read()
+#     html_file.close()
+#
+#     soup = BeautifulSoup(html, 'html.parser')
+#
+#     job_info = soup.findAll('div', 'title')
+#     dates = soup.findAll('span', 'date')
+#     companies = soup.select('div.sjcl > div > span.company')
+#
+#     info = zip(job_info, dates, companies)
+#
+#     title_list = []
+#     date_list = []
+#     company_list = []
+#     description_list = []
+#     today_list = []
+#     job_des_url_list = []
+#
+#     for job, date, company in tqdm(info, desc="job(" + str("0") + ") : "):
+#         try:
+#             title = job.a['title']
+#             title_list.append(title)
+#             company = company.text.strip()
+#             company_list.append(company)
+#             job_des_url = job.a['href']
+#             job_des_url_list.append(job_des_url)
+#             description = get_details(job_des_url=job_des_url)
+#             description_list.append(description)
+#             date = date.text
+#             date_list.append(date)
+#             today_list.append(today)
+#             print(title, " || ", 'https://www.indeed.com' + job_des_url)
+#         except:
+#             print('Error occurred!')
+#             title_list.append('NaN')
+#             company_list.append('NaN')
+#             job_des_url_list.append('NaN')
+#             description_list.append('NaN')
+#             date_list.append('NaN')
+#             today_list.append(today)
+#             pass
 
     #             if(title == 'Artificial Intelligence Engineer (Specialist)' and company == 'Fulcrum'):
     #                 print(title, company, description)
 
-    df = pd.DataFrame({'job_title': title_list, 'company': company_list, 'url': job_des_url_list, 'job_description': description_list, 'published_date': date_list, 'scrap_date': today_list})
-    save_csv(df, "indeed_data_check.csv")
-    return df
+    # df = pd.DataFrame({'job_title': title_list, 'company': company_list, 'url': job_des_url_list, 'job_description': description_list, 'published_date': date_list, 'scrap_date': today_list})
+#     # save_csv(df, "indeed_data_check.csv")
+#     # return df
 
 
 def load_csv(file_name):
@@ -299,6 +309,7 @@ def main():
     pages = resultCount()
     extract_job(0, pages)
 
+    # print(get_conf()['CONFIGURE']['AGE'])
     # get_details('/rc/clk?jk=f4837c61ead9b1ea&fccid=2525cc4a9a704809&vjs=3')
     # return df
     # print(get_company_info('https://www.indeed.com/cmp/UBS?from=SERP&fromjk=a92d0d0ba1e8396a&jcid=1c76c3a36f6c7557&attributionid=serp-linkcompanyname'))

@@ -1,0 +1,8 @@
+{
+  "CONFIGURE": {
+    "AGE" : 1,
+    "DIRECTORY" : "data\\indeed\\",
+    "QUERY" : "artificial+intelligence",
+    "LIMIT" : 15
+  }
+}
