@@ -3,6 +3,7 @@
     "AGE" : 1,
     "DIRECTORY" : "data\\indeed\\",
     "QUERY" : "artificial+intelligence",
-    "LIMIT" : 15
+    "LIMIT" : 15,
+    "TIMER" : "09:00"
   }
 }

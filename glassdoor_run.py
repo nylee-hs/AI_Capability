@@ -10,6 +10,7 @@ from datetime import datetime
 import os
 import csv
 import random
+import schedule
 
 # QUERY = 'artificial-intelligence'
 # URL = 'https://www.glassdoor.com/Job/' + QUERY + '-jobs-SRCH_KE0,23_IP'
@@ -270,13 +271,14 @@ def load_csv(file_name, col_names):
 
     return df
 
-def main():
+def job():
+    print("Working time : {}".format(datetime.today().strftime("%Y%m%d-%H:%M:%S")))
     directory = get_conf()['CONFIGURE']['DIRECTORY']
 
     total_page = pagination()  # 전체 페이지수 받아오기
 
-    get_all_links(total_page, 'json') #개별 링크 데이터 수집 후 links.csv로 저장
-    df = load_csv(os.path.join(os.getcwd(), directory)+datetime.today().strftime("%Y%m%d")+'_glassdoor_links.csv', col_names=['link', 'returnType'])
+    get_all_links(total_page, 'json')  # 개별 링크 데이터 수집 후 links.csv로 저장
+    df = load_csv(os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d") + '_glassdoor_links.csv', col_names=['link', 'returnType'])
     returnType = df.iloc[1]['returnType']
     links = list(df['link'])[1:]
     print('Link Data Return Type : ' + returnType + '\n')
@@ -293,7 +295,6 @@ def main():
     salary_low_list = []
     crevenue_list = []
     ctype_list = []
-
 
     time.sleep(0.5)
     print('Collecting Job Data.... ')
@@ -329,10 +330,18 @@ def main():
             ctype_list.append('NaN')
             pass
 
-    df = pd.DataFrame({'job_title': title_list, 'company': company_list, 'url':job_des_url_list, 'job_description':description_list, 'published_date':date_list, 'scrap_date':today_list, 'company_size':csize_list,
-                       'salary_high':salary_high_list, 'salary_low':salary_low_list, 'revenue':crevenue_list, 'company_type':ctype_list})
+    df = pd.DataFrame({'job_title': title_list, 'company': company_list, 'url': job_des_url_list, 'job_description': description_list, 'published_date': date_list, 'scrap_date': today_list, 'company_size': csize_list,
+                       'salary_high': salary_high_list, 'salary_low': salary_low_list, 'revenue': crevenue_list, 'company_type': ctype_list})
 
     save_csv(df, directory + datetime.today().strftime("%Y%m%d") + '_glassdoor.csv')
+
+def main():
+    timer = get_conf()['CONFIGURE']['TIMER']
+    schedule.every().day.at(timer).do(job)
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
 
 if __name__ == '__main__':

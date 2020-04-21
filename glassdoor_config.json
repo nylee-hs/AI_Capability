@@ -2,6 +2,7 @@
   "CONFIGURE": {
     "AGE" : 1,
     "DIRECTORY" : "data\\glassdoor\\",
-    "QUERY" : "artificial-intelligence"
+    "QUERY" : "artificial-intelligence",
+    "TIMER" : "09:00"
   }
 }

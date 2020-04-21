@@ -8,6 +8,8 @@ import requests
 from datetime import datetime, timedelta
 import os
 import json
+import schedule
+import time
 
 # LIMIT = 15
 # directory = 'data\\indeed\\'  ## 수집 데이터 저장 폴더
@@ -304,10 +306,21 @@ def load_csv(file_name):
 
     return df
 
-
-def main():
+def job():
+    print("Working time : {}".format(datetime.today().strftime("%Y%m%d-%H:%M:%S")))
     pages = resultCount()
     extract_job(0, pages)
+
+
+def main():
+    timer = get_conf()['CONFIGURE']['TIMER']
+    schedule.every().day.at(timer).do(job)
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+    # pages = resultCount()
+    # extract_job(0, pages)
 
     # print(get_conf()['CONFIGURE']['AGE'])
     # get_details('/rc/clk?jk=f4837c61ead9b1ea&fccid=2525cc4a9a704809&vjs=3')
