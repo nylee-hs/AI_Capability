@@ -1,0 +1,381 @@
+{
+  "benefits": {
+    "benefitRatingDecimal": 4.25,
+    "comments": [
+      {
+        "city": "Fort Worth",
+        "comment": "They say that they have unlimited PTO - That's a lie. You only get paid for time you work because technically you're an hourly employee. So there is NO PTO - you take the time off you need but you don't get paid for it. In other words, it's just Time Off, not Paid Time Off",
+        "createDate": "2020-03-30 12:13:44.547",
+        "currentJob": true,
+        "jobTitle": "Executive Recruiter",
+        "rating": 1,
+        "state": "Texas"
+      },
+      {
+        "city": "Irvine",
+        "comment": "Great benefit package and start 30 days after start date. ",
+        "createDate": "2020-03-26 08:27:42.24",
+        "currentJob": true,
+        "jobTitle": "IT Support Technician",
+        "rating": 5,
+        "state": "California"
+      },
+      {
+        "city": "Irvine",
+        "comment": "None benefits were okay ",
+        "createDate": "2020-02-19 08:28:18.393",
+        "currentJob": false,
+        "jobTitle": "",
+        "rating": 4,
+        "state": "California"
+      }
+    ],
+    "employerSummary": "<strong>Benefits include:<\/strong>\r\n<ul>\r\n<li>Uncapped commission with base pay and bonus earning potential<\/li>\r\n<li>Amazing company culture – If you thrive in a work hard play hard environment, this job is for you.<\/li>\r\n<li>Career growth opportunities – There’s a clear path to success as an individual contributor or manager.<\/li>\r\n<li>Annual President’s Club – Every year, our top performers are invited to an all-expense paid getaway<\/li>\r\n<li>Quarterly events to reward top performers<\/li>\r\n<li>Fun office environment with game rooms and great amenities: gyms, food trucks, bbq areas and gardens.<\/li>\r\n<li>Unlimited food and drinks – Our kitchen is fully stocked with free snacks. We also have a 50+ flavored Coke machine and a Starbucks coffee machine.<\/li>\r\n<li>Comprehensive benefits plan including Medical, Dental, Vision and Life – At little or no cost to cover employee<\/li>\r\n<li>401(k) and Employee Stock Purchase Plans<br><\/li>\r\n<li>Learn more www.cybercoders.com\/careers.<\/li>\r\n<\/ul>",
+    "highlights": [
+      {
+        "commentCount": 7,
+        "highlightPhrase": "only $5 a month for single employee, good coverage",
+        "icon": "health",
+        "name": "Health Insurance"
+      },
+      {
+        "commentCount": 7,
+        "highlightPhrase": "matching 6%, good 401k plan",
+        "icon": "retirement",
+        "name": "401K Plan"
+      },
+      {
+        "commentCount": 3,
+        "highlightPhrase": "Great culture. Company paid snacks and quarterly lunches",
+        "icon": "food",
+        "name": "Free Lunch or Snacks"
+      }
+    ],
+    "numRatings": 48
+  },
+  "breadCrumbs": [
+    {
+      "name": "JOBS",
+      "url": "\/Job\/index.htm"
+    },
+    {
+      "name": "artificial intelligence",
+      "url": "\/Job\/artificial-intelligence-jobs-SRCH_KE0,23_SAMV.htm"
+    }
+  ],
+  "gaTrackerData": {
+    "category": 10007,
+    "empId": 245479,
+    "empName": "CyberCoders",
+    "empSize": "201-500",
+    "expired": false,
+    "industry": "Staffing & Outsourcing",
+    "industryId": 200032,
+    "jobId": 3557673198,
+    "jobTitle": "Data Scientist",
+    "jobViewTrackingResult": {
+      "jobViewDisplayTimeMillis": 2000,
+      "requiresTracking": true,
+      "trackingUrl": "https:\/\/jsv3.recruitics.com\/partner\/9e6cd3b4-9f37-11e8-899a-65cbb6c67ec3.gif?rx_pre=1&rx_epp=client%3D521%26rx_c%3D%26rx_campaign%3Dglassdoor30%26rx_group%3D100137%26rx_source%3DGlassdoor%26rx_a%3D30%26job%3DKP6-15818043%26rx_r%3Dnone%26rx_ts%3D20200420T213608Z"
+    },
+    "location": "Dallas",
+    "locationId": 1139977,
+    "locationType": "CITY",
+    "pageRequestGuid": {
+      "guid": "000001719a874dfa8aa7626ca9450fa7",
+      "guidValid": true,
+      "part1": 1587435490810,
+      "part2": -8455681556528951385
+    },
+    "sector": "Business Services",
+    "sectorId": 10006
+  },
+  "header": {
+    "adOrderId": 925029,
+    "advertiserType": "EMPLOYER",
+    "applicationId": 0,
+    "applyButtonDisabled": false,
+    "applyUrl": "\/partner\/jobListing.htm?pos=401&ao=925029&tgt=APPLY_START&s=58&guid=000001719a82de89a41d77636e824597&src=GD_JOB_VIEW&t=SR&vt=w&aa=1&ea=1&cs=1_24373c37&cb=1587435490884&jobListingId=3557673198",
+    "blur": false,
+    "coverPhoto": "https:\/\/media.glassdoor.com\/banner\/bh\/245479\/cybercoders-banner-1579201843576.jpg",
+    "easyApply": true,
+    "employerId": 245479,
+    "employerName": "CyberCoders",
+    "expired": false,
+    "featuredVideo": "https:\/\/www.youtube.com\/watch?v=azH944cfS5Y",
+    "gocId": 100523,
+    "hideCEOInfo": false,
+    "jobTitle": "Data Scientist",
+    "locId": 1139977,
+    "location": "Dallas, TX",
+    "locationType": "C",
+    "logo": "https:\/\/media.glassdoor.com\/sqls\/245479\/cybercoders-squarelogo-1579201407296.png",
+    "logo2x": "https:\/\/media.glassdoor.com\/sqlm\/245479\/cybercoders-squarelogo-1579201407296.png",
+    "normalizedJobTitle": "Data Scientist",
+    "organic": false,
+    "overviewUrl": "\/Overview\/Working-at-CyberCoders-EI_IE245479.11,22.htm",
+    "payCurrency": "USD",
+    "posted": "Apr 20, 2020",
+    "rating": 4.1,
+    "saved": false,
+    "savedJobId": 0,
+    "sgocId": 1019,
+    "sponsored": true,
+    "userAdmin": false,
+    "uxApplyType": "USER_PROFILE"
+  },
+  "job": {
+    "description": "Data Scientist <div>\nIf you are a Data Scientist with experience, please read on!<br\/><br\/>In a challenging entrepreneurial environment with a high degree of individual responsibility, this position offers an amazing opportunity for remarkable career development.\n<\/div><h4>Top Reasons to Work with Us<\/h4><div>\nOne of our Fortune 100 clients is currently seeking a Data Scientist to join the Dallas, TX office! This role will start remotely, due to Covid-19, but then it will be fully onsite in office. This role will start remotely, due to Covid-19, but then it will be fully onsite in office.\n<\/div><h4>What You Will Be Doing<\/h4><div>\nLead analytic approaches<br\/>Work independently and closely with engineering teams to deliver data science solutions into the product<br\/>Create scalable models which will be incorporated into data products <br\/>Deliver production-quality code against aggressive timelines<br\/>Work with internal product and engineering teams to drive development of new products\n<\/div><h4>What You Need for this Position<\/h4><div>\nProficiency of Python and R, as well as the ability to write complex SQL queries. <br\/>Experience with implementing ML concepts and modeling techniques<br\/>Bachelors degree in Computer Science or related field.\n<\/div>\n\n<div>\nSo, if you are a Data Scientist with experience, please apply today!\n<\/div> - <p>Applicants must be authorized to work in the U.S.<\/p><br\/><br\/>\n <b>CyberCoders, Inc is proud to be an Equal Opportunity Employer<\/b>\n <br\/><br\/>\n All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, national origin, disability, protected veteran status, or any other characteristic protected by law.\n <br\/><br\/>\n <b>Your Right to Work<\/b> In compliance with federal law, all persons hired will be required to verify identity and eligibility to work in the United States and to complete the required employment eligibility verification document form upon hire.",
+    "discoverDate": "2020-04-20T14:50:31",
+    "eolHashCode": 1930876502,
+    "importConfigId": 185480,
+    "jobReqId": 4417368210,
+    "jobSource": "Staffing Feed",
+    "jobTitleId": 119899,
+    "listingId": 3557673198
+  },
+  "map": {
+    "employerName": "CyberCoders",
+    "lat": 32.7833,
+    "lng": -96.8,
+    "location": "Dallas, TX"
+  },
+  "overview": {
+    "allBenefitsLink": "\/Benefits\/CyberCoders-US-Benefits-EI_IE245479.0,11_IL.12,14_IN1.htm",
+    "allPhotosLink": "\/Photos\/CyberCoders-Office-Photos-E245479.htm",
+    "allReviewsLink": "\/Reviews\/CyberCoders-Reviews-E245479.htm",
+    "allSalariesLink": "\/Salary\/CyberCoders-Salaries-E245479.htm",
+    "foundedYear": 1999,
+    "hq": "Irvine, CA",
+    "industry": "Staffing & Outsourcing",
+    "industryId": 200032,
+    "revenue": "$100 to $500 million (USD)",
+    "sector": "Business Services",
+    "sectorId": 10006,
+    "size": "201 to 500 employees",
+    "type": "Subsidiary or Business Segment",
+    "website": "www.cybercoders.com"
+  },
+  "photos": [
+    {
+      "caption": "Need a break? We've got a pool table at your disposal!",
+      "photoId": 20090879,
+      "photoId2x": 20090880,
+      "photoLink": "\/Photos\/CyberCoders-Office-Photos-IMG4121451.htm",
+      "photoUrl": "https:\/\/media.glassdoor.com\/lst\/e0\/e1\/a0\/f4\/need-a-break-we-ve-got-a-pool-table-at-your-disposal.jpg",
+      "photoUrl2x": "https:\/\/media.glassdoor.com\/lst2x\/e0\/e1\/a0\/f4\/need-a-break-we-ve-got-a-pool-table-at-your-disposal.jpg"
+    },
+    {
+      "caption": "Wide open office space so teams can openly work together.",
+      "photoId": 20090871,
+      "photoId2x": 20090872,
+      "photoLink": "\/Photos\/CyberCoders-Office-Photos-IMG4121450.htm",
+      "photoUrl": "https:\/\/media.glassdoor.com\/lst\/84\/5b\/0f\/42\/wide-open-office-space-so-teams-can-openly-work-together.jpg",
+      "photoUrl2x": "https:\/\/media.glassdoor.com\/lst2x\/84\/5b\/0f\/42\/wide-open-office-space-so-teams-can-openly-work-together.jpg"
+    },
+    {
+      "caption": "What a great place to mingle and have lunch!",
+      "photoId": 20090863,
+      "photoId2x": 20090864,
+      "photoLink": "\/Photos\/CyberCoders-Office-Photos-IMG4121449.htm",
+      "photoUrl": "https:\/\/media.glassdoor.com\/lst\/ca\/58\/d6\/23\/what-a-great-place-to-mingle-and-have-lunch.jpg",
+      "photoUrl2x": "https:\/\/media.glassdoor.com\/lst2x\/ca\/58\/d6\/23\/what-a-great-place-to-mingle-and-have-lunch.jpg"
+    },
+    {
+      "caption": "The reception area is ready to welcome our talented recruiters.",
+      "photoId": 20090855,
+      "photoId2x": 20090856,
+      "photoLink": "\/Photos\/CyberCoders-Office-Photos-IMG4121448.htm",
+      "photoUrl": "https:\/\/media.glassdoor.com\/lst\/a9\/45\/4b\/67\/the-reception-area-is-ready-to-welcome-our-talented-recruiters.jpg",
+      "photoUrl2x": "https:\/\/media.glassdoor.com\/lst2x\/a9\/45\/4b\/67\/the-reception-area-is-ready-to-welcome-our-talented-recruiters.jpg"
+    },
+    {
+      "caption": "The outside of the building has stunning curb appeal with walls and walls of windows for our recruiters to enjoy.",
+      "photoId": 20090847,
+      "photoId2x": 20090848,
+      "photoLink": "\/Photos\/CyberCoders-Office-Photos-IMG4121447.htm",
+      "photoUrl": "https:\/\/media.glassdoor.com\/lst\/e2\/7a\/db\/09\/the-outside-of-the-building-has-stunning-curb-appeal-with-walls-and-walls.jpg",
+      "photoUrl2x": "https:\/\/media.glassdoor.com\/lst2x\/e2\/7a\/db\/09\/the-outside-of-the-building-has-stunning-curb-appeal-with-walls-and-walls.jpg"
+    },
+    {
+      "caption": "Would it be a CyberCoders office without a gaming area?",
+      "photoId": 20090692,
+      "photoId2x": 20090693,
+      "photoLink": "\/Photos\/CyberCoders-Office-Photos-IMG4121417.htm",
+      "photoUrl": "https:\/\/media.glassdoor.com\/lst\/ed\/13\/91\/67\/would-it-be-a-cybercoders-office-without-a-gaming-area.jpg",
+      "photoUrl2x": "https:\/\/media.glassdoor.com\/lst2x\/ed\/13\/91\/67\/would-it-be-a-cybercoders-office-without-a-gaming-area.jpg"
+    },
+    {
+      "caption": "Teams can get together and watch their favorite teams in between calls at our lounge area.",
+      "photoId": 20090684,
+      "photoId2x": 20090685,
+      "photoLink": "\/Photos\/CyberCoders-Office-Photos-IMG4121416.htm",
+      "photoUrl": "https:\/\/media.glassdoor.com\/lst\/ed\/44\/fe\/72\/teams-can-get-together-and-watch-their-favorite-teams-in-between-calls-at.jpg",
+      "photoUrl2x": "https:\/\/media.glassdoor.com\/lst2x\/ed\/44\/fe\/72\/teams-can-get-together-and-watch-their-favorite-teams-in-between-calls-at.jpg"
+    }
+  ],
+  "rating": {
+    "ceo": {
+      "name": "Ted Hanson",
+      "ratingsCount": 27
+    },
+    "ceoApproval": 0.87,
+    "recommendToFriend": 0.76,
+    "starRating": 4.1
+  },
+  "reviews": [
+    {
+      "adviceToManagement": "Continue to focus on employees strengths to bring out the best in them.",
+      "companyResponse": "Thank you for sharing your input! We are always looking for ways to highlight the strengths of all our team members and we're glad to hear that we're on the right track.",
+      "cons": "In the beginning, things take a lot of time.  But, if you are consistent and dedicated, it is all worth it! CyberCoders changed my life and I am forever grateful for them!",
+      "date": "6 weeks ago",
+      "featured": false,
+      "helpfulCount": 0,
+      "id": 32283425,
+      "pros": "Technology, management, culture, and most importantly, compensation!",
+      "publishedOn": "6 weeks ago",
+      "publisher": "Executive Recruiter",
+      "reviewRatings": {
+        "careerOpportunities": 4.0,
+        "compBenefits": 5.0,
+        "cultureValues": 5.0,
+        "overall": 5.0,
+        "seniorManagement": 5.0,
+        "worklifeBalance": 5.0
+      },
+      "reviewResponses": [
+        {
+          "createDate": "2020-03-30T09:47:37",
+          "helpfulCount": 0,
+          "jobTitle": "",
+          "notHelpfulCount": 0,
+          "responseText": "Thank you for sharing your input! We are always looking for ways to highlight the strengths of all our team members and we're glad to hear that we're on the right track.",
+          "responseTextLength": 169,
+          "totalHelpfulCount": 0,
+          "updateDate": "2020-03-31T02:22:59"
+        }
+      ],
+      "reviewerDuration": "for more than a year",
+      "reviewerInformation": "Current Employee: I have been working at CyberCoders full-time for more than a year",
+      "reviewerJobTitle": "Executive Recruiter",
+      "reviewerLocation": "Dallas, TX",
+      "reviewerStatus": "Current Employee",
+      "summaryPoints": {
+        "ceoApproval": 1.0,
+        "outlook": 1,
+        "recommend": 1
+      },
+      "title": "Great place to work!"
+    }
+  ],
+  "salary": {
+    "country": {
+      "cc3LetterISO": "USA",
+      "ccISO": "US",
+      "continent": {
+        "continentCode": "NA",
+        "continentName": "North America",
+        "id": 5,
+        "new": false
+      },
+      "country": null,
+      "countryFIPS": "US",
+      "currency": {
+        "currencyCode": "USD",
+        "defaultFractionDigits": 2,
+        "displayName": "United States Dollar (USD)",
+        "id": 1,
+        "name": "United States Dollar",
+        "negativeTemplate": "$(#)",
+        "new": false,
+        "positiveTemplate": "$#",
+        "symbol": "$"
+      },
+      "currencyCode": "USD",
+      "defaultLocale": "en_US",
+      "defaultName": "United States",
+      "defaultShortName": "United States",
+      "employerSolutionsCountry": true,
+      "id": 1,
+      "longName": "United States",
+      "major": true,
+      "name": "United States",
+      "new": false,
+      "population": 301967681,
+      "shortName": "US",
+      "tld": ".us",
+      "type": "N",
+      "uniqueName": "United States",
+      "usaCentricDisplayName": "United States"
+    },
+    "currency": {
+      "currencyCode": "USD",
+      "defaultFractionDigits": 2,
+      "displayName": "United States Dollar (USD)",
+      "id": 1,
+      "name": "United States Dollar",
+      "negativeTemplate": "$(#)",
+      "new": false,
+      "positiveTemplate": "$#",
+      "symbol": "$"
+    },
+    "lastSalaryDate": "2020-03-30T12:11:52",
+    "salaries": [
+      {
+        "basePayCount": 110,
+        "jobTitle": "Executive Recruiter",
+        "payPeriod": "ANNUAL",
+        "salaryPercentileMap": {
+          "payPercentile50": 54347.38,
+          "payPercentile10": 45033.0,
+          "payPercentile90": 108687.78
+        },
+        "salaryType": "employer"
+      },
+      {
+        "basePayCount": 20,
+        "jobTitle": "Recruiter",
+        "payPeriod": "ANNUAL",
+        "salaryPercentileMap": {
+          "payPercentile50": 50551.3,
+          "payPercentile10": 48346.6,
+          "payPercentile90": 55389.29
+        },
+        "salaryType": "employer"
+      },
+      {
+        "basePayCount": 13,
+        "jobTitle": "Technical Recruiter",
+        "payPeriod": "ANNUAL",
+        "salaryPercentileMap": {
+          "payPercentile50": 54414.61,
+          "payPercentile10": 47424.38,
+          "payPercentile90": 182902.31
+        },
+        "salaryType": "employer"
+      },
+      {
+        "basePayCount": 5,
+        "jobTitle": "Senior Recruiter",
+        "payPeriod": "ANNUAL",
+        "salaryPercentileMap": {
+          "payPercentile50": 148255.41,
+          "payPercentile10": 53718.44,
+          "payPercentile90": 166167.88
+        },
+        "salaryType": "employer"
+      },
+      {
+        "basePayCount": 3,
+        "jobTitle": "Executive Recruiter",
+        "payPeriod": "MONTHLY",
+        "salaryPercentileMap": {
+          "payPercentile50": 3700.61,
+          "payPercentile10": 2825.84,
+          "payPercentile90": 4089.61
+        },
+        "salaryType": "employer"
+      }
+    ]
+  }
+}

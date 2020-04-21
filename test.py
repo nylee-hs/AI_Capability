@@ -1,7 +1,10 @@
-a = [1,2]
-b = [3,4]
-c = zip(a,b)
+import json
 
-d, f = c
+with open('glassdoor_json_sample.json', 'r', encoding='utf-8') as f:
+    file = json.loads(f.read())
 
-print(d, f)
+gaTrackerData = file['gaTrackerData']
+if 'adOrderId' in gaTrackerData:
+    print('yes')
+else:
+    print('no')
