@@ -133,7 +133,10 @@ def get_all_links(totalpages, returnType):
     except OSError:
         print(' - Directory is already existed. | ' + directory)
 
-    save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d") + '_glassdoor_links.csv')
+    if int(datetime.today().strftime('%H')) > 21 | int(datetime.today().strftime('%H')) < 8:
+        save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_21") + '_glassdoor_links.csv')
+    else:
+        save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_09") + '_glassdoor_links.csv')
 
 
 #     return links, returnt
@@ -278,7 +281,11 @@ def job():
     total_page = pagination()  # 전체 페이지수 받아오기
 
     get_all_links(total_page, 'json')  # 개별 링크 데이터 수집 후 links.csv로 저장
-    df = load_csv(os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d") + '_glassdoor_links.csv', col_names=['link', 'returnType'])
+    df = ''
+    if int(datetime.today().strftime("%H")) > 21 | int(datetime.today().strftime("%H")) < 8:
+        df = load_csv(os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_21") + '_glassdoor_links.csv', col_names=['link', 'returnType'])
+    else:
+        df = load_csv(os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_09") + '_glassdoor_links.csv', col_names=['link', 'returnType'])
     returnType = df.iloc[1]['returnType']
     links = list(df['link'])[1:]
     print('Link Data Return Type : ' + returnType + '\n')
@@ -333,7 +340,10 @@ def job():
     df = pd.DataFrame({'job_title': title_list, 'company': company_list, 'url': job_des_url_list, 'job_description': description_list, 'published_date': date_list, 'scrap_date': today_list, 'company_size': csize_list,
                        'salary_high': salary_high_list, 'salary_low': salary_low_list, 'revenue': crevenue_list, 'company_type': ctype_list})
 
-    save_csv(df, directory + datetime.today().strftime("%Y%m%d") + '_glassdoor.csv')
+    if int(datetime.today().strftime('%H')) > 21 | int(datetime.today().strftime('%H')) < 8:
+        save_csv(df, directory + datetime.today().strftime("%Y%m%d_09") + '_glassdoor.csv')
+    else:
+        save_csv(df, directory + datetime.today().strftime("%Y%m%d_21") + '_glassdoor.csv')
 
 def main():
     timer1 = get_conf()['CONFIGURE']['TIMER1']

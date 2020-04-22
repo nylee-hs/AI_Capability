@@ -151,7 +151,10 @@ def extract_job(start, last):
 
         df = pd.DataFrame({'job_title': title_list, 'company': company_list, 'url': job_des_url_list, 'job_description': description_list, 'published_date': date_list, 'scrap_date': today_list, 'company_employees': company_employees_list,
                            'company_industry': company_industry_list, 'company_revenue': company_revenues_list})
-        save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d")+"_indeed_data.csv")
+        if int(datetime.today().strftime('%H')) > 21 | int(datetime.today().strftime('%H')) < 8:
+            save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_21")+"_indeed_data.csv")
+        else:
+            save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_09") + "_indeed_data.csv")
 
 
     return df
