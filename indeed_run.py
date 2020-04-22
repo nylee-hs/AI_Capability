@@ -2,7 +2,7 @@ import urllib.request
 import urllib
 from bs4 import BeautifulSoup
 import pandas as pd
-from pandas import DataFrame,Series
+# from pandas import DataFrame,Series
 from tqdm import tqdm
 import requests
 from datetime import datetime, timedelta
@@ -313,9 +313,11 @@ def job():
 
 
 def main():
-    timer = get_conf()['CONFIGURE']['TIMER']
-    schedule.every().day.at(timer).do(job)
-
+    timer1 = get_conf()['CONFIGURE']['TIMER1']
+    timer2 = get_conf()['CONFIGURE']['TIMER2']
+    schedule.every().day.at(timer1).do(job)
+    schedule.every().day.at(timer2).do(job)
+    # schedule.every(10).seconds.do(job)
     while True:
         schedule.run_pending()
         time.sleep(1)

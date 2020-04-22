@@ -3,6 +3,7 @@
     "AGE" : 1,
     "DIRECTORY" : "data\\glassdoor\\",
     "QUERY" : "artificial-intelligence",
-    "TIMER" : "09:00"
+    "TIMER1" : "09:00",
+    "TIMER2" : "21:00"
   }
 }

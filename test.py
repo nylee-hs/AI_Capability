@@ -1,10 +1,16 @@
-import json
+import schedule
+import time
 
-with open('glassdoor_json_sample.json', 'r', encoding='utf-8') as f:
-    file = json.loads(f.read())
+def job():
+    print('working...')
 
-gaTrackerData = file['gaTrackerData']
-if 'adOrderId' in gaTrackerData:
-    print('yes')
-else:
-    print('no')
+def main():
+    schedule.every().day.at("09:21").do(job)
+    schedule.every().day.at("09:22").do(job)
+    # schedule.every(10).seconds.do(job)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+
+if __name__ == '__main__':
+    main()
