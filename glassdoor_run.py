@@ -11,6 +11,7 @@ import os
 import csv
 import random
 import schedule
+import sys
 
 # QUERY = 'artificial-intelligence'
 # URL = 'https://www.glassdoor.com/Job/' + QUERY + '-jobs-SRCH_KE0,23_IP'
@@ -38,10 +39,43 @@ html_header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb
 
 
 def get_conf():
+    con_file = ''
     with open('glassdoor_config.json', 'r', encoding='utf-8') as f:
         con_file = json.loads(f.read())
 
+    if len(sys.argv) > 1:
+        query_keyword = sys.argv[1]
+        if query_keyword == 'ai':
+            con_file = con_file['CONFIGURE_AI']
+        if query_keyword == 'ml':
+            con_file = con_file['CONFIGURE_ML']
+        if query_keyword == 'ds':
+            con_file = con_file['CONFIGURE_DS']
+        if query_keyword == 'ba':
+            con_file = con_file['CONFIGURE_BA']
     return con_file
+    # con_file = ''
+    # if len(sys.argv) > 1:
+    #     query_keyword = sys.argv[1]
+    #     if query_keyword == 'ai':
+    #         with open('glassdoor_config_ai.json', 'r', encoding='utf-8') as f:
+    #             con_file = json.loads(f.read())
+    #     if query_keyword == 'ml':
+    #         with open('glassdoor_config_ml.json', 'r', encoding='utf-8') as f:
+    #             con_file = json.loads(f.read())
+    #     if query_keyword == 'ds':
+    #         with open('glassdoor_config_ds.json', 'r', encoding='utf-8') as f:
+    #             con_file = json.loads(f.read())
+    #     if query_keyword == 'ba':
+    #         with open('glassdoor_config_ba.json', 'r', encoding='utf-8') as f:
+    #             con_file = json.loads(f.read())
+    # else:
+    #     print('No input parameter!')
+    #
+    # with open('glassdoor_config.json', 'r', encoding='utf-8') as f:
+    #     con_file = json.loads(f.read())
+    #
+    # return con_file
 
 def get_position_link(url, returnType):
     global html_header
@@ -75,9 +109,10 @@ def get_position_link(url, returnType):
 
 def pagination():
     global html_header
-    guery = get_conf()['CONFIGURE']['QUERY']
-    url = 'https://www.glassdoor.com/Job/' + guery + '-jobs-SRCH_KE0,23_IP'
-    age = get_conf()['CONFIGURE']['AGE']
+    con_file = get_conf()
+    query = con_file['QUERY']
+    url = f'https://www.glassdoor.com/Job/{query}-jobs-SRCH_KE0,23_IP'
+    age = con_file['AGE']
 
     header = html_header
     response = requests.get(url + '.htm?fromAge=' + str(age), headers=header)
@@ -98,10 +133,13 @@ def pagination():
 
 def get_all_links(totalpages, returnType):
     # global AGE
-    age = get_conf()['CONFIGURE']['AGE']
-    directory = get_conf()['CONFIGURE']['DIRECTORY']
-    guery = get_conf()['CONFIGURE']['QUERY']
-    url = 'https://www.glassdoor.com/Job/' + guery + '-jobs-SRCH_KE0,23_IP'
+    con_file = get_conf()
+    age = con_file['AGE']
+    directory = con_file['DIRECTORY']
+    query = con_file['QUERY']
+    jobkey = con_file['JOBKEY']
+    # url = 'https://www.glassdoor.com/Job/' + query + '-jobs-SRCH_KE0,23_IP'
+    url = f'https://www.glassdoor.com/Job/{query}{jobkey}'
     # global directory
     links = []
     returnTypes = []
@@ -133,10 +171,11 @@ def get_all_links(totalpages, returnType):
     except OSError:
         print(' - Directory is already existed. | ' + directory)
 
-    if int(datetime.today().strftime('%H')) > 21 | int(datetime.today().strftime('%H')) < 8:
-        save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_21") + '_glassdoor_links.csv')
+    fname = con_file['FNAME']
+    if int(datetime.today().strftime('%H')) < 21 | int(datetime.today().strftime('%H')) > 8:
+        save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_09") + fname+'_links.csv')
     else:
-        save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_09") + '_glassdoor_links.csv')
+        save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_21") + fname+'_links.csv')
 
 
 #     return links, returnt
@@ -275,17 +314,19 @@ def load_csv(file_name, col_names):
     return df
 
 def job():
+    con_file = get_conf()
     print("Working time : {}".format(datetime.today().strftime("%Y%m%d-%H:%M:%S")))
-    directory = get_conf()['CONFIGURE']['DIRECTORY']
-
+    print("Query : {}".format(con_file['QUERY']))
+    directory = con_file['DIRECTORY']
+    fname = con_file['FNAME']
     total_page = pagination()  # 전체 페이지수 받아오기
 
     get_all_links(total_page, 'json')  # 개별 링크 데이터 수집 후 links.csv로 저장
     df = ''
-    if int(datetime.today().strftime("%H")) > 21 | int(datetime.today().strftime("%H")) < 8:
-        df = load_csv(os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_21") + '_glassdoor_links.csv', col_names=['link', 'returnType'])
+    if int(datetime.today().strftime("%H")) < 21 | int(datetime.today().strftime("%H")) > 8:
+        df = load_csv(os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_09") + fname+'_links.csv', col_names=['link', 'returnType'])
     else:
-        df = load_csv(os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_09") + '_glassdoor_links.csv', col_names=['link', 'returnType'])
+        df = load_csv(os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_21") + fname +'_links.csv', col_names=['link', 'returnType'])
     returnType = df.iloc[1]['returnType']
     links = list(df['link'])[1:]
     print('Link Data Return Type : ' + returnType + '\n')
@@ -340,20 +381,25 @@ def job():
     df = pd.DataFrame({'job_title': title_list, 'company': company_list, 'url': job_des_url_list, 'job_description': description_list, 'published_date': date_list, 'scrap_date': today_list, 'company_size': csize_list,
                        'salary_high': salary_high_list, 'salary_low': salary_low_list, 'revenue': crevenue_list, 'company_type': ctype_list})
 
-    if int(datetime.today().strftime('%H')) > 21 | int(datetime.today().strftime('%H')) < 8:
-        save_csv(df, directory + datetime.today().strftime("%Y%m%d_09") + '_glassdoor.csv')
+    if int(datetime.today().strftime('%H')) < 21 and int(datetime.today().strftime('%H')) > 8:
+        save_csv(df, directory + datetime.today().strftime("%Y%m%d_09") + fname+'.csv')
     else:
-        save_csv(df, directory + datetime.today().strftime("%Y%m%d_21") + '_glassdoor.csv')
+        save_csv(df, directory + datetime.today().strftime("%Y%m%d_21") + fname+'.csv')
 
 def main():
-    timer1 = get_conf()['CONFIGURE']['TIMER1']
-    timer2 = get_conf()['CONFIGURE']['TIMER2']
-    schedule.every().day.at(timer1).do(job)
-    schedule.every().day.at(timer2).do(job)
-    # schedule.every(10).seconds.do(job)
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
+    # timer1 = get_conf()['CONFIGURE']['TIMER1']
+    # timer2 = get_conf()['CONFIGURE']['TIMER2']
+    print("===========================================================================")
+    print("========================  Glassdoor Crawler  ==============================")
+    print("========================       Start!        ==============================")
+    print("===========================================================================")
+    job()
+    # schedule.every().day.at(timer1).do(job)
+    # schedule.every().day.at(timer2).do(job)
+    # # schedule.every(10).seconds.do(job)
+    # while True:
+    #     schedule.run_pending()
+    #     time.sleep(1)
 
 
 if __name__ == '__main__':

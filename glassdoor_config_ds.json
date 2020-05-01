@@ -1,0 +1,11 @@
+{
+  "CONFIGURE": {
+    "AGE" : 1,
+    "DIRECTORY" : "data\\glassdoor\\",
+    "QUERY" : "artificial-intelligence",
+    "TIMER1" : "09:00",
+    "TIMER2" : "21:00",
+    "FNAME" : "_ai_glassdoor",
+    "JOBKEY" : "-jobs-SRCH_KO0,16_IP"
+  }
+}

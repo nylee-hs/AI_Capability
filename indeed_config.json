@@ -1,10 +1,38 @@
 {
-  "CONFIGURE": {
+  "CONFIGURE_AI": {
     "AGE" : 1,
     "DIRECTORY" : "data\\indeed\\",
     "QUERY" : "artificial+intelligence",
     "LIMIT" : 15,
     "TIMER1" : "09:00",
-    "TIMER2" : "21:00"
+    "TIMER2" : "21:00",
+    "FNAME" : "_ai_indeed_data"
+  },
+  "CONFIGURE_DS": {
+    "AGE" : 1,
+    "DIRECTORY" : "data\\indeed\\",
+    "QUERY" : "data+science",
+    "LIMIT" : 15,
+    "TIMER1" : "09:00",
+    "TIMER2" : "21:00",
+    "FNAME" : "_ds_indeed_data"
+  },
+  "CONFIGURE_BA": {
+    "AGE" : 1,
+    "DIRECTORY" : "data\\indeed\\",
+    "QUERY" : "business+analyst",
+    "LIMIT" : 15,
+    "TIMER1" : "09:00",
+    "TIMER2" : "21:00",
+    "FNAME" : "_ba_indeed_data"
+  },
+  "CONFIGURE_ML": {
+    "AGE" : 1,
+    "DIRECTORY" : "data\\indeed\\",
+    "QUERY" : "machine+learning",
+    "LIMIT" : 15,
+    "TIMER1" : "09:00",
+    "TIMER2" : "21:00",
+    "FNAME" : "_ml_indeed_data"
   }
 }

@@ -8,6 +8,7 @@ import requests
 from datetime import datetime, timedelta
 import os
 import json
+import sys
 import schedule
 import time
 
@@ -27,16 +28,34 @@ html_header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb
 # print(URL)
 
 def get_conf():
+    con_file = ''
     with open('indeed_config.json', 'r', encoding='utf-8') as f:
         con_file = json.loads(f.read())
 
+    if len(sys.argv) > 1:
+        query_keyword = sys.argv[1]
+        print(query_keyword)
+        if query_keyword == 'ai':
+            con_file = con_file['CONFIGURE_AI']
+        if query_keyword == 'ml':
+            con_file = con_file['CONFIGURE_ML']
+        if query_keyword == 'ds':
+            con_file = con_file['CONFIGURE_DS']
+        if query_keyword == 'ba':
+            con_file = con_file['CONFIGURE_BA']
+    # print(con_file)
     return con_file
 
 def resultCount():
     global html_header
-    limit = get_conf()['CONFIGURE']['LIMIT']
-    age = get_conf()['CONFIGURE']['AGE']
-    url = f"https://www.indeed.com/jobs?as_and=artificial+intelligence&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=all&st=&as_src=&salary=&fromage={age}&limit={limit}&sort=date&psf=advsrch&from=advancedsearch"
+    con_file = get_conf()
+    # limit = get_conf()['CONFIGURE']['LIMIT']
+    # age = get_conf()['CONFIGURE']['AGE']
+    # query = get_conf()['CONFIGURE']['QUERY']
+    limit = con_file['LIMIT']
+    age = con_file['AGE']
+    query = con_file['QUERY']
+    url = f"https://www.indeed.com/jobs?as_and={query}&as_phr=&as_any=&as_not=&as_ttl=&as_cmp=&jt=all&st=&as_src=&salary=&fromage={age}&limit={limit}&sort=date&psf=advsrch&from=advancedsearch"
 
     header = html_header
     response = requests.get(url, headers=header)
@@ -56,9 +75,17 @@ def resultCount():
 #     print(results)
 
 def extract_job(start, last):
-    directory = get_conf()['CONFIGURE']['DIRECTORY']
-    age = get_conf()['CONFIGURE']['AGE']
-    limit = get_conf()['CONFIGURE']['LIMIT']
+    # directory = get_conf()['CONFIGURE']['DIRECTORY']
+    # age = get_conf()['CONFIGURE']['AGE']
+    # limit = get_conf()['CONFIGURE']['LIMIT']
+    # query = get_conf()['CONFIGURE']['QUERY']
+    # fname = get_conf()['CONFIGURE']['FNAME']
+    con_file = get_conf()
+    directory = con_file['DIRECTORY']
+    age = con_file['AGE']
+    limit = con_file['LIMIT']
+    query = con_file['QUERY']
+    fname = con_file['FNAME']
     global html_header
 
     today = datetime.today()
@@ -66,7 +93,7 @@ def extract_job(start, last):
     # for page in range(start, last):
     for page in range(start, last):
         print('PAGE NUM: ' + str(page))
-        search_url = f'https://www.indeed.com/jobs?q=artificial+intelligence&limit={limit}&sort=date&filter=0&fromage='+str(age)+'&start=' + str(page * limit)
+        search_url = f'https://www.indeed.com/jobs?q={query}&limit={limit}&sort=date&filter=0&fromage='+str(age)+'&start=' + str(page * limit)
         print(' - URL: ' + search_url)
         html = requests.get(search_url, headers=html_header)
         # html = urllib.request.urlopen(search_url)
@@ -151,10 +178,10 @@ def extract_job(start, last):
 
         df = pd.DataFrame({'job_title': title_list, 'company': company_list, 'url': job_des_url_list, 'job_description': description_list, 'published_date': date_list, 'scrap_date': today_list, 'company_employees': company_employees_list,
                            'company_industry': company_industry_list, 'company_revenue': company_revenues_list})
-        if int(datetime.today().strftime('%H')) > 21 | int(datetime.today().strftime('%H')) < 8:
-            save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_21")+"_indeed_data.csv")
+        if int(datetime.today().strftime('%H')) < 21 | int(datetime.today().strftime('%H')) > 8:
+            save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_09")+fname+'.csv')
         else:
-            save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_09") + "_indeed_data.csv")
+            save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_21") + fname+".csv")
 
 
     return df
@@ -310,20 +337,29 @@ def load_csv(file_name):
     return df
 
 def job():
+    con_file = get_conf()
+    print(con_file)
     print("Working time : {}".format(datetime.today().strftime("%Y%m%d-%H:%M:%S")))
+    print("Query : " + con_file['QUERY'])
     pages = resultCount()
     extract_job(0, pages)
 
 
 def main():
-    timer1 = get_conf()['CONFIGURE']['TIMER1']
-    timer2 = get_conf()['CONFIGURE']['TIMER2']
-    schedule.every().day.at(timer1).do(job)
-    schedule.every().day.at(timer2).do(job)
-    # schedule.every(10).seconds.do(job)
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
+    # timer1 = get_conf()['CONFIGURE']['TIMER1']
+    # timer2 = get_conf()['CONFIGURE']['TIMER2']
+    print("===========================================================================")
+    print("==========================  Indeed Crawler  ===============================")
+    print("==========================       Start!     ===============================")
+    print("===========================================================================")
+    job()
+
+    # schedule.every().day.at(timer1).do(job)
+    # schedule.every().day.at(timer2).do(job)
+    # # schedule.every(10).seconds.do(job)
+    # while True:
+    #     schedule.run_pending()
+    #     time.sleep(1)
     # pages = resultCount()
     # extract_job(0, pages)
 

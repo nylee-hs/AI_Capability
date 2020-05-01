@@ -1,9 +1,38 @@
 {
-  "CONFIGURE": {
+  "CONFIGURE_AI": {
     "AGE" : 1,
     "DIRECTORY" : "data\\glassdoor\\",
     "QUERY" : "artificial-intelligence",
     "TIMER1" : "09:00",
-    "TIMER2" : "21:00"
+    "TIMER2" : "21:00",
+    "FNAME" : "_ai_glassdoor",
+    "JOBKEY" : "-jobs-SRCH_KE0,23_IP"
+  },
+  "CONFIGURE_ML": {
+    "AGE" : 1,
+    "DIRECTORY" : "data\\glassdoor\\",
+    "QUERY" : "machine-learning",
+    "TIMER1" : "09:00",
+    "TIMER2" : "21:00",
+    "FNAME" : "_ml_glassdoor",
+    "JOBKEY" : "-jobs-SRCH_KO0,16_IP"
+  },
+  "CONFIGURE_DS": {
+    "AGE" : 1,
+    "DIRECTORY" : "data\\glassdoor\\",
+    "QUERY" : "data-science",
+    "TIMER1" : "09:00",
+    "TIMER2" : "21:00",
+    "FNAME" : "_ds_glassdoor",
+    "JOBKEY" : "-jobs-SRCH_KO0,12_IP"
+  },
+  "CONFIGURE_BA": {
+    "AGE" : 1,
+    "DIRECTORY" : "data\\glassdoor\\",
+    "QUERY" : "business-analyst",
+    "TIMER1" : "09:00",
+    "TIMER2" : "21:00",
+    "FNAME" : "_ba_glassdoor",
+    "JOBKEY" : "-jobs-SRCH_KO0,16_IP"
   }
 }
