@@ -34,7 +34,7 @@ def get_conf():
 
     if len(sys.argv) > 1:
         query_keyword = sys.argv[1]
-        print(query_keyword)
+        # print(query_keyword)
         if query_keyword == 'ai':
             con_file = con_file['CONFIGURE_AI']
         if query_keyword == 'ml':
@@ -338,7 +338,6 @@ def load_csv(file_name):
 
 def job():
     con_file = get_conf()
-    print(con_file)
     print("Working time : {}".format(datetime.today().strftime("%Y%m%d-%H:%M:%S")))
     print("Query : " + con_file['QUERY'])
     pages = resultCount()
