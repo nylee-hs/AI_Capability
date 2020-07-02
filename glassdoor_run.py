@@ -119,6 +119,7 @@ def pagination():
     soup = BeautifulSoup(response.text, 'html.parser')
     print('Response Code : ' + str(response.status_code))
     page_tag = soup.find_all('div', {'cell middle hideMob padVertSm'})
+    print(page_tag)
     page = page_tag[0].text.split()
     total_pages = page[len(page) - 1]
 

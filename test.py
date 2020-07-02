@@ -1,16 +1,8 @@
-import sqlite3
-import sys
-import json
+from visualize_utils import visualize_between_words, visualize_words
 
-def get_conf():
-    con_file = ''
-    print(sys.argv[1])
-    with open('indeed_config_ai.json', 'r', encoding='utf-8') as f:
-        con_file = json.loads(f.read())
-    if sys.argv[1] == 'ai':
-        con_file = con_file['CONFIGURE_AI']
 
-        # print(con_file)
-    return con_file
+words = ['a', 'b', 'c', 'd']
+a = [2.32269332e-01, -5.67735024e-02,  8.26407373e-02, -3.22979316e-03]
 
-print(get_conf()['AGE'])
+visualize_words(words=words, vecs=a, palette="Viridis256", filename="/notebooks/embedding/words.png",
+                    use_notebook=False)

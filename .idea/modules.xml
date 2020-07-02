@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/WebCrawler_AI.iml" filepath="$PROJECT_DIR$/.idea/WebCrawler_AI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/AI_Capability.iml" filepath="$PROJECT_DIR$/.idea/AI_Capability.iml" />
     </modules>
   </component>
 </project>
