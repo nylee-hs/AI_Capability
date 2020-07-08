@@ -1,8 +1,15 @@
-from visualize_utils import visualize_between_words, visualize_words
+import pandas as pd
+
+job_title = ['a', 'b', 'c']
+temp = [1,2,3,4]
+temp1 = [5,6,7,8]
+temp3 = [9,10, 11, 12]
+# df = pd.DataFrame({job_title[0] : temp})
+df = pd.DataFrame()
+df.loc[:, job_title[1]] = pd.Series(temp1, index=df.index)
+df.loc[:, job_title[2]] = pd.Series(temp3, index=df.index)
+print(df)
 
 
-words = ['a', 'b', 'c', 'd']
-a = [2.32269332e-01, -5.67735024e-02,  8.26407373e-02, -3.22979316e-03]
 
-visualize_words(words=words, vecs=a, palette="Viridis256", filename="/notebooks/embedding/words.png",
-                    use_notebook=False)
+

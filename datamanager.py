@@ -86,13 +86,19 @@ class DataManager:
         data.to_sql(name=table, con=conn, if_exists='append', index=False)
         conn.close()
 
+    def make_stop_words(self, word_count_list, number):
+        stop_words_list = [word[0] for word in word_count_list[:number]]
+        df = pd.DataFrame({'Stopwords':stop_words_list})
+        df.to_csv('data/doc2vec_test_data/0702/stopwords_list.csv', mode='w', encoding='utf-8')
+
+
     # def get_nouns(self, data):
 
 
 if __name__=='__main__':
     dm = DataManager()
-    data = dm.load_csv('data/merge_0521.csv', 'utf-8')
-    print(data.keys())
+    data = dm.load_csv('data/doc2vec_test_data/0702/stopwords_list.csv', 'utf-8')
+    print(data)
 
 
 
