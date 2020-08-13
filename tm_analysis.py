@@ -151,6 +151,7 @@ class LDAModeler:
         return data_directory, model_directory
 
     def view_lda_model(self, model, corpus, dictionary):
+        corpus = [dictionary.doc2bow(doc) for doc in corpus]
         prepared_data = gensimvis.prepare(model, corpus, dictionary)
         print(prepared_data)
         # pyLDAvis.save_html(prepared_data, self.model_path+'/vis_result.html')
@@ -162,10 +163,8 @@ class LDAModeler:
 
     def load_results(self, result_fname):
         topic_dict = defaultdict(list)
-        print(result_fname)
         with open(result_fname, 'r', encoding='utf-8') as f:
             for line in f:
-                print(line)
                 sentence, _, topic_id, prob = line.strip().split('\u241E')
                 topic_dict[int(topic_id)].append((sentence, float(prob)))
 

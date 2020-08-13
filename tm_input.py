@@ -38,14 +38,14 @@ class TMInput:
         #             Heavily depends on concrete scoring-function, see the scoring parameter.
         if n == 2:
             print(' ...make bigram...')
-            bigram = gensim.models.Phrases(text, min_count=5, threshold=20.0)
+            bigram = gensim.models.Phrases(text, min_count=5, threshold=10.0)
             bigram_mod = gensim.models.phrases.Phraser(bigram)
             return [bigram_mod[doc] for doc in text]
         elif n == 3:
             print(' ...make trigram...')
             bigram = gensim.models.Phrases(text, min_count=5, threshold=20.0)
             bigram_mod = gensim.models.phrases.Phraser(bigram)
-            trigram = gensim.models.Phrases(bigram[text], threshold=20.0)
+            trigram = gensim.models.Phrases(bigram[text], threshold=40.0)
             trigram_mod = gensim.models.phrases.Phraser(trigram)
             return [trigram_mod[bigram_mod[doc]] for doc in text]
 
@@ -117,14 +117,25 @@ class TMInput:
         else:
             return [[word for word in simple_preprocess(str(doc)) if word in including_list] for doc in texts]
 
-    def lematization(self, texts, allowed_postags=['NOUN', 'ADJ', 'VERB', 'ADV']): #['NOUN', 'ADJ', 'VERB', 'ADV']
+    def lematization(self, texts, allowed_postags=['NOUN', 'ADJ', 'ADV', 'PROPN']): #['NOUN', 'ADJ', 'VERB', 'ADV']
         print(' ...Make lematization...')
         texts_out = []
-        nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
+        tagging_out = []
+        # nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
+        nlp = spacy.load('en_core_web_sm')
         for sent in tqdm(texts):
             doc = nlp(" ".join(sent))
             texts_out.append([token.lemma_ for token in doc if token.pos_ in allowed_postags])
-        # print(texts_out[0])
+            # texts_out.append([token.lemma_ for token in doc])
+            # tagging_out.append([token.pos_ for token in doc])
+
+        # dict_array = []
+        # for i in range(len(texts_out)):
+        #     temp = dict(zip(texts_out[i], tagging_out[i]))
+        #     dict_array.append(temp)
+        #
+        # for key, value in dict_array[1].items():
+        #     print(key, value)
         return texts_out
 
     def sent_to_words(self, sentences):
@@ -145,7 +156,7 @@ class TMInput:
         data = dm.load_csv(file=self.data_path + self.data_file_name+'.csv', encoding='utf-8')
         print(data.head())
         description = data['job_description']
-        description = [re.sub('\s\s+', ' ', str(sent)) for sent in description]
+        description = [sent.replace('\n', ' ') for sent in description]
         with open(self.data_path + self.data_file_name+'_tm.documents', 'wb') as f:
             pickle.dump(description, f)
         # # 수정된 job_title에서 posting_id 가지고 오기
