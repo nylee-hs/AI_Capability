@@ -16,7 +16,7 @@ import pandas as pd
 import logging
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
-class Doc2VecInput:
+class TMInput:
     def __init__(self):
         # self.tokenizer = Mecab()
         # self.corpus_fname = 'data/doc2vec_test_data/processed_review_movieid.txt'
@@ -143,10 +143,11 @@ class Doc2VecInput:
     def pre_prosseccing(self):
         dm = DataManager()
         data = dm.load_csv(file=self.data_path + self.data_file_name+'.csv', encoding='utf-8')
-        with open(self.data_path + self.data_file_name+'.documents', 'wb') as f:
-            pickle.dump(data, f)
+        print(data.head())
+        description = data['job_description']
+        description = [re.sub('\s\s+', ' ', str(sent)) for sent in description]
         with open(self.data_path + self.data_file_name+'_tm.documents', 'wb') as f:
-            pickle.dump(data['job_description'], f)
+            pickle.dump(description, f)
         # # 수정된 job_title에서 posting_id 가지고 오기
         # posting_ids = data['posting_id']
         # posting_list = posting_ids.to_list()

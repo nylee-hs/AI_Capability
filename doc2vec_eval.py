@@ -25,6 +25,23 @@ class Doc2VecEvaluator:
             data = pickle.load(f)
         return data
 
+    def most_similar_terms(self, topn=10):
+        df = pd.DataFrame()
+        data = pd.read_csv('data/doc2vec_test_data/0702/including_words_list.csv', encoding='utf-8')
+        seed_term = data['Includingwords']
+
+        for term in seed_term:
+            similar_terms = self.model.wv.most_similar(term)
+            temp = []
+            for s_term, score in similar_terms:
+                if score >= 0.8:
+                    temp.append(s_term)
+                else:
+                    temp.append('none')
+            df.loc[:, term] = pd.Series(temp)
+        df.to_csv('data/doc2vec_test_data/0702/terms_results.csv', mode='w', encoding='utf-8')
+        return df
+
     def most_similar(self, job_id, topn=10):
         similar_jobs = self.model.docvecs.most_similar('Job_ID_' + str(job_id), topn=topn)
         temp = 'Job_ID_' + str(job_id)
@@ -107,7 +124,7 @@ class Doc2VecEvaluator:
         job_id = str(job_id)
         job_id = job_id.split('_')
         job_id = int(job_id[2])
-        s = data[data['id'] == job_id]['job_title_2']
+        s = data[data['id'] == job_id]['job_title']
         s = s.tolist()
         # s = data[data['id']==int(job_id)]['job_title']
         # print(s)
