@@ -22,7 +22,19 @@ class TMInput:
         # self.corpus_fname = 'data/doc2vec_test_data/processed_review_movieid.txt'
         self.data_path = self.make_save_path()
         self.data_file_name = self.get_file_name()
+        self.factor = self.get_factor()
         self.job_id, self.description = self.pre_prosseccing()
+
+
+    def get_factor(self): ## '0: responsiblities' 또는 '1: requirements' 입력
+        factor = input(' > factor(responsibilities:0, requirements:1) : ')
+        if factor == '0':
+            factor = 'responsibilities'
+        elif factor == '1':
+            factor = 'requirements'
+        factor = 'job_description_' + factor
+
+        return factor
 
     def make_save_path(self): ## directory는 'models/날짜'의 형식으로 설정해야 함
         print('==== Preprocessing ====')
@@ -38,7 +50,7 @@ class TMInput:
         #             Heavily depends on concrete scoring-function, see the scoring parameter.
         if n == 2:
             print(' ...make bigram...')
-            bigram = gensim.models.Phrases(text, min_count=5, threshold=10.0)
+            bigram = gensim.models.Phrases(text, min_count=3, threshold=10.0)
             bigram_mod = gensim.models.phrases.Phraser(bigram)
             return [bigram_mod[doc] for doc in text]
         elif n == 3:
@@ -53,8 +65,10 @@ class TMInput:
     def data_text_cleansing(self, text):
         print(' ...Run text cleanning...')
         # Convert to list
-        data = text['job_description'].str.replace(pat=r'[^A-Za-z0-9]', repl= r' ', regex=True)
-        data = text['job_description'].str.replace(pat=r'[\s\s+]', repl=r' ', regex=True)
+        data = text[self.factor].str.replace(pat=r'[^A-Za-z0-9]', repl= r' ', regex=True)
+        data = data.dropna(axis=0).reset_index(drop=True)
+        # data = text[self.factor].str.replace(pat=r'[\s\s+]', repl=r' ', regex=True)
+
         data = data.tolist()
 
         # # 영문자 이외의 문자는 공백으로 변환
@@ -71,6 +85,8 @@ class TMInput:
 
         # Remove distracting single quotes
         data = [re.sub('\'', '', sent) for sent in data]
+
+        data = [sent.replace('\n', ' ') for sent in data]
 
         return data
 
@@ -117,7 +133,7 @@ class TMInput:
         else:
             return [[word for word in simple_preprocess(str(doc)) if word in including_list] for doc in texts]
 
-    def lematization(self, texts, allowed_postags=['NOUN', 'ADJ', 'ADV', 'PROPN']): #['NOUN', 'ADJ', 'VERB', 'ADV']
+    def lematization(self, texts, allowed_postags=['NOUN', 'PROPN']): #['NOUN', 'ADJ', 'VERB', 'ADV']
         print(' ...Make lematization...')
         texts_out = []
         tagging_out = []
@@ -154,9 +170,10 @@ class TMInput:
     def pre_prosseccing(self):
         dm = DataManager()
         data = dm.load_csv(file=self.data_path + self.data_file_name+'.csv', encoding='utf-8')
-        print(data.head())
-        description = data['job_description']
-        description = [sent.replace('\n', ' ') for sent in description]
+        # print(data.head())
+        description = data[self.factor]
+        description_reset = description.dropna(axis=0).reset_index(drop=True)
+        description = [sent.replace('\n', ' ') for sent in description_reset]
         with open(self.data_path + self.data_file_name+'_tm.documents', 'wb') as f:
             pickle.dump(description, f)
         # # 수정된 job_title에서 posting_id 가지고 오기
@@ -175,16 +192,18 @@ class TMInput:
         sentences = self.data_text_cleansing(data)
         data_words = list(self.sent_to_words(sentences))
         data_words_nostops = self.remove_stopwords(data_words)
-        data_lemmatized = self.lematization(data_words_nostops)
+        bigram = self.make_ngram(data_words_nostops, n=2)
+        data_lemmatized = self.lematization(bigram)
 
-        bigram = self.make_ngram(data_lemmatized, n=2)
+
 
         # bigram = self.make_bigram(data_words_nostops)
         # data_lemmatized = self.lematization(bigram)
         # for i in range(len(bigram)):
         #     print(f'[{i}] : {bigram[i]}')
 
-        data_lemmatized_filter = self.word_filtering(bigram)
+        # data_lemmatized_filter = self.word_filtering(bigram)
+        data_lemmatized_filter = data_lemmatized
         for i in range(len(data_lemmatized_filter)):
             print(f'[{i}] : {data_lemmatized_filter[i]}')
         # # uniquewords = self.make_unique_words(data_lemmatized)

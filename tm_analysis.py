@@ -2,6 +2,7 @@ import os
 import pickle
 from collections import defaultdict
 
+import pyLDAvis
 from gensim import corpora
 from gensim.models import ldamulticore, CoherenceModel, LdaModel
 import operator
@@ -152,9 +153,9 @@ class LDAModeler:
 
     def view_lda_model(self, model, corpus, dictionary):
         corpus = [dictionary.doc2bow(doc) for doc in corpus]
-        prepared_data = gensimvis.prepare(model, corpus, dictionary)
+        prepared_data = gensimvis.prepare(model, corpus, dictionary, mds='mmds')
         print(prepared_data)
-        # pyLDAvis.save_html(prepared_data, self.model_path+'/vis_result.html')
+        pyLDAvis.save_html(prepared_data, self.model_path+self.data_name+'_vis_result.html')
 
     def get_corpus(self, corpus_file):
         with open(corpus_file, 'rb') as f:
