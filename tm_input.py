@@ -15,6 +15,7 @@ from pprint import pprint
 import pandas as pd
 import logging
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+import numpy as np
 
 class TMInput:
     def __init__(self):
@@ -23,16 +24,25 @@ class TMInput:
         self.data_path = self.make_save_path()
         self.data_file_name = self.get_file_name()
         self.factor = self.get_factor()
-        self.job_id, self.description = self.pre_prosseccing()
+        self.capa_terms = ['Strong', 'Experience in', 'experience in', 'Experience', 'experience with', 'proven', 'Proven', 'Valid', 'Familiarity with', 'familiarity with',
+                           'Excellent', 'Understading', 'Ability to', 'Ability', "degree in", "Knowledge of", "Must be", 'Skills', 'Degree in', "Bachelor's", "Master", "Doctoral", 'MS degree', 'BS degree', 'Must have',
+                           'Evidence', 'Exposure', 'Graduate degree', 'Expert', 'Ph. D.', 'Proficiency in', 'proficiency', 'BS', 'MS', 'Ph.D', 'Must', 'Certifications']
+        self.capa_terms_cap = ['Strong', 'Experience', 'Proven', 'Familiarity', 'Ability', 'Excellent', 'Understading', 'Must have', 'Must be', 'Expert', 'Evidence', 'Exposure', 'Knowledge', 'Ability to', 'Proficiency', 'Demonstrate']
+
+
+        # self.job_id, self.description = self.pre_prosseccing()
+        self.description = self.pre_prosseccing()
 
 
     def get_factor(self): ## '0: responsiblities' 또는 '1: requirements' 입력
-        factor = input(' > factor(responsibilities:0, requirements:1) : ')
+        factor = input(' > factor(description: 0, responsibilities:1, requirements:2) : ')
         if factor == '0':
-            factor = 'responsibilities'
+            factor = 'job_description'
         elif factor == '1':
-            factor = 'requirements'
-        factor = 'job_description_' + factor
+            factor = 'job_description_responsibilities'
+        elif factor == '2':
+            factor = 'job_description_requirements'
+
 
         return factor
 
@@ -61,6 +71,49 @@ class TMInput:
             trigram_mod = gensim.models.phrases.Phraser(trigram)
             return [trigram_mod[bigram_mod[doc]] for doc in text]
 
+    def get_requirements_from_document(self, data):
+        descpription = data['job_description']
+        new_description = []
+        c_terms = '|'.join(self.capa_terms)
+        p = re.compile(c_terms)
+        for texts in descpription:
+            texts = texts.replace('\n', '. ')   ## 줄바꿈 --> 마침표 으로 처리
+            for term in self.capa_terms_cap:
+                texts = texts.replace(term, '. '+term)
+            str_list = texts.split('.') ## 마침표 기준 split()
+            find_sentence = []
+            for sentence in str_list:
+                m = p.search(sentence)
+                if m:
+                    find_sentence.append(sentence)
+            new_texts = '. '.join(find_sentence)
+            new_description.append(new_texts)
+        data['job_description_requirements'] = new_description
+        data.to_csv(self.data_path+ self.data_file_name+'_new.csv', mode='w', encoding='utf-8')
+        data['job_description'] = new_description
+        data['job_description'].replace('', np.nan, inplace=True)
+        data.dropna(subset=['job_description'], inplace=True)
+        return data
+
+        # for texts in descpription[:1]:
+        #     split_text = re.findall(r'[a-z]+|[A-Z]+', texts)
+        #     str = []
+        #     check = 0
+        #     for word in split_text:
+        #         temp = ''
+        #         if check != len(split_text) - 1:
+        #             if word.isupper() == True:
+        #                 if split_text[check + 1].islower() == True:
+        #                     temp = word + split_text[check + 1]
+        #             elif word.islower() == True:
+        #                 if split_text[check - 1].isupper() == True:
+        #                     pass
+        #                 else:
+        #                     temp = split_text[check]
+        #         check += 1
+        #         str.append(temp)
+        #         str = ' '.join(str).split()
+        #         # print(str)
 
     def data_text_cleansing(self, text):
         print(' ...Run text cleanning...')
@@ -170,7 +223,10 @@ class TMInput:
     def pre_prosseccing(self):
         dm = DataManager()
         data = dm.load_csv(file=self.data_path + self.data_file_name+'.csv', encoding='utf-8')
-        # print(data.head())
+        data = self.get_requirements_from_document(data)
+        print(data.head())
+
+        description_reset = data.dropna(axis=0).reset_index(drop=True)
         description = data[self.factor]
         description_reset = description.dropna(axis=0).reset_index(drop=True)
         description = [sent.replace('\n', ' ') for sent in description_reset]
@@ -232,4 +288,5 @@ class TMInput:
                 print(ex)
                 continue
 
-# dvi = Doc2VecInput()
+
+tmi = TMInput()

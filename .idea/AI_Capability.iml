@@ -6,7 +6,7 @@
       <excludeFolder url="file://$MODULE_DIR$/venv_new" />
       <excludeFolder url="file://$MODULE_DIR$/venv_notebook" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.7 (AI_Capability)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.7 (AI_Ability)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
