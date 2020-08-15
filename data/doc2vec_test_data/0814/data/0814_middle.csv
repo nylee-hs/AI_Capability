@@ -1,0 +1,1239 @@
+﻿id,job_title,정리된 job_title,company,관리자,고급,중급,초급,job_description_requirements,job_description_responsibilities,published_date,scrap_date,company_employees,company_industry,company_revenue,종업원규모CODE,매출규모CODE,산업CODE
+9019,Artificial Intelligence (AI) Associate - Data Scientist,AI Associate,Penn State University,0,0,1,0,"Strong consideration will be given to candidates who can present a successful project in machine learning that demonstrates
+the ability to create and train a model, demonstrating data preparation, advanced analysis, and useful outputs.  Proficiency in Python is required;  Experience with machine learning libraries such as TensorFlow, Infer. net or Caffe is required; Proficiency in relevant mathematics, such as linear algebra and multivariate calculus, is significantly beneficial; Skill in another language such as JavaScript or R is beneficial; Knowledge of data structures and data management methods is beneficial; Ability to communicate technical topics effectively to nontechnical audiences is beneficial; Ability to interpret and apply technical papers and articles in research journals is beneficial.  Experience with cloud computing and storage services, especially Amazon Web Services (AWS), is a plus;  Experience with containerization technologies such as Docker or Kubernetes is a plus.","The Data Scientist intern will work on AI related projects in an Agile software development team, collaborating with software developers, a scrum master, and product owners, gaining hands on  Experience that enhances their learning and marketability.  Selected candidates will assist with the creation of prototypes leveraging artificial intelligence and drive the design of related cognitive modules.  Specifically, the Data Scientist will research state-of-the-art algorithms in machine learning to identify viable project approaches, design prototypes that connect data sources to a concrete use case, and develop code to test the efficacy and efficiency of algorithms against real-world data.  ",Today,01:14.1,"5,001 to 10,000",Education and Schools,$5B to $10B (USD),8,8,교육
+9026,Artificial Intelligence (AI) Associate - Front-end Developer,AI Associate,Penn State University,0,0,1,0,"A portfolio of prior work demonstrating command of be st practices and front - end design principles is required for consideration.   Experience with HTML5 and CSS is highly beneficial;  Experience with modern JavaScript and related frameworks is highly beneficial;  Experience with Python is a plus;  Experience with responsive design and CSS frameworks like Bootstrap is a plus;  Experience with a code versioning tool such as GitHub is a plus;  Experience with cloud computing and storage services, especially Amazon Web Services (AWS), is a plus;  Experience with containe rization technologies such as Docker or Kubernetes is a plus.  Previous  Experience in Agile teams or collaborating with UI/UX designers and data scientists is a plus. ","The Front - End Developer intern will work on AI - related projects in an Agile software development team, collaborating with data scientists, a scrum master, and product owners, gaining hands - on  Experience that enhances their learning and marketability.  Selected candidates will drive the creation of pr ototypes leveraging artificial intelligence and assist with the design of related cognitive modules.  Specifically, the Front - End Developer will build upon wireframes and concepts created by a UX Designer leveraging technologies such as HTML, CSS, and JavaS cript.  They will produce, modify, and maintain web application user interfaces.  They will work with Data Scientists in back - end design, collaborating on APIs, data structure, and data integration.  They will maintain software workflow, versioning, and testi ng during development and address any bugs.  They will document all code according to common development best practices and create technical documentation of project work to facilitate knowledge sharing.  ",Today,01:14.1,"5,001 to 10,000",Education and Schools,$5B to $10B (USD),8,8,교육
+1256,Associate Chief Integration Engineer,Associate Chief Integration Engineer,LOCKHEED MARTIN CORPORATION,1,0,1,0," Experience as a Systems Engineer or Product Owner Experience working in a multi-project, multiple customer environment Experience in systems engineering activities such as requirements definition, system design and architecture, operational environment integration and testing.  Experience in End-to-End/System-of-System integrationStrong problem-solving skills
+ Experience with Agile development methodologiesStrong written and oral communication skills Experience supporting briefings and engagements with customersAbility to perform effectively in a team environment, interacting with developers, technical leadership, other engineers, and management. The candidate must have a TS clearance and be SCI eligible. 
+Participating in a Chief Engineer (CE) Pipeline development program or equivalent senior technical leadership development program such as Rising Technical Talent (RTT) Experience interfacing with US Army, Navy, Marine Corps, Space Force or Air Force personnel at various levels, ideally with  Experience in both acquisition programs and operational units of multiple services Understanding of the operational and tactical level command and control and Intelligence Surveillance and Reconnaissance systems in use by the U. S.  Army, Navy, Marine Corp and Air Force for non-space domain operations. 
+Ability to build strong relationships with program internal and external stakeholders and peersAbility to facilitate group discussions to close on technical solutions with senior team members.  Experience with AI/ML concepts, tools, and methodologies Experience with on-contract, new work proposal development such as Task Orders, major Engineering Change Proposals or the equivalent inclusive of customer engagement, scope definition, solution development, cost estimating and sub-contractor engagementActive TS/SCI clearanceThe candidate should possess a high degree of ethics, strong core values and an optimistic outlook, and show the ability to work independently with initiative, creativity and innovation
+","Help provide overall technical leadership to the program’s integration of AI capabilities into new and existing DoD Programs of Record, working closely with the program’s Integration architecture leadSupport program Leadership in creating and managing project roadmaps/schedules and evaluating new Technical Direction Letter (TDL) requestsHelp define the product solution vision for new program requirements requested by the customerProvide support to program engineering boards when delegated by board chairHelp ensure the flawless execution of program development, integration, engagement and operations support by reviewing work products, analyzing execution data, participating in program planning, and providing leadership to deployment and operations support events and situationsAssist with the program technical leadership team with program start up activities to develop and define program approaches, plans and procedures, including documentation. ",Today,01:04.7,"10,000+",Aerospace and Defense,more than $10B (USD),9,9,항공국방
+13604,Associate Computational Biologist - Popic Lab,Associate Computational Biologist,Broad Institute,0,0,1,0,"• Bachelors and/or Masters degree in computer science, mathematics, or a related discipline. 
+•  Experience in some of the following areas: machine learning, reinforcement learning, bioinformatics, biostatistics, graph theory, image processing, scientific computing, big data analytics
+• Strong software engineering skills; Python and C/C++ preferred
+• Familiarity with state-of-the-art deep learning frameworks is a plus
+• Previous research  Experience is a big plus
+","Develop novel deep learning/machine learning algorithms for key computational problems in genomics
+Perform large-scale experiments for method evaluation and optimization
+Analyze a variety of large-scale DNA sequencing, graph, and image datasets
+Implement, test, ship, and maintain high-quality open-source software tools
+Communicate your research to the community via presentations and publications",Today,00:07.3,"501 to 1,000",Education and Schools,$100M to $500M (USD),6,5,교육
+6768,Associate Corporate Counsel - AWS Security,Associate Corporate Counsel,Amazon.com Services LLC,0,0,1,0,"Juris Doctor (JD) and admitted to at least one state bar (or equivalent)2+ years of legal   Experience
+
+In-house   Experience at a technology company   Experience with cloud computing compliance and regulatory regimes","develop strategies for handling legal issues in creative, business-centric ways and you will build processes that address risk and allow the business flexibility and freedom to move quickly.  You also will provide support for AWS’s global legal and security compliance, audit, and certification programs, and other operational matters. ",Just posted,01:40.5,"10,000+",Internet and Software,more than $10B (USD),9,9,소프트웨어
+10938,Associate Cyber Applied Research Scientist (CH),Associate Cyber Applied Research Scientist ,LOCKHEED MARTIN CORPORATION,0,0,1,0,"B. S.  degree in technical fields of study such as Computer Science, Computer Engineering, Electrical Engineering, or Computer Security – or equivalent applied  Experience. 
+Demonstrated skills in user-space or kernel-space developmentC, C++, Python software development
+Networking protocols and socket application developmentDebugging (e. g gdb, windbg, OllyDbg, Valgrind)Guided technical research explorations 
+Developing cyber capabilities requires a broad spectrum of  Experience.  While we do not anticipate that everyone will have skill and expertise in all related technical areas, we do desire that team mates have some  Experience in one or more of the areas listed below. 
+Applied research skills
+Embedded systems development
+Compiler Design and ImplementationMachine-learning/Artificial IntelligenceStatic and dynamic reverse engineering on x86/x86_64, MIPS, ARM, or PowerPC
+Vulnerability Analysis of source code or binaries
+IDS and PSP Design and Implementation
+Cyber/IO/CNO R&DCurrent Top-Secret clearance",,Today,00:06.8,"10,000+",Aerospace and Defense,more than $10B (USD),9,9,항공국방
+4652,Associate Data Scientist,Associate Data Scientist,Blue Cross Blue Shield of Louisiana,0,0,1,0,"Requires a bachelor’s degree in health care informatics, statistics, economics, mathematics, analytics, computer science, finance or other quantitative disciplines. 
+Two years of relevant work  Experience required.  Graduate degrees in related fields may be used to substitute for two (Master’s) or four (Doctorial) years of work  Experience. 
+Must have proficiency with commonly used database, spreadsheet, and word processing software (i. e.  MS SQL Server, Teradata Studio, MS Access, MS Excel, MS Word).  Proficiency in a common statistical analysis software package required (e. g.  R, Python, SAS Base, SAS Enterprise Guide and SAS Enterprise Miner).  Proficiency in data visualization software is required (e. g.  Tableau, Power BI).  Proficiency in programming language is preferred (e. g.  Python, R, C, SAS). 
+ Experience in developing and implementing predictive models resulting in improved outcome/processes is preferred. 
+Basic  Understanding of provider payment methodologies, population health management, and risk adjustments is required. 
+Basic  Understanding of clinical groupers including episode groupers and risk groupers such as DRB, APC, Episode Treatment Groups (ETG), Medical Episode Grouper (MEG), DxCG, and Hierarchical Condition Category (HCC) is highly desired. 
+Requires current knowledge of United States health care delivery system in payer setting or provider setting. 
+Must be able to work independently with little supervision. 
+Consultation, preferably as an internal consultant and demonstrated success in working with and influencing all management levels including Senior Management, Business Analyst, Business Intelligence, IT and Healthcare Informatics Analyst/Statisticians. 
+Critical thinking and problem solving, preferably demonstrated project management skills, strong ability to think strategically and successfully implement solutions and skilled as a facilitator and in solution development
+Collaboration, preferably in the ability to deliver results through others
+Successfully leads complex project negotiations with business stakeholders and formulates recommendations for analytical strategies. 
+Interpersonal skills, preferably in the ability to express oneself and to build relationships. 
+Data analytics skills
+Ability to manage multiple, competing priorities and maintain appropriate balance between business demands and priorities of the Data Analytics Division. 
+","This position provides analytics in  Understanding and improving how health care is valued, utilized and provided.  This position will develop analytic and predictive models that pertain to patient level health utilization/outcome, provider performance measures, risk-adjusted revenue optimization, medical cost management, and behavior attributes on patient/provider engagement.  In collaboration with other business areas and IT, this position provides predictive and prescriptive analytics support through machine learning and artificial intelligence technologies. 
+Participates in scientific and technical planning, analysis, reporting and methodological development.  Hypothesize, develop and organize analytic/predictable attributes in business-impact prioritized manner. 
+Appropriately leverages in-house clinical reporting software and databases.  Facilitates business development, documents business problems and independently develops analytic solutions (i. e. , predictive model, BI solution, or analytic attributes). 
+Serves as an analytics advisor in collaborating with departments on corporate enterprise and cross-functional projects, reports, and activities. 
+Participates in the development of machine learning or artificial intelligence models to predict disease progression, consumer engagement, provider performances with additional emphasis on business initiative development and execution. ",Just posted,01:11.1,NA,NA,NA,기타,기타,기타
+12184,Associate Data Scientist,Associate Data Scientist,Florida Blue,0,0,1,0,"2+ years related work  Experience or equivalent combination of transferable  Experience and education.   Data Scientist or similar role
+Related Bachelor’s degree or additional related equivalent work  Experience Data Science, Applied Mathematics, Computer science (e. g.  specialization: Machine learning/Artificial Intelligence /Visualization, databases, and Big Data), Statistics, Epidemiology, Health Services Research, or closely related field with Data Science specialization
+Requires  Experience with statistical packages – 1-2 years of SAS (R is acceptable), SAS EG, and SAS EM.  Also requires  Experience in SQL
+Strong analytical and problem solving skills
+Willingness and ability to support large projects, and manage smaller projects in their entirety
+Ability to partner with senior team members to assess customer needs and define business questions.  Emerging ability to influence customers to take action on analytical insights. 
+Ability to communicate results and insights, both verbally and written (including visual graphics), in a clear and concise manner to a non-technical audience. 
+Must have applied  Experience with advanced statistics e. g.  predictive analytics models
+Must have applied  Experience in Machine Learning
+Must have  Experience in visual analytics
+Excel/PowerPoint skills
+Must have strong teamwork and collaborative skills
+ Proven ability to meet and exceed deadlines
+Strong decision making ability
+Strong written and oral communication skills
+
+Master’s degree Applied Mathematics, Computer science (e. g.  specialization: Machine learning/Artificial Intelligence /Visualization, databases, and Big Data), Statistics, Epidemiology, Health Services Research, or closely related field with Data Science specialization
+ Experience in Big Data - e. g.  Hadoop
+ Experience with other tools –e. g.  Tableau, R, and Netezza
+Business Intelligence tool development
+Other programming  Experience - Java, Perl, Python, UNIX/Linux scripting
+Healthcare, medical, or pharmaceutical work  Experience
+ Experience with analysis around quality, consumer  Experience, and healthcare costs
+SAS certification
+","Support large projects, and manage smaller projects in their entiretyPartner with senior team members to assess customer needs and define business questions.  Emerging ability to influence customers to take action on analytical insights. Communicate results and insights, both verbally and written (including visual graphics), in a clear and concise manner to a non-technical audience. Identify and communicate roadblocks. Work on multiple concurrent projects and accommodate frequent interruptions and changing prioritiesEffectively participate in meetings with customers and emerging ability to guide discussion and decision making. With guidance from senior team members identify, define and translate business needs/problems into analytical questions. With guidance from senior team members, design and execute experiments, models, algorithms, and visualizationsUnderstand data sources and limitations, warehousing system and the impact of the data on business decisions. Identify, retrieve, and manipulate data from internal and external datasets. Apply statistical and computational methodologies to provide actionable insights and identify opportunities that optimize quality, consumer  Experience, and healthcare costs. 
+• Assist with the development of scalable, efficient, and automated processes for large scale data analyses and model development, validation, and implementation• Contribute to technical reports, white papers, and publications. 
+Stay current on new processes and technology in Data Science and communicate findings to teamSupport other team members as needed",Today,00:08.8,NA,Health Care,NA,기타,기타,헬스케어
+12159,"Associate Data Scientist, A2C",Associate Data Scientist,"Amazon Web Services, Inc.",0,0,1,0,"A Bachelor’s Degree in a highly quantitative field (Computer Science, Machine Learning, Operational Research, Statistics, Mathematics, etc.  ) or equivalent  Experience
+1+ years of industry  Experience
+Expertise in one or more functional programming languages (Python, R, etc.  )
+Knowledge of SparkML
+ Experience using ML libraries, such as scikit-learn, caret, mlr, mllibKnowledge of SQL
+Familiarity with using data visualization tools
+ Experience giving data presentationsAbility to travel to client locations to deliver professional services when needed
+
+A Master’s Degree or Ph.  D.   in a highly quantitative field (Computer Science, Machine Learning, Operational Research, Statistics, Mathematics, etc.  )
+3+ years of industry  Experience in predictive modeling, data science and analysis
+Previous  Experience in a ML or data scientist role and a track record of building ML or DL models
+Ability to develop experimental and analytic plans for data modeling processes, use of strong baselines, ability to accurately determine cause and effect relations
+Consulting  Experience and track record of helping customers with their AI needs
+ Experience programming in Python and/or R
+Good skills with imperative programming languages such as Java or C/C++
+ Experience with AWS technologies like Redshift, S3, EC2, Data Pipeline, & EMR
+ Experience handling terabyte size datasetsTrack record of diving into data to discover hidden patterns
+Knowledge and  Experience of writing and tuning SQLCombination of deep technical skills and business savvy enough to interface with all levels and disciplines within our customer’s organization
+Past and current  Experience writing and speaking about complex technical concepts to broad audiences in a simplified format
+Demonstrable track record of dealing well with ambiguity, prioritizing needs, and delivering results in a dynamic environment","Understand the customer’s business requirements and guide them to a solution using our AWS AI Services, AWS AI Platforms, AWS AI Frameworks, and AWS AI EC2 Instances . 
+Assist customers by working with a team to deliver AI/ML/DL projects from beginning to end, including understanding business requirements, developing architecture, aggregating data, exploring data, building & validating predictive models, and deploying completed models to deliver business impact to the organization.
+Use Deep Learning frameworks like MXNet, Caffe 2, Tensorflow, Theano, CNTK, and Keras to help our customers build DL models.Use SparkML and Amazon Machine Learning (AML) to help our customers build ML models.
+Use Lex to develop Conversational User Interface (CUI)
+Work with our Professional Services Big Data consultants to analyze, extract, normalize, and label relevant data.
+Work with our Professional Services DevOps consultants to help our customers operationalize models after they are built.Assist customers with identifying model drift and retraining models.",Just posted,00:08.8,NA,NA,NA,기타,기타,기타
+11748,Associate Data Scientist/Software Developer,Associate Data Scientist,California Institute of Technology,0,0,1,0,"
+Bachelor's in a STEM field with significant computation  Experience.  Experience with building end-to-end modular Python architecture.  Experience with AWS software tools, machine learning, and architecting AWS workflows.  Experience working in Linux, artificial intelligence, and cloud computing.  Experience with programming, including Python and databases.  Excellent oral and written communication skills needed.  Proven ability to work in a team of staff with a wide range of expertise is necessary. 
+
+Masters or higher degree in a STEM field.  Experience with C and C++.  Experience with earthquake data processing software.  Experience with GPUs, particularly with CUDA.  Experience with IP networking.  Experience with SQL and noSQL databases.  Experience with Jupyter-hub and its deployment. ","Learn fundamentals behind existing in-house earthquake data processing software. Lead development of a software framework specification document. Lead implementation of software and apply analytics in collaboration with faculty and postdocs. Interface with external colleagues on algorithmic and implementation issues. Be in charge of developing user documentation and associated analytics tools. Explore, architect, and apply different approaches to user interfaces and visualization. Develop and deploy analytics tools for tracking system performance. Maintain tools and documentation as needed. Other duties as assigned. ",Today,01:37.8,"1,001 to 5,000",Education and Schools,$1B to $5B (USD),7,7,교육
+6503,Associate Director Product Management AI Solutions,"Associate Director, Product Management AI Solutions",Bayer,1,0,1,0,"Master Degree in Science/Business;
+5 years of  Experience in Software Technology and Software as a Service (SaaS) product companies;
+Established, successful track record in HIT (Health Information Technology), specifically in regulated environments with technical  Understanding of software development;
+Established successful track record in HIT (Health Information Technology), specifically in radiology with technical  Understanding of software development;
+ Proven business acumen;
+ Proven ability to work in a large international company with a matrix organization;
+ Proven ability to drive measurable outcomes with virtual teams;
+ Experienced leadership, communication and displaying interpersonal skills to lead cross-functional, multi-cultural teams as well as business partnerships;
+Strong drive for results and delivery of objectives;
+Willing to travel internationally to global meetings and international Congresses;
+Willingness and ability to travel as needed, up to 50%. 
+
+Experience with Health Information Technology products / ecosystems preferred;
+Preferred:  Proven product  Experience managing and delivering software solutions in Agile, Cloud and DevOps environments;
+Plus: Exposure to managing Artificial Intelligence / Machine Learning based products / offerings is highly desired;
+Plus:  Experience with radiology / cardiology or medical device product domains is a plus. ","This position will be responsible for product strategy, roadmap and lifecycle for Head to Toe AI Offering. 
+Develop overall product strategy for Head to Toe AI in line with the objectives of Digital Solutions business;
+Develop and communicate a rolling 18-months road map in alignment with long term strategy to ensure sustainable sales growth and provide true customer value in the form of hard outcomes;
+Incorporate feedback and requirements from customers and opinion leaders; and regional and country organizations;
+Ensure roadmap delivers a competitive product that is in-line with the latest technology trends;
+Manage roadmap in compliance with government regulatory constraints;
+Drive and coordinate the most efficient regulatory release and ensure product output meets required commercial market needs;
+Develop and lead strategic partnerships with key customers, opinion leaders and partners (e. g. , technology partners, market places, AMC’s);
+Effectively communicate the roadmaps and collaborate with the software development team in R&D to ensure roadmap is delivered on-time and within budget;
+Build a strong network within the R&D team;
+Provide specific inputs to ensure roadmap is fully and correctly understood and implemented;
+Ensure roadblocks and challenges are identified at the earliest and proactively managed;
+Lead research/development/in-licensing search goals (define unmet medical and customer needs).  Support to define desired profile for new products from a technical and commercial perspective;
+Manage relationships with key strategic partners like technology partners (E. g. , Google), Academic medical Centers, etc. ;
+Provide input into cost budgeting process and manage product management budgets efficiently, prioritizing on those activities which bring the highest value/return. ",Today,49:57.3,"10,000+",Pharmaceuticals,more than $10B (USD),9,9,제약
+17131,"Associate Director, Data Sciences & Strategic Partnerships","Associate Director, Data Science",Merck,1,0,1,0,"Masters Degree or Doctoral Degree in business, economics, epidemiology, genetics, health services research, informatics, biostatistics, computer science, engineering, public health, policy, medicine, or a related discipline. 
+3+ years hands on  Experience in the design and implementation of quantitative science methods in the healthcare industry
+Demonstrated excellence in interpersonal communications (written and oral) and consistent ability to execute on objectives
+Entrepreneurial and evidence of intellectual curiosity
+ Experience applying artificial intelligence, predictive analytics, and emerging technologies
+Leadership  Experience in the OHDSI, HIMSS, and/or AMIA communities
+ Experience developing health and medical informatics
+ Experience in business development","Horizon scanning and developing strategic partnerships to accelerate and generate insights that inform healthcare decisions and policy through novel studies, methods, and technologies
+Leading and conducting data analytic projects using standard and advanced analytic methods
+Leading knowledge management and data innovation initiatives to increase access to and interoperability of data, models, analytics, and evidence
+Establishing rapid, interactive, and self-service analytic and data visualization capabilities and workflows
+Advancing the development and diffusion of open-source health economic modeling methodologies
+Leading value analytic and informatics initiatives in the Observational Health Data Sciences and Informatics (OHDSI), Healthcare Information Management Systems Society (HIMSS), and/or American Medical Informatics Association (AMIA) communities
+Maintaining awareness and communication of scientific and technologic developments within the fields of data science, informatics, and health technology assessment (HTA)
+Advancing, presenting, and publishing novel methodologies in the fields of data science and informatics at international/national congresses and in scientific and technology journals",Today,00:07.3,"10,000+",Health Care,more than $10B (USD),9,9,헬스케어
+17279,"Associate Director, Data Scientist- NLP & Text Mining","Associate Director, Data Science",Evolent Health,1,0,1,0,"MS degree or above in Computer Science, Computational linguistics, Mathematics, Physics or related STEM fields
+5+ years of Industry  Experience related to Unstructured Text Data and NLP (PhD work and internships will be considered if they are related to unstructured text in lieu of industry  Experience)
+Strong  Understanding of mathematical concepts including but not limited to linear algebra, Advanced calculus, partial differential equations and statistics including Bayesian approaches
+Strong programming  Experience including  Understanding of concepts in data structures, algorithms, compression techniques, high performance computing, distributed computing, and various computer architecture
+Good  Understanding and  Experience with traditional data science approaches like sampling techniques, feature engineering, classification and regressions, SVM, trees, model evaluations
+Additional course work, projects, research participation and/or publications in Natural Language processing, reasoning and  Understanding, information retrieval, text mining, search, computational linguistics, ontologies, semantics
+ Experience with developing and deploying products in production with  Experience in two or more of the following languages (Python, C++, Java, Scala)
+Strong Unix/Linux background and  Experience with at least one of the following cloud vendors like AWS, Azure, and Google
+Hands on  Experience with one or more of high-performance computing and distributed computing like Spark, Dask, Hadoop, CUDA distributed GPU
+Thorough  Understanding of deep learning architectures and hands on  Experience with one or more frameworks like tensorflow, pytorch, keras
+Hands on  Experience with libraries and tools like Spacy, NLTK, Stanford core NLP Genism, johnsnowlabs
+
+A PhD degree in Computer Science, Artificial Intelligence, Computational Linguistics, Machine Learning, or related technical field
+Exposure to linguistic background especially language models
+Medical concepts with codes from standard ontologies (SNOMED CT, LOINC, RxNorm, ICD, etc. )
+Lucene, Solr, Elastic Search  Experience
+ Experience with Kubernetes and dockers
+ Experience building REST API’s for AI work and knowledge of microservices architecture
+ Experience managing a team of offshore developers
+","Develop Natural Language Medical/Healthcare documents comprehension related products to support Evolent Health business objectives, products and improve processing efficiency, reducing overall healthcare costs
+Gather external data sets; build synthetic data and label data sets as per the needs for NLP/NLR/NLU
+Apply expert software engineering skills to build Natural Language products to improve automation and improve user  Experiences leveraging unstructured data storage, Entity Recognition, POS Tagging, ontologies, taxonomies, data mining, information retrieval techniques, machine learning approach, distributed and cloud computing platforms
+Own the Natural Language and Text Mining products — from platforms to systems for model training, versioning, deploying, storage and testing models with creating real time feedback loops to fully automated services
+Work closely and collaborate with Data Scientists, Machine Learning engineers, IT teams and Business stakeholders spread out across various locations in US and India to achieve business goals
+Provide mentoring to other Data Scientist and Machine Learning Engineers",Just posted,00:07.7,"1,001 to 5,000",Health Care,$100M to $500M (USD),7,5,헬스케어
+14770,"Associate Director, Database Development Manager (512)","Associate Director, DB Development Manager","Axtria, Inc.",1,0,1,0,"10 years of professional  Experience, with overall at least 5 years of  Experience in database modeling, stored procedures, and SQL
+Must have  Experience with cloud-based RDBMS platforms (AWS RDS, Snowflake, Azure SQL, etc. ) Ideally will have  Experience with multiple RDBMS products
+ Experience with both normalized transactional models and dimensional models for analytics and reporting
+ Experience with query performance optimization and working with bulk load operations for large data sets
+ Experience with AWS
+Passion for working at the intersection of technology and health and a desire to build a cutting-edge health visualization platform
+ Experience with multiple RDBMS platforms including Cloud-hosted solutions
+ Experience managing teams consisting of both onshore and offshore resources
+Ideally,  Experience with a commercial SaaS software development and modern DevOps CI/CD techniques","Engaging experts across the built environment.  You will work closely with industry-leading designers, engineers and consultants to identify opportunities for digital transformation.  You will be responsible for communicating complex information and processes simply to empower informed decision making. 
+Independent and comfortable in a fast paced, ambiguous and often multi-directional work environments
+Participation in research and development.  You will work with our R&D champions to identify critical, emerging technologies and perform strategic research with an aim to develop the skills and capabilities needed to deploy them on projects. 
+Manage multiple tasks and use sound judgment when prioritizing
+Providing insight from data.  You will collaborate with experts across a range of domains to identify and study data sets, producing visuals and other tools that empower Arup and its clients to make better decisions that impact our physical world. 
+Support and mentor junior developers.  You will support the professional development of project team members and members of the broader Digital Insight team. ",Today,00:07.0,NA,NA,NA,기타,기타,기타
+13327,"Associate Director, Global Contract Lead","Associate Director, Global Contract Lead",Astellas Pharmaceuticals,1,0,1,0,"3+ years of  Experience in procurement contracting activities
+Fluency in English conversational and business English (equivalent to TOEFL iBT 105+, or 7. 5 IELTS, CAE- Cambridge English advanced exam)
+Strong organization skills
+ Experience with information systems
+Comfortable working with contracts
+General working knowledge and competency in Microsoft packages and Source to Pay systems
+Exceptional problem-solving and analytical skills (multiple complex analyses simultaneously)
+Good planning/project management skills
+Evidence of developing innovative commercial solutions using a wide range of value levers","Enhance value of sourcing activities by create a standardized contract management process that is tailored to each geography
+Create a process and technology backbone to ensure a seamless and smooth process of creating, negotiating, storing and retrieving contracts
+Provide sound contracting practices and ensure compliance with Astellas policies and procedures
+Working with other key functions (in particular, Legal and Global Business Services) to develop a global contracting operating model which effectively manages risk whilst delivering optimum agility and efficiency
+Create an end to end global operating model and process of contract management that is standardized as much as possible taking into account regional nuances.  This will include :
+Implement and co-develop procedures for contract management and administration in compliance with company policy
+Develop, own and deliver a globally standardized support model which delivers end-to-end ownership of the contracting process including all administration and negotiation
+Developing and maintaining standard contracting templates and playbooks (along with legal) which both mitigate risk and drive agility
+Develop a technology strategy which builds on and enhances the current myContract platform including the use of Robotic Process Automation and Artificial Intelligence
+Coaching the category and sourcing managers on the process
+Ensure appropriate contract close-out, extension, or renewal protocols
+Ensure that the contract management process is being followed.  Monitor compliance by company employees with established procedures
+Work with Procurement Technology Lead to develop a technology strategy which builds on and enhances the current myContract platform including the use of advanced capabilities such as Robotic Process Automation and Artificial Intelligence
+Establish an audit process to not only ensure compliance to contracting process but also to ensure compliance to contracts and as such, offer improved risk mitigation and incremental commercial value
+Provide all categories and business stakeholders with a 'Contract as a Service' approach in order to both reduce touch points and provide increased speed/cycle time reduction
+Own end-to-end Contract Life Cycle Management activities including proactive renewals and effective management of data to support wider business change activities
+Primary point of contact with Legal and responsible for incorporating and communicating all legal advice and input
+Work closely with Supplier Risk Lead in order to provide required inputs to a seamless Supplier Risk program
+Consult key stakeholders and own the contracting continuous improvement plan along with all necessary change management and training requirements",Today,00:07.8,"1,001 to 5,000",Pharmaceuticals,$500M to $1B (USD),7,6,제약
+8895,"Associate Director, Machine Learning Engineering","Associate Director, ML Engineering",IQVIA,1,0,1,0,"Master's (with 7+ years related professional  Experience) or PhD (with 3+ years related professional  Experience) in computer science or information technology areas with focus on machine learning, artificial intelligence, data mining, natural language processing. 
+ Experience delivering tech programs or products from inception to delivery. 
+Knowledge of user needs, gathering requirements, and defining scope. 
+An in-depth  Understanding and extensive hands-on  Experiences with machine learning algorithms and modeling (supervised learning, semi-supervised or unsupervised learning including generative models, transfer learning, optimization, probabilistic graphical models, etc. )
+In depth  Experience with Spark/Hadoop and either PyTorch/Tensorflow
+ Experience in Python with additional  Experience in Java and Scala. 
+ Experience creating production environment data analytics and applications. 
+Communication  Experience with technical management teams to develop systems, solutions, and products. 
+Organizational, coordination and multi-tasking  Experience. 
+Analytical and problem-solving  Experience with large-scale systems. 
+ Experience with health data and products is highly preferred. ","Deep phenotyping integrating massive and multimodal health data
+Site selection and patient recruitment prediction for clinical trials
+In silico drug discovery from observational data using structured prediction, generative models, etc. 
+In this role, you will both contribute independently and also lead a small team to work on the most cutting-edge, impactful, and exciting projects.  You'll have access to petabytes of data, state of the art hardware such as massive distributed clusters and GPUs, and professional support from domain experts. 
+Primary resource for internal distributed machine learning software questions from the machine learning team. 
+Implementing deep learning, machine learning, and data mining algorithms on distributed platforms to solve real-world healthcare problems.  Automating machine learning algorithms within the production environment. 
+Collaborate with engineering and business owners to define program requirements, set priorities, and establish scope which includes defining the roadmap and long-term strategy of the teams that you are partnering with. 
+Working with electronic medical records, healthcare claims, clinical trial data, and unstructured text data.  Develop deep learning, machine learning, and data mining technologies and products. 
+Manage cross functional dependencies, risks, and changes effectively by optimizing scope, schedule, and resources accordingly. 
+Supporting customized projects by designing and implementing algorithms and statistical models on related datasets
+Proactively identify and analyze complex, long-term, critical business problems with research, engineering leaders and stakeholders. ",Just posted,01:11.9,NA,NA,NA,기타,기타,기타
+6218,"Associate Director, Project Management -Client Services","Associate Director, Project Management",AiCure,1,0,1,0,"Bachelor’s degree in business, science, or related field; advanced degree is preferred
+ Experience managing direct reports and/or overseeing performance and personnel development
+At least seven (7) years’  Experience in project management or related role(s) in the healthcare technology or Pharmaceutical industry; clinical trials knowledge is a must
+Understand the software life cycle from requirements to testing, support and closeout
+Must be self-directed, results-oriented coupled with strong attention to detail, strong people skills and good judgment
+Forward-thinking with ability to take initiative
+Must possess strong client and vendor communication skills, with an ability to convey complex service project information and resolve project issues
+Ability to manage multiple concurrent projects and prioritize in fast-paced, highly demanding environment
+Ability and willingness to “roll up your sleeves” to implement a cutting-edge clinical trial solution
+Bring a passionate, collaborative, and innovative mindset to the AiCure team
+ Excellent verbal and written communication, interpersonal, and presentation skills
+Passionate about revolutionizing healthcare
+Ability to effectively communicate in English","Support the project managers at AiCure by ensuring they have the tools, training and processes to maximize their success in delivering AiCure products and services
+Develop the project managers by providing continuous feedback and ensuring they are meeting key personal objectives that will help them grow and develop
+Effectively track and manage resourcing for projects, ensuring efficiency with allocation while staying ahead of workload
+Track and proactively manage cross-project KPIs and metrics that ensure success of AiCure deployments
+Handle escalation of issues like CAPAs, critical business findings from audits or any project performance issues
+Provide regular and ongoing reporting to the VP of Operations (Value Services) and AiCure leadership team
+Manage all phases of each assigned project, including budget, invoicing, staffing, project plan and client deliverables while maintaining high client satisfaction by providing proactive communication and issue/risk management.
+Manage multiple projects concurrently that are deployed in the US and globally, ensuring high quality and timely deliverables in a dynamic environment.
+Coordinate with other Client Services personnel as well as Engineering and Product to ensure the timely and quality preparation of project deliverables based on assigned scope-of-services.
+Ensure all project deliverables are in compliance with applicable local and national regulatory requirements as well as following the AiCure Quality Management System governance procedures.
+Oversee logistics and technical support, including providing hands on support, as defined by scope-of-services.
+Develop and track KPIs and metrics related to successful project performance and oversight.
+Coordinate delivery of data reports (e.g., weekly, interim, final, etc.) for project sponsors.
+Maximize opportunities at existing clients for AiCure, encompassing Change Orders and new projects
+Work with the sales and scientific teams to help establish new opportunities
+Manage governance meetings with project sponsors",Today,50:10.3,11 to 50,NA,NA,3,기타,기타
+5564,"Associate Director, Real-world Data Analytics and Innovation","Associate Director, Real-world DA and Innovation",Merck,1,0,1,0,"Training in data science, biomedical informatics, health informatics, clinical informatics, epidemiology, biostatistics, health economics and outcomes research, or a related field required
+Master degree with at least 6 years relevant work  Experience is required. 
+Six or more years of  Experience in analyzing healthcare administrative data, electronic health records, and/or disease/patient registries for relevant quantitative and qualitative research
+Broad  Understanding and application of advanced statistical and predictive modeling for RWE generation
+Broad  Understanding and application of machine learning algorithms (supervised, unsupervised learning, deep neural network, transfer learning) in biomedical research and/or healthcare settings
+ Experience with advanced information technology (e. g.  cloud computing, high-performance computing)
+Good communication and interpersonal skills
+Healthcare or pharmaceutical industry  Experience and business acumen
+ Experience with the whole life cycle of rea-world evidence and outcomes studies (planning, generation, and dissemination)
+Exposure with payer analytics and/or HTA methodologies for value-based contracting
+ Experience with Big Data technology (such as AWS Redshift)
+Exposure/familiarity with cognitive computing/artificial intelligence
+Exposure/familiarity in Natural Language Process (NLP) and social media data mining","Partner with Value Evidence Leads and cross-functional stakeholders to deliver actionable insights from real-world data in support of the product line Value Evidence strategy. 
+Drive RWD quality assessments to inform investment decisions and deliver standardized, analysis-ready patient cohorts to generate RWE and improve patient outcomes. 
+Support the development of real-world data, analytics and platform capabilities, applying cutting-edge advanced analytics methodologies and tools to address scientific questions related to health economic, resource utilization and clinical outcomes. 
+Propose, design and oversee the conduct of outcomes research studies from a data science and analytics perspective. 
+Ensure that high quality, rigorous and readily interpretable deliverables are generated from RWE studies/analyses. 
+Design self-service analytics tools to enhance efficiencies and expand the use of RWD across the product life-cycle. 
+Effectively communicate novel findings and methodological approaches to internal and external stakeholders. 
+Support ongoing improvements to methods and algorithms that have significant impact on business. ",Today,04:35.4,"10,000+",Health Care,more than $10B (USD),9,9,헬스케어
+1181,"Associate Director, Risk Adjustment Analytics","Associate Director, Risk Adjustment Analytics",Evolent Health,1,0,1,0,"Bachelor’s Degree
+3-7 years of professional  Experience in an analytics role at a health plan/payer/insurer, healthcare analytics firm, consulting firm, or hospital system
+ Understanding of risk scoring models (e. g. , CMS-HCC, HHS-HCC, CDPS) and risk adjustment in healthcare
+ Experience working with healthcare data (claims, encounter submissions, eligibility, etc. ) & detailed knowledge of CPT/HCPCS/ICD9/ICD10
+ Proven ability to approach complex problems and design, execute, and communicate data-driven solutions
+Data manipulation and analysis using SAS, SQL, Python, or other relational databases
+Motivation and a strong desire to focus on the complex challenge of risk adjustment in healthcare, develop our team, and contribute to industry thought leadership
+
+Graduate degree with a quantitative, healthcare, or technical focus (e. g. , science, math, statistics, actuarial sciences, health services management, computer science, engineering, informatics)
+Actuarial Credentials (e. g.  ASA or FSA)
+Prior employment or consulting  Experience with Medicaid MCOs
+ Experience interpreting state Medicaid agency rate setting documentation
+ Experience with predictive modeling or machine learning
+Exceptional Presentation Skills
+Evolent Health is an equal opportunity employer and considers all qualified applicants equally without regard to race, color, religion, sex, sexual orientation, gender identity, or national origin. ","Evolent Health has built a world-class team to help forward-looking health plans and providers succeed under new value-based care payment models.  Risk adjustment is one of the most significant quantitative challenges facing these innovators.  Evolent’s team of experts in risk adjustment does it all – from data analytics & advanced modeling (e. g.  predictive models & artificial intelligence), to designing, presenting, and implementing industry-leading solutions with our partners.  We are looking for a Associate Director, Risk Adjustment Analytics to join this highly-advanced team of actuaries and data scientists to develop and maintain risk adjustment analytic capabilities. 
+Manage the calculation and forecasting of risk scores as well as the projection of revenue changes due to risk adjustment
+Remain current with annual changes to national and state risk adjustment methodologies and payment parameters; communicate anticipated changes in risk adjustment and how they will affect future revenue
+Analyze and present relevant data to inform decisions related to entering risk-based relationships with payers managing risk
+Conduct analyses and develop reports to measure risk adjustment operations performance; collaborate with the data science team to identify actionable opportunities to gain operational efficiencies
+Support actuarial and finance teams to ensure risk-based reporting needs are satisfied for bidding, rate setting, and revenue projections
+Research and prepare evaluations on a variety of complex and diverse projects/problems related to risk adjustment
+Communicate results and analyses to internal and external stakeholders
+Lead, manage, and mentor analytical staff",1 day ago,11:32.8,"1,001 to 5,000",Health Care,$100M to $500M (USD),7,5,헬스케어
+10970,"Associate Director, Systems and Reporting (Technology, Analytics, and Data Insights)","Associate Director, Systems and Reporting (Technology, Analytics, and Data Insights)",Biogen,1,0,1,0,"Bachelor degree, advanced degree preferred, in computer/database related field
+5+ years working in Drug Safety supporting safety systems and/or business process/operations
+Expert knowledge of safety systems and reporting tools
+2+ years’  Experience with Regulatory Information Management systems
+Knowledge of agile/Scrum methodology with Scrum Master/Product Owner Certification preferred
+ Understanding database design and software validation concepts
+Knowledge of current global drug safety regulations","The Associate Director, TADI Systems and Reporting is viewed as a leader withing the area of Safety and Regulatory systems and reporting needs for the Global Safety and Regulatory Sciences (GSRS) department.  This is a key customer facing role within TADI to ensure quality and consistency of systems, processes and reporting across GSRS.  This role will also work with the TADI and GSRS leadership teams to recommend policy and standards, ensuring the needs of the department are achieved.  The Associate Director will also be a key member of project teams, utilizing technical and business skills to help define and build solutions while supporting an agile/Scrum development process.  This role will be a primary liaison between business users and software vendors and internal IT departments,  Understanding and communicating business requirements, issues and subsequent resolution, process/systems optimization and bridging the gap between technical and non-technical staff as new technologies are introduced (e. g.  Artificial Intelligence). 
+Working with the TADI team, define technical strategy to support regulatory commitments and operational efficiency including safety analyses and signaling, and operational metrics identification and implementation
+Modifies processes, conventions and standards based on the changing requirements, tools or resource models.  Trains and mentors TADI team on the processes as needed. 
+Act as a Business Process Owner for software vendor evaluation and selection
+Leads or consults on process improvement initiatives, special initiatives (in particular system upgrades and implementations), and capability projects both inside and outside of TADI
+Act as mentor and leader (and in some cases direct supervision / line reporting) for junior TADI staff",Today,00:06.8,"5,001 to 10,000",Pharmaceuticals,more than $10B (USD),8,9,제약
+11953,Associate Director/Director - Program Manager (535),Associate Director - Program Manager ,"Axtria, Inc.",1,0,1,0,"Bachelor's degree in business administration or related field
+5+ years in program management.  PMP certified preferred.  Six Sigma Black Belt will be desirable but not required. 
+Exceptional leadership, time management, facilitation, and organizational skills
+Provides program level governance in planning, issue management, reporting and guides component/project governance and reporting
+Outstanding working knowledge of change management principles and performance evaluation processes
+Previous stakeholder management skills,  Proven proposal writing  Experience. 
+ Experience in creating frameworks for industrialization in project execution and operations","Strategize planning, Implements multiple methodologies (Waterfall, Scrum, Kanban, SAFe, Iterative, Hybrid). 
+Provides program level governance in planning, issue management, reporting and guides component/project governance and reporting, Resource optimization
+Maintain organizational standards of satisfaction, quality, and performance
+Oversee multiple project teams, ensuring program goals are reached
+Manage financial forecasting, budget and funding channels for maximum productivity
+Leveraging industry standard tools and collaborating with departments within Axtria/Client for program success",Just posted,02:10.1,NA,NA,NA,기타,기타,기타
+6797,Associate director/Director -PowerBI Architect,Associate Director,"Axtria, Inc.",1,0,1,0,"Advanced  Experience with Power BI, SSAS, SSRS, DAX and SQL. 
+5+ years Power BI  Experience in MS Power BI connection types (Oracle direct, Azure SQL data warehouse, ODBC), configurations and data flows (power query). 
+Current  Experience in administering Power BI permissions, roles, security and securing data layers based on specific identifiers such as role and/or agency. 
+Responsible for administering, supporting, monitoring, and tuning the Power BI reporting environment; This involves the management and administration of all components of the Power BI domain, including Power BI on premise data gateway servers. 
+Develops and oversees monitoring systems to measure usage and ensure operational stability. 
+ Experience in creating SSAS tabular models. 
+ Experience to connect to and transform data in Power BI. 
+ Experience producing Power BI data models and recommending best practices for the creation of reports and graphics/visualizations. 
+ Understanding of Power BI Online Services and best governance practices. 
+ Understanding of Row Level Security in Power BI. 
+ Experience with enterprise BI solution development using Azure components like Azure functions, Azure Data Factory, Azure Data Lake. 
+Solution Architect expertise to define Power BI as global reporting tool with required strategy needed for the same. 
+Familiarity using AWS and Snowflake data sources. 
+Capability to define innovation in Power BI space. 
+Need to leverage and propose more benefits of Power BI to business in terms of performance reporting and mobility. 
+Works closely with Power BI report users to tune and optimize Power BI reports and dashboards. 
+Serves as Best Practices resource for Power BI initiatives in the organization. 
+Hands-on  Experience with enterprise business intelligence solution data modeling, data mart and data warehouse architecture. 
+Power BI certification is added advantage. 
+The position calls for a seasoned IT professional with leadership qualities and background with 10+ years'  Experience in IT. 
+Bachelor's Degree or equivalent work  Experience. ","This new role will act as a centralized Power BI Architect and subject matter expert that can help internal
+teams and coordinate with Microsoft on issue management. ",Today,01:40.5,NA,NA,NA,기타,기타,기타
+13602,Associate Full Stack Developer,Associate Full Stack Developer,Collin County Community College,0,0,1,0,"Associate degree in graphic design, visual communications or user  Experience/user interface design from a regionally accredited institution and a minimum of three (3) years of  Experience with C++, C#, or JAVA and one or more of the following: Spring Framework, PostgreSQL, Docker, Apache Tomcat, SQL, Cloud based Server solutions (Azure, AWS, etc. ).  DevOps or deployment  Experience.   Experience with Python, Nodejs and ExpressJS, Javascript frameworks such as React, Vue, or Angular, and usage of RESTful web APIs and services, preferred. 
+A bachelor’s degree in web design or development or user  Experience/user interface design from a regionally accredited institution.  AWS, Google Cloud, or Azure Certifications a plus.   Experience working with Swift, React Native, Flutter, and the Android SDK, ARKit and ARCore, Machine Learning and Artificial Intelligence Development, Ruby on Rails or PHP, Unity or Unreal Engines, SAP Concur Travel Expense system, ASP VBscript, and Office 365 Enterprise Applications a plus. 
+ Experience working in Higher Education preferred. 
+Knowledge, Skills and Abilities:
+Knowledge of modern front- and back-end solutions for web-based projects, including, but not limited to, ES6, ES7, HTML5, CSS3, NodeJS, ReactJS, and server-side languages
+Knowledge of software and web app development and deployment in a team setting
+Knowledge of and ability to implement SAML for cross-domain single sign-on authentication
+Knowledge in software solution implementation and current industry best practices
+Computer and applicable software skills
+Design oriented skills
+Strong analytical skills
+Organizational and time management skills
+Effective oral and written technical communication skills
+Interpersonal and customer service skills to provide effective assistance
+Teamwork skills
+Ability to communicate with faculty, staff, and students
+Ability to provide advanced technical support
+Ability to collaborate with others who may be located adjacently or remotely
+Ability to review and understand code and procedures
+Ability to recognize the value of new technologies and how they can benefit the college
+Ability to balance multiple projects simultaneously
+Ability to stay current in software solution implementation and in industry best practices
+Ability to work in a team environment","Assist with the evaluation and development of web or software solutions for Collin College’s website, web apps, and other application platforms. 
+Collaborate cross-functionally with other web and app development team members. 
+Maintain websites and implement any necessary additions or enhancements. 
+In conjunction with the full-stack developer, identify, troubleshoot and offer solutions to various website, web app, and native application issues, coding problems, and software and integration issues. 
+Participate in system architecture decision process. 
+Work with the front-end solutions team to ensure timely delivery of products. 
+Participate and perform in code reviews and pull requests when needed. 
+Participate in functional testing of code, beta testing, and general quality assurance. 
+Provide detailed code comments, version control commits, and documentation pertaining to developed APIs/assets/code. 
+Perform other duties as assigned. 
+Perform all duties and maintain all standards in accordance with college policies, procedures and Core Values. ",Today,00:07.3,"1,001 to 5,000",Education and Schools,$25M to $100M (USD),7,4,교육
+13856,Associate Image Analyst,Associate Image Analyst,Athenium Analytics,0,0,1,0,"Background and  Experience in data science, mathematics, GIS, computer science, computer programming, statistics, or meteorology preferred, but all backgrounds are welcomed to apply
+Knowledge of structural and physical characteristics of roofs and/or paving/tarmac is preferred but not necessary
+Demonstrated ability to achieve high level of focus on quality and accuracy in individual and team-based projects
+Proficiency in Microsoft Office Suites
+Complete discretion and  Understanding of requirements to maintain a high degree of confidentiality and protect sensitive information
+Must have access to computer with a reliable internet connection","Assist with the manual geolocation process and identification of attributes through high resolution imagery for residential and/or commercial properties
+Verify, enhance and develop geolocation accuracy utilizing a variety of sourcesIdentify, derive and annotate key physical attributes from images
+Ensure quality control of processed images and locations",Today,00:08.9,51 to 200,NA,NA,4,기타,기타
+895,Associate Imaging Data Scientist,Associate Imaging Data Scientist,Corteva Agriscience,0,0,1,0,"Ph. D.  in Image Analysis, Computer Engineering, Pattern Recognition, Computational Photography or Artificial Intelligence
+Alternatively, a Ph. D.  in Machine Learning, Computer Science, Computer Engineering, Electrical Engineering, Robotics, Physics, Mathematics or related field or related scientific discipline with 2yrs+ of demonstrated  Experience specifically in image processing or computer vision. 
+Master’s degree in Image Analysis, Computer Vision, Pattern Recognition or Artificial Intelligence with 6yrs+ of equivalent  Experience. 
+Deep  Understanding of image processing and analysis algorithms and tools for RGB, hyperspectral, fluorescence, LIDAR and 3D imaging including detecting and classifying objects in complex low/medium/high resolution datasets. 
+ Experience in the design and optimization of deep neural networks architectures for image classification, object detection, sematic segmentation, machine vision applications at the edge. 
+Strong programming skills in Python and C/C++ programming with the ability to quickly create prototype solutions on Unix / Linux / embedded platforms. 
+ Experience working with open source libraries and toolkits on embedded imaging devices using tools such as SciKit-Image, TensorFlow, Torch, Theano, OpenCV, ROS, ORB_SLAM, VLFeat, Keras, MXNet. 
+Practical cloud computing  Experience with AWS technologies (EC2, S3, ECS, etc. ) and  Experience in high performance and data intensive platforms. 
+Interest in learning new technologies, programming techniques, languages, and operating systems. 
+ Excellent interpersonal skills and a can-do attitude with the ability to thrive in a fast-paced dynamic environment.   Experience in research, life sciences, or in data science is a plus. 
+ Excellent analytical and problem-solving skills with the ability to work as part of a global team and, at times, independently while appropriately prioritizing tasks. 
+Strong verbal and written communication skills in English are required. 
+ Experience in Computer Vision, Machine Learning, Convolutional Neural Networks, Deep Learning for Imaging Applications, Generative Image Models. 
+ Experience working with containerized applications and orchestration such as Docker Swarm and/or Kubernetes
+ Experience working with robotics, automation systems and reinforcement learning paradigms. 
+Background in Statistical Modeling and Computation Mathematics. ","She/he will work closely with other imaging specialists, software engineers, and data scientists in a dynamic research environment to design and implement sophisticated end-to-end solutions for image-based solutions for lab and field trials.  ",Just posted,00:06.2,"10,000+",Agriculture and Extraction,NA,9,기타,농업
+14854,ASSOCIATE IN RESEARCH,Associate in Research,Duke Careers,0,0,1,0,"Position requires a master’s degree in any quantitative discipline.  Examples of quantitative disciplines include (but are not limited to) e ngineering, computer science, statistics, biostatistics, biomedical eng ineering, economics. 
+Demonstrated aptitude for data analysis, programming, and c reative problem solving. 
+Demonstrated proficiency in prog ramming, especially Python and R. 
+ Experience in statistic al modeling is preferable but not required. 
+ Experience wi th version control, databases, distributed computing, or cloud computing is preferable but not required. 
+Intellectual curiosity, as demonstrated by proactive pursuit of learning opportunities and diver se, challenging projects. 
+A passion for the application o f data science to solve important problems in healthcare and improving p atient lives. ","Developing an analytic plan that accurately reflects the clinical objectives and prope rly accounts for the population, available data (including the data gene rating mechanism), data quality and cleanliness, and potential for bias or confounding
+Working either independently or with a dat a engineering team to define and create analytic data set(s)
+Performing data exploration and descriptive analyses
+Developing and evaluating appropriate statistical and machine learning m odels in a reproducible manner
+Demonstrating comprehensio n of statistical and machine learning methods applied, including assumpt ions and limitations of a given approach
+Documenting project work with version control and reg ular project summary reports
+Developing procedures, modul es, and programs to generalize code into reusable resources,within and a cross projects. 
+Preparing work for transition to implemen tation and product development teams. 
+Developing content including slide s,visualizations, and interactive tools. 
+Writing scientif ic content such as abstracts and manuscripts. 
+Preparing a nd delivering presentations. 
+Representing their team at m eetings, conferences, and external events. 
+With increasing levels of independence, mentoring students and trainees. 
+Participating in the development o f new opportunities. ",Just posted,00:07.2,"10,000+",Education and Schools,$1B to $5B (USD),9,7,교육
+11151,"Associate Manager, Federal Technology Leadership Programs",Associate Manager,PARTNERSHIP for PUBLIC SERVICE,1,0,1,0," Excellent communication, analytical, writing and presentation skills. 
+Strong relationship building and management skills with external and internal stakeholders. 
+ Excellent attention to detail, quality and value. 
+Strong project management skills, with demonstrated ability to work under pressure and manage various priorities and deadlines. 
+Ability to work in a fast-paced, rapidly changing environment and to organize multiple and varied projects simultaneously. 
+Flexibility, a can-do attitude and willingness to pitch in. 
+Passion for the mission of the Partnership for Public Service and our nonpartisan values. 
+Bachelor’s degree, or equivalent professional work or military  Experience required. 
+Minimum of two to four years of professional  Experience required. 
+Familiarity using Microsoft Office, especially Excel, Word, PowerPoint, and SharePoint required. 
+ Experience working in the federal environment or consulting preferred. 
+Familiarity with program evaluation preferred. ","With senior-level oversight, manage deliverables and logistics of the AI cohort program and other large projects. 
+Organize events and convenings with federal employees and other cross-sector stakeholders. 
+Build and maintain relationships with federal and private sector stakeholders to enable the long-term success of the AI cohort program. 
+Coordinate and facilitate internal planning meetings and project meetings with external partners. 
+Analyze evaluation data pertaining to our technology programming, offering a point of view and making recommendations to maximize impact and solve problems. 
+Synthesize information and use it to create a clear and concise approach to executing work and deliverables. 
+Effectively connect the Partnership’s leadership and technology programming to our broader mission. 
+Demonstrate developed written, oral and presentational skills, managing external and internal program communications. ",Today,00:06.8,51 to 200,NA,$5M to $25M (USD),4,3,기타
+982,Associate Managing Consultant,Associate Managing Consultant,Synopsys,0,0,1,0,"Solid  Experience with software development or software application security
+Thorough knowledge of SDLC
+Sufficient applications security knowledge to effectively communicate the value of our services to the client and translate that to revenue
+ Understanding of software development processes, technologies, architectures, and practices, and software risk management
+ Proven ability to deliver solution strategies and implementations to clients
+ Understanding and highly effective client interface skills
+Demonstrated  Understanding and ability to manage to Time & Material, Cost Plus, and Fix-Priced engagements
+ Experience running small consulting/delivery teams and project execution
+Ability to create presentations, proposals and SOWs
+Written communication skills include: formal documentation, statements of work, proposals, sources sought and request for information responses, white papers, case studies
+Expected to manage client profitability and revenue growth. 
+
+Bachelor’s Degree in Computer Science, Engineering or equivalent.  Master’s Degree preferred","This is a position that requires you have a unique blend of business development, account management, and deep technical knowledge.  As Synopsys engages with clients to propose and deliver our software security services and products, you will have direct responsibility for developing strong and lasting relationships with clients.  You will also be effectively identifying and selling follow-on work to clients, assisting sales in selling new business to clients, ensuring contracts are properly managed and serving as an effective escalation point for client issues and problems on engagements. ",Today,00:06.2,"10,000+",Computers and Electronics,$1B to $5B (USD),9,7,컴퓨터전자
+16120,Associate Principal Regulatory Writer,Associate Principal Regulatory Writer,Certara,1,0,1,0,"BA/BS
+8+ years of regulatory writing  Experience with nonclinical, clinical, CMC, or drug safety related documentation
+Ability to synthesize data and present it in a written format
+Shown success in Word skills and document management techniques
+ Understanding of document creation process and ability to lead/own a study level document
+Collective  Experience writing a range of study-level documents in their entirety and able to lead/own a study level document
+Strong  Understanding of the document creation process and of clinical development and study level clinical operations from conceptual study design to final CSR/CTR
+Ability to conduct/lead a CRM and successfully lead a project team to consensus
+ Understanding of regulatory requirements for different phases of development and different regulatory pathways and knowledge of global health authority requirements
+Has led the development of one or some types of submission-level documents within the CTD
+Ability to provide high-quality customer service and follow-through on all assignments
+Professional, personable demeanor","Work closely with client, internal, and partner organization teams to lead development of strategies for organizing and preparing regulatory documents
+As part of project teams, actively participate in development and writing of high-quality documents, such as CSRs, briefing books, and clinical summaries
+Author documents per client specifications, templates, style uides, and other guidance documents
+Author documents per regulatory authority guidelines and requirements
+Manage overall budget for respective project, including all contributing writers and editors
+Usher documents through the review process, conduct comment resolutions meetings (CRMs)
+Maintain collaborative, proactive, and effective communication with both client and internal teams
+Lead project-related meetings and teleconferences
+Provide training of writing staff and ensure compliance with company standard operating procedures (SOPs) and staff training requirements
+Adhere to SOPs for quality document preparation, document review, accurate comment resolution/incorporation, and document finalization",Today,00:06.4,NA,NA,NA,기타,기타,기타
+1216,Associate Product Manager,Associate Product Manager,Imagen Technologies,1,0,1,0,"A bachelor's degree from a top institution
+2-4 years of  Experience managing complex data sets and creating meaningful insights
+ Proven track record of delivering results against tight timelines and constrained budgets
+Exceptional written and verbal communication skills, including building and delivering presentations
+Preferred technical competencies including, but not limited to:
+Statistics
+Python, R, etc
+PostgreSQL, Redshift, etc
+Periscope, Mode, ggplot, etc","Gather and refine user stories and product requirements to drive the product development lifecycle
+Manage stakeholders and deliverables across multiple teams and departments within the organization, creating a collaborative and team-driven environment
+Analyze and synthesize our inventory of 100M+ records, creating a rich and insightful  Understanding of the underlying data
+Create production-level quality dashboards that appropriately synthesize the state of the business for senior management, key stakeholders, and external parties
+Develop and execute against effective project plans which balance investment, cost, risk, and feasibility",1 day ago,11:32.8,NA,NA,NA,기타,기타,기타
+8922,Associate Product Manager,Associate Product Manager,1-800-Flowers.com,1,0,1,0,"Delivering exceptional satisfaction to both external and internal customers through transparent collaboration and sustainably broadening and deepening such relationships. 
+Successfully deliver assigned goals, complete tasks diligently and positively impact the collective results of the organization. 
+Consistently working well with a diverse group of colleagues and team mates with sensitivity and supportive attitude. 
+Exceptional skills in written and verbal communication. 
+
+High analytical horsepower to drive strategic interpretation of digital activities and develop insights that positively impact the outcome
+Advanced computer skills are required including MS Office Suite and the ability to learn and utilize internal applications
+Technical expertise in major frontend, backend, and API languages
+Project management  Experience in a large scale project with multiple stakeholders
+
+Strong proficiency in excel (e. g.  pivot tables and advanced functions, macros a plus)
+ Understanding of how to analyze data to identify trends
+Knowledge of how to run controlled tests and analyzing the results (in any field)
+ Experience managing projects with C-suite level stakeholders
+ Experience with Google Analytics, IBM Coremetrics, SPSS, SQL, Adwords, SAS Enterprise Guide, and similar analytics, statistics, and marketing tools","Identify and write requirements for new features and enhancements for emerging platforms
+Serve as a liaison between development and IT teams to oversee the development of platforms
+Develop and execute marketing strategies to drive user engagement on new platforms, including chatbots, conversational commerce, voice commerce, and other artificial intelligence initiatives
+Produce and track marketing schedules and plans and lessons learned
+Provide project updates to senior leadership and C-suite executives· Attend internal meetings and build relationships with key departments and leaders, including IT, merchandising, finance, product management, legal, marketing, and corporate development.· Attend external meetings and calls with vendors
+Complete and oversee ad-hoc reports, projects, presentations, and team activities",Just posted,01:11.9,"1,001 to 5,000",Consumer Goods and Services,$1B to $5B (USD),7,7,소비재
+185,Associate Project Manager,Associate Project Manager,ULC Robotics,1,0,1,0,"Bachelor s degree in appropriate Engineering disciple (Electrical, Mechanical, Robotics) required
+1+ years of overall engineering  Experience required
+Direct  Experience working with an engineering group with an engineering background in high-tech fields
+ Experience in more than one area of product development: prototyping, design, fabrication, integration, and testing
+Exemplary verbal, written and interpersonal communication skills
+A Master s or Ph. D.  degree in engineering
+Prior work on U. S.  government projects
+Innovative and creative mindset and a background depicting excellence in innovation – examples would be patents, publications, and cool personal projects
+Entrepreneurial instincts
+Knowledge and/or  Experience in one or more of the following areas: Control Systems, Artificial Intelligence, Sensors, Robotics
+ Experience writing proposals","You will collaborate with engineering teams to solve technical challenges for our clients.  Review project performance for completion on time, budget and to the highest level of quality.  A prospective candidate will coordinate developing customer requirements, test plans, and procedures and generate project reports, proposals and presentations.  You would be integral in reviewing new opportunities and helping the team to plan and acquire new projects. ",1 day ago,01:38.5,51 to 200,Energy and Utilities,NA,4,기타,에너지
+1171,Associate Research Scientist,Associate Research Scientist,Columbia University,0,0,1,0,"A Ph. D.  (or equivalent professional degree) in materials science, chemistry, physics, earth science, data science, computer science or a related field. 
+Knowledge of x-ray, neutron or electron diffraction/scattering, synchrotron radiation experiments, data analysis, data science, statistics and applied mathematics, software development in general and python programming in particular, are desirable but not required.  In addition,  Experience in in situ experimentation, database setup and cloud computing is valuable.  An ability to work well in a team environment is required. ","The projects will involve developing software and computational infrastructure for advanced high-throughput data analysis, modeling and interpretation using tools including artificial intelligence and machine learning.  The successful candidates will also help with data acquisition from in-situ data acquisition experiments and with data analysis. 
+
+
+
+Candidates will also be expected to work with domain scientists in synthesis and diffraction and with applied mathematicians with expertise in AI to provide powerful materials genomics tools to reach the target goal of  Understanding synthesis pathways by finding relationships between inputs and outputs. 
+
+
+Candidates for professional officer of research positions are expected to have established their ability to conduct original, independent scientific research.  To hold the associate research scientist rank, candidates’ qualifications and contributions to their fields of research must be equivalent to those of an assistant professor. ",1 day ago,11:32.8,"10,000+",Education and Schools,$1B to $5B (USD),9,7,교육
+2775,Associate Research Staff in Computer Vision and Machine Learning,Associate Research Staff in Computer Vision and ML,Oak Ridge National Laboratory,0,0,1,0,"Bachelors with 6+ years of  Experience, Masters with 3+ years of  Experience, or a Doctorate degree with a strong record of research and development in Computer Science, Electrical and Computer Engineering, Mathematics, or a related field. 
+ Proven R&D  Experience in computer vision, supervised, unsupervised machine learning/Artificial Intelligence (ML/AI), and image and signal processing. 
+ Excellent programming and software engineering skills. 
+Hands-on skills and  Experience developing impactful ML/AI software for heterogeneous, multi-modal data sets. 
+ Excellent communication skills for conveying technical material to both scientists and non-scientists in both written and oral presentations. 
+Self-disciplined work ethic and eagerness to tackle challenging research problems. 
+Strong desire to work in a team environment. 
+This position requires the ability to obtain and maintain a clearance from the Department of Energy.  As such, this position is a Workplace Substance Abuse (WSAP) testing designated position.  WSAP positions require passing a pre-placement drug test and participation in an ongoing random drug testing program. 
+
+ Experience with Python, C programing languages and Git version control system. 
+ Experience with cloud services containers, such as AWS and Docker. 
+ Experience working in Agile/SCRUM teams. 
+ Experience with sklearn, PyTorch, Keras, TensorFlow, Jupyter Notebooks
+ Experience with OpenCV, DLib. 
+ Experience with commercial and open source biometrics recognition software and data sets. 
+ Experience with Computational Imaging and Image Reconstruction techniques. 
+Familiarity with federal funding procedures, regulations, policies and practices. 
+ Experience developing and managing research projects. 
+Significant contributions to open-source projects or international competitions (e. g. , Kaggle). ","your work will consist of developing and implementing algorithms and systems for improving recognition of individuals for a variety of biometrics signatures under various operational and environmental conditions.  You will invent or improve cutting-edge algorithms for object tracking, image segmentation, image and signal enhancement, and classification and regression data-learned models.  As part of R&D, you may be required to develop simple graphic user interfaces, data and software architectures, design, program, and interface with databases, and have the ability to interface in-house software with electronics and sensors.  In short, you will help the group envision, design, develop, test, and deploy recognition tools and systems, which we prefer to call gadgets. 
+
+The position requires development of innovative solutions for general identity and biometrics challenges, frequent and consistent review of related literature, and collaboration with other team members for the development of technical demonstrations, proposals, oral presentations, and publications.  No less important, the interdisciplinary nature of projects demands strong interpersonal skills, evidence of working well in teams, and an expected desire to seek and deveklop healthy relationships within and outside the group.  Finally, the position requires a passion for mission-focused National Security challenges. ",Today,01:01.5,"1,001 to 5,000",Government,NA,7,기타,공공
+472,Associate Scientist/Scientist (Digital Pathology and AI),Associate Scientist/Scientist (Digital Pathology and AI),GENENTECH,0,0,1,0,"Demonstrated extensive  Experience with machine learning and AI, preferably deep learning
+
+Algorithm development with Python and/or MATLAB in the imaging or computer vision field
+
+The candidate must hold a PhD in computer science, biomedical engineering, biomedical imaging, or related area. 
+
+Minimum of 2 years postdoctoral or industry  Experience in an AI-related field
+
+Record of scientific leadership as evidenced by first or senior author peer reviewed publications in top tier journals
+
+Outstanding presentation and communication skills
+
+ Experience in clinical drug development or medical devices is beneficial
+
+ Experience in the field of digital pathology is a strong plus.   Experience with skills such as cell phenotyping using multiplexed imaging data, and common digital pathology software such as Visiopharm or HALO would be a particular asset. 
+
+ Excellent team working skills and  Experience working in interdisciplinary environment","Adapt and apply computer vision engineering tools and algorithms to enhance digital pathology research
+
+Effectively communicate and collaborate with cross-functional teams of biologists and clinical scientists
+
+Work with pathologists, cancer biologists, bioinformaticians, and statisticians to develop algorithms to advance our digital pathology-based biomarker development
+
+Drive scientific and technical innovation collaboratively with other members of the department
+
+Analyze data supporting innovative clinical development programs
+
+Support publications in high impact scientific, technical or medical journals
+
+Represent the digital pathology team through interactions with our key investigators and public presentations
+
+Participate and thrive in a fast-paced, interactive and team-oriented culture",Today,01:02.2,"10,000+",Pharmaceuticals,$1B to $5B (USD),9,7,제약
+474,"Associate Scientist/Scientist, Process Analytical Technology - Small Molecule Analytical Chemistry","Associate Scientist/Scientist, Process Analytical Technology",GENENTECH,0,0,1,0,"Ph. D.  in chemical engineering or chemistry, or a closely related field with 0-5 years of  Experience. 
+Strong fundamental knowledge of organic chemistry, spectroscopy, and chromatography; demonstrated ability to apply these skills in the development of small molecules, peptides and/or polymers. 
+Hands-on  Experience with a wide variety of modern analytical instrumentation including, ReactIR, ReactRaman, particle size measurement and in-depth  Understanding of modern spectroscopic techniques. 
+Have demonstrated an outstanding record of productivity, innovation and success in multiple projects over the course of their graduate, post-doctoral and/ or industrial career with sustained publication record in high impact journals and presentations at scientific conferences. 
+Knowledge of Matlab and multivariate analysis is desired. 
+Have the potential to contribute to the advancement of new drug therapies through innovation and collaboration. 
+ Experience in feedback control leading to automated process optimization and artificial intelligence is highly valuable. 
+Ability to take initiatives, provide strategic input, and solve problems. 
+A strong desire to work in a collaborative, multi-disciplinary environment; demonstrated ability to effectively interact in small teams. 
+Customer-focused, motivated, detail-oriented, have  Excellent organizational, written and oral communication skills. ","The successful candidate will provide enhanced  Understanding of chemical reactions and crystallizations in early stage development through the design and implementation of on-line/at-line/in-line measurement systems.  The individual will partner with colleagues from process chemistry, analytical chemistry, and occasionally pharmaceutics groups to support batch and continuous manufacturing efforts for classical small molecules, hybrid modalities, and nano-particle delivery vehicle assembly.  The scientist will develop a broad array of rapid spectroscopic, chromatographic, and imaging methods including on-line HPLC, Raman, FTIR, NIR, PVM, FBRM, GC and other state-of-the-art analytical instruments.  In addition, he/she is expected to develop methods for automated process sampling and data analysis, evaluate cutting edge analytical techniques and lead new technology development.  The scientist is expected to maintain a high-level scientific profile both internally and externally in terms of pipeline contributions and scholarly achievements.  This position requires hands-on  Experience with modern analytical instrumentation, the ability to simultaneously support 3-5 development programs, and solid method and instrument troubleshooting skills.  The successful candidate will accomplish our mission through clear communication, innovation, leadership, teamwork, creative problem-solving. ",Today,01:02.2,"10,000+",Pharmaceuticals,$1B to $5B (USD),9,7,제약
+7392,Associate Software Developer,Associate Software Developer,Carnegie Mellon University,0,0,1,0,"BS in Computer Science or related discipline, with a minimum of 3 years of professional  Experience as a software developer/engineer in a collaborative team environment, or a MS in Computer Science or related, with 1 year of professional  Experience as a software developer/engineer in a collaborative team environment. 
+
+Communication and Collaboration: You have strong written and verbal communication skills and can interact collaboratively and diplomatically with customers and colleagues.  You grasp the big picture, direction, and goals of an effort while focusing great attention to detail.  You can present complex ideas to people who may not have a deep  Understanding of the subject area
+Dedication: You can meet deadlines while multi-tasking–sometimes under pressure and with shifting priorities. 
+Creativity and Innovation: You are creative and curious, and you are inspired by the prospect of collaborating with premier researchers at Carnegie Mellon University and other universities and organizations.  You quickly learn new procedures, techniques, and approaches. 
+Knowledge and Learning: You possess broad technical  Experience and interest in computer science and applied technology such as human-computer interaction, data analytics and machine learning, advanced computing, and autonomy and adaptive systems. 
+
+Technical Teamwork: You have  Experience participating on high-technology teams for a variety of projects, including open-source development projects. 
+Knowledge of Department of Defense and Intelligence Community: You are familiar with DoD or Intelligence Community software systems acquisition practices. ","As an associate software developer on our team, you will apply software research and leading-edge technologies to important and challenging government problems and needs.  You'll have the chance to work with modern languages such as Java, Python, and C/C++; large-scale data frameworks such as Tensorflow, Spark, Keras, and Hadoop; and web frameworks like node. js and D3. js.  You'll experiment with emerging technologies such as augmented and virtual reality, computer vision, and deep learning. ",Today,01:14.5,"5,001 to 10,000",Education and Schools,$1B to $5B (USD),8,7,교육
+2261,Associate Software Engineer,Associate Software Engineer,Aptima,0,0,1,0,"Master's degree in computer science (or related discipline)
+ Experience working on distributed, collaborative teams
+ Experience working on research-oriented projects. 
+
+Proficient in at least two of: Java, JavaScript, or Python
+Proficient in at least one native mobile device development language (native Android or Swift/iOS)
+ Experience with developer tools, including Git and Jira. 
+ Experience with Agile development best practices and tools. 
+ Experience with deployment using Amazon Web Services (AWS) or similar cloud technologies
+ Experience implementing AI or ML models using AWS offerings
+General familiarity and prior  Experience with the U. S.  Department of Defense military services, missions, and applications","Participate in a timely, productive, and collegial manner on project teams. 
+Competently produce quality technical and written materials related to applicable areas of software engineering. 
+Competently present science and technology to internal stakeholders (e. g. , project meetings, Brown Bags, etc. )
+Support more senior staff in external collaboration with customer and partners, and in business development activities (e. g. , contribute to demonstration preparation, participate in proposal teleconferences, and support client-facing presentations given by senior staff). 
+Develop repeat relationships with internal Aptima customers (e. g. , Project Managers, BD team). 
+Take initiative to do background reading and/or other forms of professional development related to project needs and technical areas of interest, thus acquiring working knowledge of other technologies and fields to further advance Aptima's interests. 
+Conduct all work in accordance with contractual compliance and all laws, keeping in alignment with the core values of Aptima. 
+Perform other such duties as may be required. ",Just posted,01:04.6,NA,NA,NA,기타,기타,기타
+4507,Associate Software Integration Engineer,Associate Software Integration Engineer,NICE inContact,0,0,1,0,"BS/BA in technical (e. g. , CS/IS/EE) or business (e. g. , Marketing/MIS) field or equivalent work  Experience required. 
+1+ years of professional  Experience beyond education requirements above.  
+Implementation; Solutions: broad skills in both technology; analysis
+Business Optimization: deep skills around business analysis/call centers
+Expert Services: deep skills in specialized technical; functional areas
+Desired personal profile: analytical, inquisitive, service; team-oriented, friendly demeanor, early adopter. 
+
+Prior consulting  Experience. 
+Computer Telephony Integration (CTI)
+Administration of Windows Server and Desktop and/or Linux OS
+Active Directory and DNS
+Familiarity with project life cycles
+Visio development
+VMware knowledge
+PCI/Security Networking and networking protocols: LAN, WAN, TCP/IP
+Technical certification, e. g. , MCSE, Cisco, Avaya
+Microsoft SQL installation and queries including SSRS","Provide Staff-level technical configuration and, in some cases, programming as required. 
+Provide process, data and object modeling in a variety of application and database environments. 
+Provide database design, development, and enhancement, as well as management and coordination of changes to existing applications. 
+Provide technical architecture leadership, analysis, design, development, and enhancement. 
+Maintain Staff-level expertise and currency in industry leading contact center technologies. 
+Serve in a project manager capacity via management of end to end system life cycle development of small to large-scale projects. 
+Develop costing proposals for projects, perform risk analysis, and manage change control. 
+Provide business analysis, business area assessment, user needs analysis and business systems design for major projects. 
+Conduct comprehensive cost/benefit analysis and prepare business cases for projects. 
+Present a professional image in conduct, attitude and attire. 
+Assist with the development of client information management standards and evaluation of technology trends. 
+Contribute to business area assessment, user needs analysis and business systems design. 
+Assist with comprehensive cost/benefit analysis and preparation of business cases for new projects. 
+Supervise during project life cycle any junior level client staff, or any sub-contracted personnel assigned to your project team. ",Today,01:03.8,NA,NA,NA,기타,기타,기타
+16838,Associate Software Integration Engineer I,Associate Software Integration Engineer,NICE inContact,0,0,1,0,"BS/BA in technical (e. g. , CS/IS/EE) or business (e. g. , Marketing/MIS) field or equivalent work  Experience required. 
+1+ years of professional  Experience beyond education requirements above.  Type of  Experience varies depending on Consultant’s specialization:
+Implementation & Solutions: broad skills in both technology & analysis
+Business Optimization: deep skills around business analysis/call centers
+Expert Services: deep skills in specialized technical & functional areas
+Desired personal profile: analytical, inquisitive, service & team-oriented, friendly demeanor, early adopter. 
+Prior consulting  Experience. 
+Computer Telephony Integration (CTI)
+Administration of Windows Server and Desktop and/or Linux OS
+Active Directory and DNS
+Familiarity with project life cycles
+Visio development
+VMware knowledge
+PCI/Security Networking and networking protocols: LAN, WAN, TCP/IP
+Technical certification, e. g. , MCSE, Cisco, Avaya
+Microsoft SQL installation and queries including SSRS","Provide Staff-level technical configuration and, in some cases, programming as required. 
+Provide process, data and object modeling in a variety of application and database environments. 
+Provide database design, development, and enhancement, as well as management and coordination of changes to existing applications. 
+Provide technical architecture leadership, analysis, design, development, and enhancement. 
+Maintain Staff-level expertise and currency in industry leading contact center technologies. 
+
+Serve in a project manager capacity via management of end to end system life cycle development of small to large-scale projects. 
+Develop costing proposals for projects, perform risk analysis, and manage change control. 
+Provide business analysis, business area assessment, user needs analysis and business systems design for major projects. 
+Conduct comprehensive cost/benefit analysis and prepare business cases for projects. 
+
+Present a professional image in conduct, attitude and attire. 
+Assist with the development of client information management standards and evaluation of technology trends. 
+Contribute to business area assessment, user needs analysis and business systems design. 
+Assist with comprehensive cost/benefit analysis and preparation of business cases for new projects. ",Today,00:06.4,NA,NA,NA,기타,기타,기타
+17280,Associate Threat Analyst,Associate Threat Analyst,ZeroFOX,0,0,1,0,"Successful track history working autonomously in an intelligence, consulting, cybersecurity, or analyst role, typically obtained in 2+ years
+ Experience using data and trend analysis, graph analysis, and OSINT research tools
+Knowledge of major social networks (knowledge of emerging networks a big plus), and desire to learn about Deep & Dark Web tactics, Phishing analysis, and malware analysis
+Ability to talk to different levels of customer from analyst to C-Level
+Ability to speak to technical experts as well as the layman about technical and analytic subject matter
+Ability to think critically about subjects and a comfort with analysis without full information
+Basic  Understanding of cyber security, intelligence, or national security threats
+Outstanding research and writing skills with emphasis on oral presentations and translating complex concepts into easily digestible pieces across all organizational levels.  A writing sample will be requested as part of the interview process
+Exceptional interpersonal and social skills
+ Experience with SaaS-based platform configuration and maintenance for enterprise organizations
+Direct customer advocacy and engagement  Experience in post-sales or professional services functions in Fortune 1000, mid-tier, and/or start-up companies
+ Excellent analytical skills & problem-solving skills, combined with the ability to provide quick resolution to problems
+History of execution via teamwork, collaboration, adaptability & initiative
+Big Bonuses
+Knowledge of cyber threats facing large enterprises and other organizations. 
+Previous  Experience extrapolating trends from mass amounts of disparate data. 
+Previous  Experience working in an analyst role, particularly working with data analytics, dashboards, and reporting
+ Experience with other SaaS, cyber security, intelligence, consulting, or social media products or services. 
+Bachelor’s or Graduate degree in Cybersecurity, humanities, or other similar background
+Skill with various workflow tools: JIRA, SQL, SalesForce, Google Apps, Zendesk
+Propensity to thrive on change and general dissatisfaction with the “status quo” founded on the belief that great is better than good
+Past  Experience working in customer success, technical support, configuration and / or training capacity","Manage research projects that involve multiple stakeholders
+Independently assess and manage complex issues
+Manage customer requirements and questions to shape positive outcomes
+Manage the risk reporting process and delivery for dedicated customer(s)
+Collect and compile complex data from various sources, making appropriate correlation of collected data to build upon an  Understanding of threat activity and communicate the impact to customers
+Maintain current functional and technical knowledge of ZeroFOX service options
+Provide advice and guidance as the subject matter expert to ensure successful ongoing usage and value from the ZeroFOX platform configuration
+Initiate engagement with other ZeroFOX resources when needed as a customer advocate to ensure speedy resolution of customer issues
+Engage with ZeroFOX internal organizations including Product, Sales, Global Operations, etc.  as the customer advocate on product roadmap discussions and ongoing service needs",Just posted,00:07.7,2 to 10,NA,$1M to $5M (USD),2,2,기타
+14,Associate User Experience Engineer,Associate User Experience Engineer,Power Home Remodeling,0,0,1,0,"Should provide certification(s) or relevant GitHub project examples
+
+ Experience with Javascript Frameworks (e. g.  React)
+
+ Experience with Sass and a sharp eye for implementing design details
+
+Strong written & verbal communication and presentation skills
+
+Strong collaboration skills
+
+Ability to manage and work on multiple projects concurrently
+
+ Experience working with design systems
+
+Prototyping skills
+
+
+Nice to have:
+
+Ruby on Rails
+
+Postgres
+
+MySQL
+
+React / React Native
+
+Git, Github
+
+Docker
+
+Swift
+
+ES6 / ES7","Implement new styles, interactions, animations, and details to help deliver the perfect experience across our platform
+
+Work alongside fellow UX Engineers to maintain and grow our internal design system
+
+Collaborate closely with designers to assess the feasibility of new ideas and help drive innovative ideas forward
+
+Deliver innovative, engaging prototypes and proof-of-concepts to help validate new ideas internally and with users
+
+Research technical documentation, APIs, integration with 3rd party technologies etc. to confirm project requirements, expectations and specific details",Just posted,01:38.5,"1,001 to 5,000",Construction,$500M to $1B (USD),7,6,건설
+7359,"Associate, Algo Developer","Associate, Algorithm Developer",BMO Financial Group,0,0,1,0,"Typically between 4 - 6 years of relevant  Experience and post-secondary degree in related field of study or an equivalent combination of education and  Experience. 
+Knowledge of visualization techniques and concepts. 
+Knowledge of distributed computing and/or distributed databases. 
+ Experience with distributed computing language (e. g.  Hive / Hadoop/ Spark) & cloud technologies (e. g.  AWS Sagemaker, AzureML). 
+ Experience with programming languages (e. g.  SQL, Python, R, SAS, SPSS, , Perl) and machine learning /deep learning algorithms/packages (e. g.  XGBoost, H2O, SparkML). 
+ Experience in statistical analysis, data mining, and data cleansing / transformation. 
+Knowledge of Capital Markets technical/business environment and processes. 
+Technical proficiency gained through education and/or business  Experience. 
+Verbal & written communication skills - In-depth. 
+Collaboration & team skills - In-depth. 
+Analytical and problem solving skills - In-depth. 
+Influence skills - In-depth. 
+Data driven decision making - In-depth. "," 
+Provides input to product development and marketing to grow the overall business. 
+Seeks to develop an  Understanding of client needs and outcomes and provides relevant ideas and opinions to generate recommendations. 
+Provides support for an outstanding client  Experience. 
+Provides timely responses to all client questions and issues. 
+Drives continuous service improvements and client satisfaction with an ultimate focus on business retention. 
+Conducts research on market (micro) structure, develops and enhances models that drive the trading algorithms and analytics. 
+Collaborates with internal Sales team and external clients on algorithm customizations. 
+Develops analytical solutions and makes recommendations based on an  Understanding of the business strategy and stakeholder needs. 
+Provides advice and guidance to assigned business/group on implementation of analytical solutions. 
+Works with stakeholders to identify the business requirements, understand distinct problems and expected outcomes, and models and frames business scenarios which impact critical business processes and/or decisions. 
+Works with various data owners to discover and select available data from internal sources and external vendors (e. g.  lending system, payment system, external credit rating system, and alternative data) to fulfill analytical needs. 
+Applies scripting / programming skills to assemble various types of source data (unstructured, semi-structured, and structured) into well-prepared datasets with multiple levels of granularities (e. g. , demographics, customers, products, transactions). 
+Develops agreed analytical solution by applying suitable statistical & machine learning techniques (e. g. , A/B testing, prototype solutions, mathematical models, algorithms, machine learning, deep learning, artificial intelligence) to test, verify, refine hypotheses. 
+Summarizes statistical findings and draws conclusions, presents actionable business recommendations.  Presents findings & recommendations in a simple, clear way to drive action. 
+Documents data flow, systems and processes in data collection to improve efficiency and apply use cases. 
+Performs experimental design approaches to validate finding or test hypotheses. 
+Uses the appropriate algorithms to discover patterns. 
+Builds effective relationships with internal/external stakeholders and ensures alignment. 
+Supports development of tools and delivers training for data analytics and AI. 
+Supports development and execution of strategic and product development initiatives in collaboration with internal and external stakeholders. 
+Leads/participates in the design, implementation and management of core business/group processes. 
+Focus is primarily on business/group within BMO; may have broader, enterprise-wide focus. 
+Exercises judgment to identify, diagnose, and solve problems within given rules. 
+Works independently on a range of complex tasks, which may include unique situations. 
+Broader work or accountabilities may be assigned as needed. ",Just posted,01:14.5,"10,000+",Banks and Financial Services,$1B to $5B (USD),9,7,금융
+12655,"Associate, Cyber & Analytics","Associate, Cyber & Analytics",Tulsa Community Foundation,0,0,1,0,"Undergraduate degree required, with an  Excellent academic record (GPA: 3. 5+)
+Graduate degree preferred, particularly MBA, MPA, MPP, or master’s in urban planning
+ Experience in management consulting, venture capital, tech, applied research, urban planning, or workforce or economic development (internships acceptable for recent graduates)
+ Experience researching and analyzing innovation ecosystems and emerging tech fields
+ Experience designing and managing complex projects involving cross-sector stakeholders
+Background in STEM education preferred
+Background in cyber and/or advanced analytics preferred
+Quantitative and qualitative research and analytical skills and ability to make strategic insights
+Written communication skills, including developing concise memos and PowerPoint decks
+Oral communication skills, including public speaking and formal and informal presentations
+Project management skills, including demonstrated ability to support complex projects against narrow timelines and various constraints, to prioritize among competing needs, and to manage multiple tasks with little supervision
+Partnership building skills, including ability to engage stakeholders in a professional manner and build diverse coalitions
+Ability to look at challenges strategically and formulate creative solutions
+Demonstrated leader with an instinct for taking the initiative
+ Proven team player with an ability to work cross-functionally
+Ability to balance having fun while getting top results at work
+Proficient in MS Office Suite
+Familiar with social media","research local, national, and global tech trends related to cyber and advanced analytics as well as best practices in economic development and innovation ecosystem building through primary and secondary sources
+analyze market, industry, and labor data, including stakeholder interviews, to identify actionable insights and make recommendations based on qualitative and quantitative data
+informed by rigorous research and data analysis, build a strategic plan for the company and for Tulsa?s innovation economy focused on cyber and analytics, including KPIs
+using data, build economic development programs tailored to Tulsa, complete with business models, partnership structures, desired outcomes, and timelines, focusing primarily on workforce and applied research programs targeted at growing the citys cyber and analytics capabilities",Just posted,00:06.9,NA,NA,NA,기타,기타,기타
+4512,"Associate, Software Developer","Associate, Software Developer",Prudential,0,0,1,0,"What we are looking for in your background
+What you’ll need to succeed:
+Working Knowledge in one or more of the following languages: Python(preferred), Java, C#, C++
+knowledge of Object-Oriented design concepts
+Strong verbal and written communication, interpersonal and collaborative skills
+Bachelor's degree or equivalent relevant  Experience. 
+It’d be a plus if you have:
+Python 3. x (Pandas, Jupyter, and other data science packages)
+Knowledge of financial concepts: stock market, trading concepts, financial instruments, derivatives, hedge funds","You will work with various internal groups to deliver architecture, design, development and test artifacts to expand the modelling platform.  In this role, you will
+Design and develop software programs and database objects. 
+Recommend software improvements to ensure strong functionality and optimization. 
+Partner with developers, quantitative modelers, and business users across Prudential to develop core frameworks, enhance models, analyze data, validate performance and security requirements, and outline the proposed IT solution. 
+Participate in standard SDLC process using agile methodology and test-driven approach. 
+Adhere to IT Control Policies through design, development and testing and incorporate Corporate Architectural Standards into application design specifications. 
+Additional responsibilities include documentation of deliverables and participate in code reviews and ensure that all solutions are aligned to pre-defined architectural specifications; identify/troubleshoot application code-related issues; and review and provide feedback to the final user documentation. ",Today,01:03.8,"10,000+",Banks and Financial Services,more than $10B (USD),9,9,금융
+15336,Associate/Director,Associate Director,ALQIMI,1,0,1,0,"Minimum of four years  Experience in a prospect or customer facing role. 
+Have intermediate knowledge in at least one of the following subject areas: healthcare, DoD, IC, AI, analytics or computer science. 
+Hold a passport and be willing to travel locally, domestically and internationally","Manage existing customer engagements. Acting as the “customer success manager” you will ensure the client's satisfaction through attentive interaction with the client and a watchful eye on the statement of work. In addition, you will generate revenue growth by generating new ideas and selling them through to the client.
+Growth revenues through new account acquisition. Independently, and as part of a team, pursue new sales of products and services through direct sales efforts including RFP submissions, cold-contacting, marketing, conferences and networking.
+Build marketing and proposal materials. Utilizing existing libraries and working from scratch, create pitchbooks, white papers, RFQ submissions, slicks and any other materials necessary to accomplish the goal.
+Accept dynamic tasking. ALQIMI prides itself on being highly responsive to its customers and prospects. The candidate will work on a myriad of tasks and projects which will shift with client and customer needs. The candidate will need to be prepared to do whatever has to be done to make progress.
+Meet goals. The candidate will have throughput volume, sales volume, customer success and customer expansion goals which the candidate accepts responsibility for.
+Continuously learn. Part of our success is dependent on all team members understanding the latest AI/Analytics/Bid Data methodologies so we can develop own best-in-class solution. The candidate will embrace learning initiatives impacting the organization.
+Know how to self-task. Having a clear sense of the goals, the candidate should be able to independently lay out a plan for execution and self manage that plan.
+Maintain the right mindset. The candidate will help foster a culture of accountability, professional development, high-performance, and ethical behavior including establishing and maintaining productive peer-to-peer relationships with colleagues, customers and prospects.",Just posted,00:07.3,NA,NA,NA,기타,기타,기타
+2908,Bioinformatics Research Associate,Bioinformatics Research Associate,Life Sciences South Florida,0,0,1,0,"Master’s degree or equivalent  Experience in bioinformatics, computer science, computer engineering or related field. 
+ Experience in aggregating and analyzing at least one -omics technology
+Strong analytical and technical skills with a high level of attention to detail. 
+Eagerness to learn and develop new skills. 
+Ability to handle and prioritize multiple tasks. 
+ Excellent verbal and written communication skills. 
+Oriented toward collaboration, teamwork, and continuous improvement. 
+Prior participation in NIH-funded research grants. 
+Prior publications in bioinformatics or -omics data analysis
+ Experience with healthcare data standards (CDISC, HL7, DICOM), genetics data formats, and genetics data analysis. 
+ Experience with Semantic Web technologies, including OWL, RDF, and SPARQL. 
+Ability to contribute to the software development team using R, Python, JavaScript, or Java. ","Research multi-omics data integration, analysis, and personalized medicine challenges and help identify software solutions to address them. 
+Identify and communicate with leading researchers, scientists, and doctors participating in multi-omics research. 
+Assist project managers with scheduling, estimating and resource allocation. 
+Identify NIH-funded research topics, assist in writing grant applications, and participate in funded grant activities. 
+Contribute to publications and presentations of ongoing research activities. ",Just posted,01:07.1,NA,NA,NA,기타,기타,기타
+11773,Clinical Lab Associate,Clinical Lab Associate,Genomic Testing Cooperative,0,0,1,0,"Bachelor's degree in Biology or relevant field· A minimum of 2 years  Experience in a similar role· Good communication skills and attention to detail
+Histotechnician· Knowledgeable of CLIA regulations regarding proficiency testing, quality assurance and quality control· Knowledgeable of molecular laboratory processes or techniques","Prepare samples for testing using various laboratory equipment. · Histotechnician, specializes in working with and preparing microscopic tissue samples· Cut sections of body tissues for microscopic examination, mount tissue specimens on glass slides· Comply with the correct procedures, policies, and health and safely regulations· Conduct laboratory tests, analyze results, and document your findings· Clean and sterilize equipment and work area· Collect and prepare research and information needed for studies· Classify and label samples",Today,01:37.8,NA,NA,NA,기타,기타,기타
+6500,Content & Assessment Associate,Content & Assessment Associate,Vantage Labs,0,0,1,0,Bachelor’s degree in English or related field Demonstrated ability to score essays and assess the traits of writing Strong command of the English language Passion for writing A high attention to detail and commitment to quality Strong verbal and written communication skills Proficiency in Microsoft Office products Can work well individually or as part of a team Ability to multitask effectively Deadline driven Strong time management skills Good technical skills,"Assisting in all aspects of prompt development, content management, and essay scoring Completing essay scoring assignments accurately and on time Contacting clients and remote scorers, as directed, to support scheduling and logistics Composing responses to customer questions in areas directly related to services provided by Content & Assessment Services Supporting process to develop new and improve existing scoring models Producing content at appropriate pace Working closely with content and assessment team members Contributing to audio and video authoring and production activities as needed Preparing and maintaining a variety of process and content-related documentation Assisting in any additional duties deemed necessary by Vantage management",Today,49:57.3,11 to 50,NA,less than $1M (USD),3,1,기타
+2973,Cyber Associate Research Scientist,Cyber Associate Research Scientist,Cam Staff,0,0,1,0,"Requires 5 to 8 years with BS/BA or 3 to 5 years with MS/MA or 0 to 2 years with PhD. Ability and desire to quickly acquire knowledge of new subject matter areas Experience in one or more of the following languages: C, C++, Python, Java ","Candidates will work with teams to research, conceive, and develop prototypes, and should be adept at identifying successful approaches to complex problems.  Research areas of interest include, but are not limited to: Computer systems Computer networks Cyber security Program analysis Cryptography Wired and wireless systems architectures and protocols Machine Learning Artificial intelligence Data Science
+A desire to be involved cybersecurity, data analytics, advanced networking, wireless and mobility, display technologies, optical and quantum, power grid and IoT security, and electronic warfare. The industries we work in include smart cities and smart phones, intelligent battlefields and autonomous systems, telecommunications, energy, finance, government, life sciences and defense. ",Today,01:07.1,NA,NA,NA,기타,기타,기타
+5992,Data Analytics & Automation Senior Associate,DA & Automation Senior Associate,BDO,0,1,1,0,"Bachelor’s degree, required.  Computer Science, Accounting, Business or Finance majors, preferred MBA or other relevant advanced degree, preferred
+Three (3) or more years of data analytics project  Experience, required Prior financial and/or economic analysis, business valuation, public accounting, forensic technology, consulting or law enforcement  Experience, preferred UiPath  Experience, preferred Experience with artificial intelligence and machine learning, preferred
+CPA, CFE, CEDS and/or other relevant certification, preferred Microsoft Software Development, SQL Server or Oracle certifications, preferred Tableau certification, preferred CFE certification, preferred
+Proficient with Microsoft Office Suite, specifically Word, Excel, PowerPoint, required Experience with . NET development tools, required Experience with SQL Server or similar databases, required Experience with other non-Microsoft development languages or tools, preferred
+Excellent verbal and written communication skills Strong analytical skills and basic research skills related to the retrieval and organization of high volumes of information Solid organizational skills especially ability to meet project deadlines with a focus on details Ability to successfully multi-task while working independently or within a group environment Proven ability to work in a deadline-driven environment and handle multiple projects simultaneously
+Ability to interact effectively with people at all organizational levels of the firm
+Capacity to build and maintain strong relationships with internal and client personnel
+Ability to encourage team environment on engagements and contribute to the professional development of assigned personnel Executive presence and ability to act as primary contact on assigned engagements","developing work plans for clients, processing, querying and analyzing data, assisting the project manager, interacting with clients, researching trends and new tools.  The candidate should have an  Understanding and working knowledge of the data analytics and automation marketplace. ",Today,25:20.0,"10,000+",Consulting and Business Services,$500M to $1B (USD),9,6,컨설팅
+10240,"Dynamic Control System Engineer, Associate Staff",System Associate Staff,MIT Lincoln Laboratory,0,0,1,0,"A Master of Science in electrical, mechanical, aerospace, or computer engineering with coursework and research emphasis on advanced control systems or autonomous systems / robotics.  In lieu of an MS, a BS degree with 5+ years of hands-on  Experience conducting applied research and developing / implementing complex control, autonomous, unmanned or robotic systems operating in real-world environments is required
+Demonstrated proficiency with either a variety of control / autonomy approaches and algorithms such as PAT or computer vision, both linear and non-linear, or with the full life-cycle of custom electronics and associated software/firmware development for control & autonomous systems
+Strong programming skills in C/C++ or Python and Matlab/Simulink using a Linux development environment
+ Excellent written and verbal communication skills
+Hands-on real-world  Experience with embedded processors, motors, sensors, or mechanisms
+ Experience with time-deterministic real-time software
+In-depth knowledge of open-source robotics toolkits such as the Robot Operating System (ROS)","Pointing, Acquisition and Tracking (PAT) algorithms.  Research and development topics include estimation and feedback control algorithms such as PID controllers, Kalman Filters for dynamic pointing and tracking, inertial stabilization, embedded servo control systems, autonomous systems, navigation, non-linear or under-actuated control systems, and mechanism and actuator control, artificial intelligence, machine learning, modern feedback control, state estimation, and computer vision. ",Today,00:06.5,"1,001 to 5,000",Aerospace and Defense,NA,7,기타,항공국방
+7393,eCornell Technical Instructional Design Associate,Design Associate,Cornell University,0,0,1,0,"Bachelor’s degree in a STEM field plus 2-4 years of relevant  Experience, or equivalent combination of education and  Experience. 
+ Experience in one or more of the following: Python, R, Matlab, Javascript, Java, C++, machine learning, artificial intelligence, engineering simulations, robotics, linear algebra, matrix algebra, SQL, ANSYS, HTML/CSS. 
+A constructive and positive attitude;  Excellent interpersonal, influencing, and negotiating skills. 
+Highly motivated and driven to achieve project goals and requirements that are urgent, demonstrating ownership and accountability for results. 
+ Proven ability to effectively navigate amidst ambiguity and rapid change. 
+ Excellent verbal and written communication skills, including strong collaborative qualities, and the ability to explain technical concepts in non-technical terms to SMEs (subject matter experts) and students. 
+ Excellent editorial skills, including the ability to author course content in a conversational tone and storytelling capabilities. 
+ Excellent time and project management skills;  Proven ability to manage multiple projects with competing deadlines, ensuring timely delivery. 
+Creative, practical troubleshooting skills, including: problem-identification, problem-reporting, and problem-solving skills. 
+Active interest in adult learning theory and emerging approaches to STEM-focused online learning, including, but not limited to, social networking, mobile learning, problem-based learning, story-based learning, etc. 
+Ability to work efficiently and effectively with minimal supervision. ","Collaborate with eCornell staff and Cornell University faculty to produce exceptional, outcomes-driven, STEM-focused online learning on deadline and within budget. 
+Architect outcomes-driven learning solutions and all required components, including those ultimately built by other resources such as multimedia elements (animations, etc. ), interactives, and assessments, all aimed at enabling eCornell students to achieve effective skills transfer. 
+Contribute to the evolution of eCornell’s online learning products and development model to meet the changing needs of students while taking advantage of emerging and relevant technologies. 
+Work with complex and often technical source material and detailed development cycles, keeping both the process and the content highly accessible, streamlined, and focused for collaborators and stakeholders. 
+Apply and leverage multimedia techniques and resources (animations, interactives, video, web 2. 0/3. 0 features) where appropriate in developing learning solutions.  This includes collaborations with graphic artists and programmers to conceptualize and execute animations, interactives, and/or other multimedia elements. 
+Effectively and efficiently communicate and collaborate with eCornell internal and contract staff leveraged to execute various course-development tasks. 
+Effectively represent eCornell in interactions with Cornell faculty and staff, leading faculty confidently and steadily through an iterative design process. 
+Conceptualize and create an engaging user  Experience with components that may include graphical user interface, page layout design, interactivity, and flow. 
+Provide technical assistance by responding to inquiries regarding errors, problems, or questions with online learning products as needed. 
+Actively engage with learning products created by competitors for benchmarking purposes. ",Today,01:14.5,"10,000+",Education and Schools,$1B to $5B (USD),9,7,교육
+2858,Executive Associate,Executive Associate,"SkyWater Technology Foundry, Inc.",0,0,1,0,"High School Diploma or equivalent
+Minimum 5 years of  Proven work  Experience in an Executive Associate/Assistant role supporting one or more executives. 
+ Experience in effectively and professionally working with senior level executives and Board members within and outside the company, as well as customers, vendors and other visitors. 
+Knowledge of office procedures. 
+Strong communication skills (via phone, email and in-person). 
+ Experience exercising discretion and confidentiality with sensitive company information. 
+ Excellent organizational skills with an ability to think proactively and prioritize work. 
+Solid  Experience with office management systems, ERPs and MS Office. 
+Familiarity with online calendars and cloud systems. 
+ Experience using office equipment, including printers and fax machines. ","Provides administrative support to President/CEO and CFO. 
+Develops in-depth knowledge of company operations, policies, and procedures. 
+Having wide-ranging  Experience, uses professional concepts and company objectives to resolve complex issues in creative and effective ways. 
+Develops substantial  Understanding of the company’s charter, and applies knowledge and skills to complete a wide range of tasks including preparing for strategic presentations, operations reviews, expense reviews, metrics reviews, etc. 
+Handles details of a highly confidential and critical nature. 
+Collects information and prepares presentation materials for board of director meetings or for use in discussions/meetings of executive staff and outside individuals. 
+Does research and investigates information to enable strategic decision making by others. 
+Makes high level contacts of a sensitive nature inside and outside the company. 
+Works on complex issues where analysis of situations or data requires an in-depth evaluation of variable factors. 
+Helps in co-coordinating group or executive level meetings (calendar, logistics, preparing presentations) and travel. 
+Routinely exercises independent judgment in selecting methods, techniques and evaluation criteria for obtaining results.  Internal and external contacts often pertain to strategic and/or confidential company plans and objectives. 
+Communicates and provides information by relevant method internally and externally to assist and enable organization operation and effective service to customers. 
+Documents work processes & procedures. 
+Highly effective in multi-tasking and in supporting requests from numerous customers. 
+Proactively seeks ways to get involved to improve support, systems, processes and procedures. 
+Assists and/or leads event planning and other corporate initiatives. ",Today,01:01.5,NA,NA,NA,기타,기타,기타
+6092,Finance Associate,Finance Associate,Stem Inc,0,0,1,0,"Understanding of wholesale and retail electricity products
+Proficient  Experience in financial modeling and data analysis
+Qualitative and quantitative problem-solving skills
+Ability to distill insights from large volumes of data
+Attention to detail
+Skillful at cross-functional collaboration
+Execution-oriented and able to drive multiple projects and deadlines from start to close
+ Excellent (English) communication skills, both written and oral, including the ability to convey ideas and positions clearly
+Advanced Excel, PowerPoint, Word and computer skills
+Familiarity with SalesForce (Netsuite also a plus)
+Strong educational background (e. g.  Bachelor or Master’s degree in related fields) or commensurate  Experience
+2+ years of relevant work  Experience, preferably in energy, solar, energy storage, finance, and/or SaaS
+Financial transaction  Experience","Develop and maintain financial models to evaluate and price commercial offerings for a variety of markets and use cases for energy storage
+Become internal expert on financial structures for energy storage including front-of-meter, behind-the-meter, solar and storage applications
+Collaborate closely with the Product Marketing and Commercial teams on pricing analyses, competitive evaluation, strategy, and execution
+Own the quality control and process for pricing commercial offerings as well as the underlying cost models
+Improve risk management through consistent use of processes and controls, prudent commercial structuring, and rigorous diligence
+Work closely with senior members of finance and executive team on key strategic projects as needed",Just posted,50:10.3,11 to 50,Energy and Utilities,$25M to $100M (USD),3,4,에너지
+10811,Junior Associate Research Scientist,Associate Research Scientist,Perspecta Labs,0,0,1,0,"Requires 2 to 5 years with BS/BA or 0 to 2 years with MS/MA/MBA or 8 to 10 years with no degree. 
+Ability and desire to quickly acquire knowledge of new subject matter areas Experience in one or more of the following languages: C, C++, Python, Java","Candidates will work with teams to research, conceive, and develop prototypes, and should be adept at identifying successful approaches to complex problems.  Research areas of interest include, but are not limited to:
+Computer systems Computer networks Cyber security Program analysis Cryptography Wired and wireless systems architectures and protocols Machine Learning Artificial intelligence Data Science",Just posted,00:07.3,201 to 500,NA,NA,5,기타,기타
+5311,On Call Mail Services Associate,E-Mail Services Associate,Swiss Post Solutions,0,0,1,0,"Availability to work on-call 1 year of office support or mail room  Ability to remain professional Ability to learn skills quickly. Working knowledge of Microsoft Office products pertaining to the specific position including but not limited to Word and Excel. Ability to navigate internal software programs. Reading, writing, and arithmetic skills required. ","Perform the initial rough and fine sorts of incoming mail. Sort inter-office mail to be redistributed to the end users. Conduct mail runs at scheduled times throughout the day. Deliver packages directly to employees during mail runs. Obtain signature upon delivery of package. Pickup & deliver boxes from Mail room, Messenger center & off floors Assist with setting up conference rooms Change light bulbs Cover fitness center as needed: (wash, dry, fold towels, short, shirts & keep center clean) Shred Documents Shuttling boxes between building (2 blocks away) 
+Pick up outgoing packages upon request from employees. Make the final mail/packages pick-ups from the floors at the end of the day. Wrap and pack outgoing packages. Process outgoing packages for courier and pouch pick-up. Sort and meter outgoing mail. ",Today,04:56.1,"5,001 to 10,000",Consulting and Business Services,$500M to $1B (USD),8,6,컨설팅
+16849,Program Associate- Accelerator,Program Associate,The Dcode Group,0,0,1,0,"Enough technical chops to understand and work with everything from tomorrow’s cybersecurity tools to artificial intelligence innovators to small-sat companies without skipping a beat
+An  Understanding of federal sales – how to speak acronym and navigate procurement as a startup with limited time and resources
+Enough hustle and grind to own an entire program from soup to nuts – project/program management, client-facing  Experience, and event planning  Experience are all helpful
+Ability to speak confidently in settings ranging from large group events to meetings with senior government, industry, and startup leaders
+Strong organization, self-management, and people skills. 
+Efficient, results oriented, resilient, and flexible and goal oriented. 
+Time management. 
+Come with your own “jet pack” of motivation and drive. 
+ Proven problem-solving abilities. 
+Extremely effective at client facing interaction. 
+Prior  Experience and/or strong interest in technology, startups, or government. 
+Ability to consistently produce exceptional results with limited resources. ","Provide logistical and programmatic support to our accelerator programs per year focused on bringing cutting edge technologies to the government. 
+Plan and execute high volume of events for each program to include 15+ curriculum sessions, hundreds of meetings across mentors, government, and industry, and happy hour/networking events. 
+Manage document creation, editing, and delivery of our accelerator curriculum on a weekly basis. 
+Schedule and track high volume meetings and event invitations as part of the program. 
+Track and report on program deliverables and progress. 
+Provide day-to-day support as part of a team working with 6-10 high growth venture backed startups in each program, supporting CEOs and sales leaders or some of the world’s leading tech companies. ",Today,00:06.4,NA,NA,NA,기타,기타,기타
+11497,R&D Associate in Machine Learning and Mathematics,R&D Associate - ML/Math,Oak Ridge National Laboratory,0,0,1,0,"Ph. D.  in pure or applied mathematics, or in a related field with commensurate  Experience.  A thorough knowledge of linear algebra, abstract algebra, real analysis, and numerical analysis is required. 
+Demonstrated publication track record
+Two or more years of professional  Experience in mathematics, programming, machine learning, or data science. 
+Demonstrated ability in researching and applying machine learning and deep learning. 
+Proficiency in Linux, Bash, and standard Unix command-line tools. 
+Substantial programming  Experience in Julia, Rust, Haskell, Common Lisp or Scheme, C++, Python, or other similar languages. 
+ Excellent skills in technical writing, communication, and teamwork. 
+ Experience with Julia, Flux. jl, functional programming, high performance computing, GPU programming, and git. 
+ Experience in one or more of the following areas: topological data analysis, probabilistic programming and Bayesian machine learning, metric learning, or content-based image retrieval. 
+ Experience applying machine learning to imagery, spectral data, 3D point clouds, and multi-model input. 
+Knowledge of remote sensing and GIS analysis and data such as multispectral and hyperspectral data, spectral analysis, lidar, and geographic metadata.   Experience with tools such as QGIS, GDAL, and PostGIS. ","you will establish and grow your intellectual identity both inside and outside the laboratory, contribute significantly to innovative thought leadership, mentor junior staff, and grow new lanes of capabilities and expertise as your career progresses. 
+Lead/contribute to research and development efforts in machine learning, artificial intelligence, mathematical and statistical modelling, and scientific computing. 
+Lead/contribute to the conceptualization, design, and implementation of new models, methods, and algorithms that solve pressing data science challenges. 
+Lead/contribute to team publications in journals, participating in conferences, and writing open source software. 
+Maintain a strong landscape awareness of how your professional community is evolving, actively engage in a professional network of peers in academia, industry, and government, and remain cognizant of collaboration and recruitment opportunities activities support recruitment of new talent through these networks
+Present research at peer reviewed conferences and provide professional service to the community by serving on panels, organizing sessions, reviewing journal articles, and so forth. 
+Assist in developing the next generation of scientists through mentoring junior staff, interns, and students. ",Just posted,00:07.0,"1,001 to 5,000",Government,NA,7,기타,공공
+1120,Research Associate,Research Associate,Pfizer,0,0,1,0,"Masters degree in science, engineering or a technical field, with research emphasis in advanced process modeling, optimization, and/or control required
+Strong knowledge of various modeling techniques including first-principles, empirical, data-driven, and hybrid models, applied mathematics and numerical methods
+Strong programming and computer skills: Python, R, MATLAB/Simulink, C/C++, JavaScript, or Java
+Independent, self-motivated personality with  Excellent oral and written communication skills
+Ability to work collaboratively with cross-functional global teams
+Ability to manage and drive technical projects proactively with minimum supervision
+PhD in science, engineering or a technical field, with research emphasis in advanced process modeling, optimization, and/or control preferred
+ Experience with artificial intelligence and machine learning techniques and familiarity with related libraries (e. g.  tensor flow)
+Knowledge of any of the following engineering principles: Reaction Kinetics, Reactor Design, Thermodynamics, Heat and Mass Transfer, Engineering Statistics, Modeling and Simulation
+Hands-on  Experience with Process Analytical Technologies (PAT) such as NIR or Raman spectroscopy and Chemometrics modeling
+Knowledge of optimization algorithms
+Familiarity with industrial automation systems
+General familiarity with the Pharmaceutical Industry and related unit operations, as well as regulatory aspects and cGMP concepts
+Working  Experience with modelling/simulation software and IIoT platforms: PharmaMV, DeltaV, gPROMS, SIMCA, OSI PI, Flow sheet simulation packages, ThingWorx","Contribute to multiple high impact projects that require data analysis, advanced analytics & modeling, optimization, and control expertise
+Develop mathematical models of pharmaceutical unit operations, gather data for model calibration, program functional applications for real-time implementation
+Support installation/operation/performance qualification and model validation and author required documentation
+Apply engineering principles, modeling tools, and experimental skills using data-rich lab/pilot/manufacturing instrumentation to improve process  Understanding and assess proposed process models
+Interface with cross-functional teams and project stakeholders, communicate progress with team members, and drive the project progress proactively in a timely manner",Today,11:32.8,"10,000+",Health CareHealth Care,more than $10B (USD),9,9,헬스케어
+14874,Research Associate,Research Associate,Koliber Biosciences Inc.,0,0,1,0,"BS in biological sciences and 3+ years laboratory  Experience or MS and 1+ years laboratory  Experience.  
+Proficiency with tissue culture and sterile technique is required.  Experience with in vitro assay development is required. Proficiency in basic laboratory techniques is required. Proficiency with ELISA assays is required. Familiarity with immune cells is a plus.  Experience in molecular biology is a plus. Data science and statistics knowledge is a plus. Programming  Experience (Python, Java, R) is a plus.",Maintain immune cells in tissue culture. Develop cell based assays. Process samples for ELISA assays. Collect and analyze data. Prepare reagents for experiments. Order and maintain lab supplies. Perform other duties as assigned. ,Just posted,00:07.2,NA,NA,NA,기타,기타,기타
+1925,Research Associate II (step 4),Research Associate,The University of Alabama in Huntsville,0,0,1,0,"Bachelor's degree in Computer Science or a related field/21 months of full-time verifiable work  Experience/must have hands-on  Experience utilizing Earth Science data for research or operations/ Experience in writing scientific papers is required/must have  Excellent written and oral communication skills/working knowledge of Linux is required
+Master's degree in Computer Science or a related field is preferred/hands-on  Experience utilizing NASA Earth Science data is desired/technical writing skills preferred/ Experience writing and analyzing research articles is desired/ Experience with Artificial Intelligence, Machine Learning, Data Mining and Natural Language Processing is preferred/ Experience with Python, Tensor Flow, and Keras is desired/ Experience with Application Program Interface (API) design and implementation is preferred",To provide research assistance and computer science specialization for Inter-Agency Implementation and Advanced Concepts Team (IMPACT) in ESSC. ,Just posted,00:58.0,"501 to 1,000",Education and Schools,$100M to $500M (USD),6,5,교육
+1919,"Research Associate IV, S3",Research Associate,The University of Alabama in Huntsville,0,0,1,0,"Bachelor's degree in Computer Science/57-63 months of full-time verifiable work  Experience/must have hands-on  Experience utilizing Earth Science data for research and operations/ Experience in machine learning algorithms is required/must have  Experience with Linux/Master's degree in Computer Science is preferred/ Experience with Artificial Intelligence, Machine learning, and Data Mining is desired/ Experience with Python is preferred/ Experience writing and analyzing research articles is desired
+Master's degree in Computer Science is preferred/ Experience with Artificial Intelligence, Machine learning, and Data Mining is desired/ Experience with Python is preferred/ Experience writing and analyzing research articles is desired",The Research Associate IV will provide geospatial and information technology assistance and specialization for the Inter Agency Implemenation and Advanced Concepts Team (IMPACT) in ESSC,Just posted,00:58.0,"501 to 1,000",Education and Schools,$100M to $500M (USD),6,5,교육
+10445,"Research Associate, Ctr for Network Medicine",Research Associate,UC San Diego,0,0,1,0,"Theoretical knowledge of a life science in a field related to the research being conducted or an equivalent combination of education and  Experience.  Related fields may include any of the following fields of study: molecular biology, genetics, immunology, zoology, and biochemistry. 
+Animal expertise (breeding, handling, experimentation, genotyping, and weaning). 
+ Proven ability to prepare solutions.  Demonstrated knowledge of basic chemistry and math required for preparing solutions. 
+Capable of operating and maintaining lab equipment such as confocal and quantitative fluorescent microscopes, centrifuges, spectrophotometers, flow cytometer, and scintillation counter. 
+Ability to maintain laboratory supplies, keeping written records, and data collection. 
+Basic knowledge of basic chemistry and math required for preparing solutions. 
+Skill and ability to operate various lab instruments. 
+ Experience with the operation of a personal computer and software application, such as Filemaker, MS Word and Excel.   Experience with the Mac platform and applications is preferred over PC. 
+Strong communication skills (both verbal and written) needed to interact professionally and effectively in the work environment with all levels including faculty, senior researchers, graduate students, undergraduates and those from various backgrounds with tact and diplomacy. 
+Ability to care for small lab animals, as well as working with animal and human tissues. 
+Ability to read, and learn to interpret and apply protocols in conducting research.  Ability in following stepwise experimental protocols. 
+Good organizational skills to order and maintain lab equipment and supplies.  Ability to perform general lab maintenance, including cleaning and restocking supplies.   Experienced working and maintaining a sterile environment. 
+ Experience with molecular biology techniques. 
+Familiarity working in a laboratory that performs research to understand how lymphocytes develop and survive and how this complex regulation can impact various diseases in the human population. 
+ Experience with mouse handling, surgeries, anesthesia, injections, euthanasia, and tissue harvest. ",assisting in the establishment of CNetMed’s IHC Core; supporting multiple ongoing cell and molecular biology tasks on multiple projects; and assisting in ongoing animal disease model studies within CNetMed. ,Just posted,00:06.7,"10,000+",Education and Schools,NA,9,기타,교육
+6034,RSMAS - Research Associate I - CIMAS,Research Associate,University of Miami,0,0,1,0,"Bachelor’s degree in oceanography, mathematics, physics, computer programming, engineering, environmental science or other related fields.  basic knowledge of Python programming, Matlab, and knowledge in at least one higher level computer environment (i. e.  UNIX, LINUX, WINDOWS). ",,Today,25:20.0,"10,000+",Education and Schools,$1B to $5B (USD),9,7,교육
+121,Senior Associate - Commercial Analytics - Pharma/Life Sciences,Senior Associate - Commercial Analytics,AXTRIA,0,1,1,0,"Bachelor’s degree in engineering or any of the quantitative discipline such as Statistics, Mathematics, Operations Research, Economics or Econometrics with 4+ years of relevant  Experience, or a Master’s degree or MBA with 2+ years of relevant  Experience. 
+Relevant expertise in using analytical tools such as Excel, SAS, SPSS, SQL, S-plus/R, E-views, ILOG, and ability to quickly master new packages when needed. 
+Strong analytical skills,  Excellent communication skills and the ability to communicate actionable analytical findings
+Familiarity with the application of analytics to sales, marketing or managed markets problems in the pharmaceutical industry
+Drive and desire to work in a growing entrepreneurial fast paced organization with a global delivery model","Conduct simple and advanced data analyses to help clients make good business decisionsAssist in the development of analytic data marts. 
+Apply advanced statistical, econometric and optimization models and algorithms to real-world business problems.
+Develop new statistical models as well as provide analysis using existing models.
+Develop and maintain skills to the highest standards to identify best practices and emerging trends in analytics, both within and outside the domain.
+Work on client projects as part of a dynamic entrepreneurial team
+Contribute to Axtria’s development of new solutions and analytical models.",Today,01:38.5,51 to 200,NA,$25M to $100M (USD),4,4,기타
+5990,Senior Associate - RPA Developer,Senior Associate - RPA,BDO,0,1,1,0,"Bachelor’s degree, required.  Computer Science, Accounting, Business or Finance majors, preferredMBA or other relevant advanced degree, preferred
+Three (3) or more years of data analytics project  Experience, requiredPrior financial and/or economic analysis, business valuation, public accounting, forensic technology, consulting or law enforcement  Experience, preferredUiPath  Experience, preferred Experience with artificial intelligence and machine learning, preferred
+CPA, CEDS and/or other relevant certification, preferredMicrosoft Software Development, SQL Server or Oracle certifications, preferredTableau certification, preferredCFE certification, preferred
+Proficient with Microsoft Office Suite, specifically Word, Excel, PowerPoint, required Experience with . NET development tools, required Experience with SQL Server or similar databases, required Experience with other non-Microsoft development languages or tools, preferred
+Excellent verbal and written communication skills Strong analytical skills and basic research skills related to the retrieval and organization of high volumes of information Solid organizational skills especially ability to meet project deadlines with a focus on details Ability to successfully multi-task while working independently or within a group environment Proven ability to work in a deadline-driven environment and handle multiple projects simultaneously
+Ability to interact effectively with people at all organizational levels of the firm
+Capacity to build and maintain strong relationships with internal and client personnel
+Ability to encourage team environment on engagements and contribute to the professional development of assigned personnel Executive presence and ability to act as primary contact on assigned engagements","developing work plans for clients, processing, querying and analyzing data, assisting the project manager, interacting with clients, researching trends and new tools",Today,25:20.0,"10,000+",Consulting and Business Services,$500M to $1B (USD),9,6,컨설팅
+2873,"Senior Associate, Data Scientist (Machine Learning & AI) - Columbus",Senior Associate - AI/ML,JP Morgan Chase,0,1,1,0,"4+ years of industry hands on  Experience in leveraging advanced data science (including ML) and business analytics to solve business problems
+Bachelor’s degree in relevant quantitative field required, advanced degree preferred in analytical field (e. g.  Statistics, Economics, Applied Math, Operations Research, other Data Science fields)
+Thought leader in data science and/or analytics who can help the business define their business problem, create solutions to address it, plan and execute the implementation
+Expert knowledge in quantitative methods for business, advanced data science and ML
+Familiarity with Agile,  Experience with Agile is a plus
+ Experience in practical data processing working with Large scale datasets and Big Data environment, data mining, text mining and information retrieval
+ Experience across broad range of modern data science and analytics tools (e. g. , SQL, Hive, Hadoop, Spark, Python, R)
+Proficiency in SQL and Python or R required. 
+Ability to work in large and medium sized project teams, as self-directed contributor with a  Proven track record of being detail orientated, innovative, creative, and strategic
+ Excellent communicator able to convey complex information in an understandable, compelling, and persuasive manner at all levels
+ Experience of leading teams with a  Proven track record of being driving value for the business;
+Financial services background preferred, but not required
+ Experience with Agile is a plus","Develop, plan, and execute analytical work working with large scale datasets and Big Data environment to identify most impactful opportunities for Operations
+Partner and work closely with other teams to ensure feasibility and progress of the products delivered
+Work side by side with modeling team to ensure the best ML and AI solutions are being delivered to the business
+Follow Analytics best practices
+Have a clear view of metrics of success, model and implementation feasibility and impact to customer
+Share latest ML AI efforts in the industry that can improves operations efficiency and lower OpEx
+Synthesize analytical findings for consumption by garage teams and senior executives
+Deliver practical data insights in a compelling manner actionable by our partners
+Articulate analytical findings in clear and concise deliverables, including presentations, discussions, and visualizations
+Establish and manage relationships with our internal partners becoming a trusted advisor on business data and analytics techniques, with strong  Understanding of business drivers and underlying data",Just posted,01:07.1,"10,000+",Banks and Financial Services,more than $10B (USD),9,9,금융
+10,"Senior Associate, Data Scientist (Machine Learning & AI) - Delaware",Senior Associate - AI/ML,JP Morgan Chase,0,1,1,0,"4+ years of industry hands on  Experience in leveraging analytics and data science (including ML) to solve business problems
+Bachelor’s degree in quantitative field required, advanced degree preferred in analytical field (e. g.  Statistics, Economics, Applied Math, Operations Research, other Data Science fields)
+Strong, problem solver who can help the team define articulate the business problem and its impact, create pragmatic solutions to address it, plan and execute the implementation
+Intellectual curios and self –driven in  Understanding business domains and their data
+Expert knowledge in quantitative methods for business, general data science and ML
+ Experience in practical data processing working with Large scale datasets and Big Data environment, data mining, text mining and information retrieval
+ Experience across broad range of modern data science and analytics tools (e. g. , SQL, Hive, Hadoop, Spark, Python)
+Proficiency in SQL and Python required
+Ability to work in large and medium sized project teams, as self-directed contributor with a  Proven track record of being detail orientated, innovative, creative, and strategic
+ Excellent communicator able to convey complex information in an understandable, compelling, and persuasive manner at all levels
+Familiarity with Agile,  Experience with Agile is a plus
+Financial services background preferred, but not required","Develop, plan, and execute analytical work working with large scale datasets and Big Data environment to identify most impactful opportunities for Operations
+Partner and work closely with other teams to ensure feasibility and progress of the products delivered
+Work side by side with modeling team to ensure the best ML and AI solutions are being delivered to the business
+Follow Analytics best practices
+Have a clear view of metrics of success, model and implementation feasibility and impact to customer
+Share latest ML AI efforts in the industry that can improves operations efficiency and lower OpEx
+Synthesize analytical findings for consumption by garage teams and senior executives
+Deliver practical data insights in a compelling manner actionable by our partners
+Articulate analytical findings in clear and concise deliverables, including presentations, discussions, and visualizations
+Establish and manage relationships with our internal partners becoming a trusted advisor on business data and analytics techniques, with strong understanding of business drivers and underlying data",Just posted,01:38.5,"10,000+",Banks and Financial Services,more than $10B (USD),9,9,금융
+17577,"Senior Associate, Strategy",Senior Associate - Strategy,ComPsych,0,1,1,0,"Bachelor’s degree
+3-5 years of  Experience in strategy, consulting, or product development role
+Ability to work in fast-paced environment while managing multiple projects with fixed deadlines
+Ability to function effectively in cross-functional role, as well as present findings to key decision makers and management
+Intellectually curious with a knack for problem solving
+Comfort with autonomy and working independently
+Flawless time management and organizational skills","Identify new tools and technologies, which can be utilized to increase efficiencies and drive innovation.  These tools will consist of artificial intelligence, virtual reality, and machine learning, and creating plans for their implementation across the business
+Review competitive market analysis of new and existing market entrants, for ancillary competitors
+Collect information related to existing business operations and products, identify gaps, and establish clear plans to optimize processes
+Work with data to measure performance of business units, and create plans and make decisions based on quantitative reasoning
+Draft and present short- and long-term strategy proposals for a multitude of business units",Today,00:06.6,"501 to 1,000",Health Care,NA,6,기타,헬스케어
+17261,"Software Engineer, Associate","Software Engineer, Associate",Alion Science and Technology,0,0,1,0,"Bachelor's degree in Computer Science, Computer Engineering or related discipline plus 3 to 4 years of directly related  Experience is required; 4-5 years game development  Experience highly preferred
+In some cases, educational requirements may be adjusted or waived for applicable work  Experience.  Work  Experience may be adjusted for highly specialized knowledge or uniquely applicable  Experience
+
+Must have (or be able to obtain) Security+ and Linux+ certifications
+
+Should possess a thorough  Understanding of Linux and Windows operating systems and be able to use advanced capabilities of these systems. 
+
+Knowledge of networks and networking concepts; ability to utilize network and distributed modeling & simulation tools such as Wireshark. 
+
+Familiarization with Object Oriented Design (OOD) concepts and techniques. 
+
+Familiarization with Artificial Intelligence and Machine Learning concepts is a plus
+
+Ability to analyze and troubleshoot distributed simulation problems and provide acceptable solutions or corrections. 
+Ability to provide technical project leadership, establish milestones, estimate resources, and other project management skills. 
+
+ Excellent written and verbal communication skills. ","installing the system on high-end hardware
+ensuring the system function functions as expected
+integrating the system with other tools
+operating the system as a technical user",Just posted,00:07.7,"1,001 to 5,000",Internet and Software,$1B to $5B (USD),7,7,소프트웨어
+7787,"Software Engineering, Senior Associate","Software Engineering, Senior Associate",The MIL Corporation,0,1,1,0,"10 years professional computer science or engineering  Experience, at least 6 years of which are in the development and/or application of AI. 
+Bachelor's or Master's degree in Computer Science, Electrical, Mechanical, Aerospace or Systems Engineering from an ABET accredited course of study.  A Master’s or Ph. D.  degree in AI, Computer Science, Machine Learning, or Systems Engineering is highly desirable. ","Provide AI engineering/SME expertise in avionics technologies
+Develop and utilize AI-based data processing tools to perform data analysis and provide data to customers
+Design complex component level hardware/software utilizing AI-based analytical tools
+Apply AI for developing subsystems (e. g. , avionics, flight systems, training/support systems etc. ) and integrating them into a complete operational system across multiple phases of weapon system acquisition. 
+Work within a group of Engineers developing and applying AI to assure the effective integration of multiple subsystems. 
+Support Program offices with state-of-the-art AI to enhance interpreting operational requirements, establishing baselines, and analyzing design trade-offs to balance cost, performance, and schedules. 
+Perform mission system hardware/software troubleshooting AI-based improvements
+Apply AI to general engineering principles to research, analyze, plan, design, develop, implement, test, and/or evaluate systems
+Identify AI-based opportunities to assist the review and preparation of engineering and technical analysis, reports, change proposals, and other technical documentation
+Be prepared to demonstrate skills in problem solving, planning/organizing projects, written/oral communication, collaboration and team building – with a particular focus on AI-based contributions
+Stay abreast of AI Technology",Today,01:02.7,"501 to 1,000",Consulting and Business Services,$100M to $500M (USD),6,5,컨설팅
+4365,Software Sales Associate,Software Sales Associate,"SunView Software, Inc.",0,0,1,0,"Aptitude to learn new technologies and concepts rapidly Fast paced and  Proven track record of high number of customer interactions Driven and strong desire to compete and win Track record of providing exceptional customer  Experience Capability of  Understanding customer pain points, requirements and correlating potential business Promotes a strong sense of urgency for reaching goals and key deliverables Excellent communication, interpersonal, and administrative skills BA/BS degree or equivalent related work  Previous Salesforce or CRM platform  Experience is highly preferred Effective and efficient problem-solving skills with a focus on providing the best possible solution A passionate team player who strives to serve the customer Excellent objection handling, presentation, and communication skills Ability to understand and manage the expectations of a range of stakeholders·  Excellent communication and strong project management skills· Exceptional attention to detail and process· Ability to handle multiple tasks at one time and effectively work under tight deadlines"," Works on inbound and outbound prospects· Reach out to prospects in the form of cold calls, emails, or social networks· Contacting and acquiring new sales leads·  Understanding customer requirements· Interact with prospects to provide exceptional customer  Experience· Engage and qualify inbound leads and inquiries· Work closely with sales and marketing to develop account intelligence and relationship maps· Schedule appointments and demos· Meeting regular team sales targets· Supporting the new sales team in acquiring new leads and driving opportunities to closure· Assist in the creation of technical presentations and proposals· Providing sales assistance and product education· Follow up with sales prospects· Tracking and reporting progress against sales targets",Today,01:25.1,51 to 200,Internet and Software,less than $1M (USD),4,1,소프트웨어
+6497,Statistical Associate,Statistical Associate,Vantage Labs,0,0,1,0,"Bachelor's in Mathematics, Psychology or related social science Proficiency in Microsoft Office products Demonstrably strong verbal, written, and communication skills Some coursework in applied statistics Ability to research solutions to problems Strong time management and organizational skills Desire to take accountability of projects and quality Testing  Experience preferred","Use an internal database to create and maintain assessments (high stakes, low stakes, and certification) to predetermined specifications while meeting established deadlines and coordinating with cross-functional teams, including content experts, media development, and project management. Contribute to item authoring & editing, item production, item alignment, image creation, audio production, and video authoring and production activities as needed. Promote proper test development procedures. Set up data, code software, run item analysis, and interpret results. Analyze processes and procedures to suggest innovative approaches for increased efficiency. Managing Test Development use of JIRA and adhering to internal protocols. Completing clerical tasks as necessary to support project and departmental activities and goals. Scan and score completed multiple-choice examinations.  Create score reports summarizing the results of examinations. Track and update item normative data.  Interpret normative data and use the data to improve items and strengthen the quality of the item banks. ",Today,49:57.3,11 to 50,NA,less than $1M (USD),3,1,기타
+4667,Systems Administrator Associate,Systems Administrator Associate,Northwestern University,1,0,1,0,"Successful completion of a full 4-year course of study in an accredited college or university leading to a bachelor's or higher degree in a major such as computer science, information technology, or related; OR appropriate combination of education and  Experience. 
+Linux Operating System
+Microsoft Office (Word, Excel, PowerPoint, Access, Outlook)
+Shell Scripting
+SQL/MySQL/Postgres
+Windows Operating System
+Critical thinking
+Decision making
+Judgment
+Troubleshooting
+Agile environment
+Collaboration and teamwork
+Cost/benefit analysis
+Evaluate resources
+Facilitate collaboration
+Functional documentation
+Workflow development & documentation
+Minimum Competencies: (Skills, knowledge, and abilities)
+Prior database  Experience. 
+Knowledge of SQL. 
+Can provide  Excellent customer service and user support. 
+Strong verbal and written communication skills. 
+Able to lift weight of computers and/or printers as well as computer peripherals. 
+Bachelor’s degree in computer science or related field, or equivalent combination of education, training and  Experience. 
+ Experience in an academic environment. 
+ Experience working in various operating system environments (Linux and Windows). 
+2-3 years of related  Experience. 
+Ability to maintain effective internal and external working relationships. 
+Ability to manage time efficiently and perform effectively with minimal supervision. 
+Demonstrated  Experience with analytics tools and software. 
+Software/database administration, including planning, installing, and maintaining software deployments: PowerShell, R, Python, Hadoop, Postgres, Tableau, Eclipse, vSphere. ","Provides recommendations regarding infrastructure planning and budgeting. 
+Maintains growth statistics, space forecasts, backup systems, and infrastructure inventories. 
+Performs data backups and recoveries. 
+Monitors and maintains continuity with system licensing and maintenance agreements. 
+Maintains production change control schedule and participates in change control. 
+Cloud management for select homework assignments and projects. 
+Software/database administration, including planning, installing, and maintaining software deployments: R, Python, Hadoop, Postgres, Tableau, Eclipse. 
+Performs infrastructure upgrades including planning and scheduling, testing, and coordination. 
+Performs infrastructure administration setup. 
+Coordinates infrastructure planning and management. 
+Coordinates infrastructure planning and management. 
+Operating system configuration and maintenance, including user management, security policies, and system setup. 
+Responds to requests, alerts, and questions from students and faculty in a prompt and courteous fashion.  May include weekend remote availability. ",Just posted,01:11.1,"5,001 to 10,000",Education and Schools,$1B to $5B (USD),8,7,교육
+1381,Technical Recruiter Associate,Technical Recruiter Associate,Open Data Science. Inc.,0,0,1,0,Ability to work and handle a large amount of data and information in Excel,"Establishes recruiting requirements by studying organization plans and objectives; meeting with managers to discuss needs. Attracts applicants by placing job advertisements; contacting recruiters, using newsgroups and job sites. Utilize ODSC Jobs Platform to generate new revenues for the company Provide support to research and compile background information on potential event partners & potential candidates",Just posted,01:08.6,NA,NA,NA,기타,기타,기타
+14845,Technical Support Associate,Technical Support Associate,DISCO,0,0,1,0,"1+ years  Experience in a technical support role at a technology company
+Strong interest in technology with  Excellent problem-solving skills, with an initiative to research and craft creative technical solutions
+Strong communication skills (written and verbal) in order to interact effectively with coworkers and clients. 
+Ability to communicate effectively to both technical and non-technical users
+Passionate about providing a great customer  Experience and helping users
+Strong attention to detail and organization skills
+Ability to empathize with and advocate for our customers
+Ability to quickly learn new concepts and teach others
+Able to work at least one of the following shifts; M-F 7am – 3pm, M-F 10am – 6pm, or M-F 2pm – 10pm
+ Experience with any of the following; Salesforce, Jira, Asana, Talk Desk
+BS in Technology or Business fields; or significant eDiscovery data processing  Experience in lieu of degree
+ Experience creating technical documentation
+Prior litigation support or consulting  Experience","Use your technical skills to understand and address data file issues, identify and navigate network problems, and diagnose issues
+Analyze client's needs, fully understand their requirements and determine the appropriate course of action
+Proactively monitor open tickets, contact customers, and provide updates on a timely basis
+Work with engineering, project managers and other groups within DISCO to resolve technical problems and/or client concerns
+Work directly with customers advising them on how to best leverage DISCO in their day to day activities
+Proactively contribute to improvements in documentation and our product
+Help define business and technical requirements for improving the day to day activities of the department
+Display professionalism, quality service and a ""can do"" attitude to internal members/departments of DISCO as well as external clients and vendors via written and verbal communication",Just posted,00:07.2,NA,NA,NA,기타,기타,기타
+4013,Technical Support Associate (2pm-10pm Shift),Technical Support Associate,DISCO,0,0,1,0,"1+ years  Experience in a technical support role at a technology company
+Strong interest in technology with  Excellent problem-solving skills, with an initiative to research and craft creative technical solutions
+Strong communication skills (written and verbal) in order to interact effectively with coworkers and clients. 
+Ability to communicate effectively to both technical and non-technical users
+Passionate about providing a great customer  Experience and helping users
+Strong attention to detail and organization skills
+Ability to empathize with and advocate for our customers
+Ability to quickly learn new concepts and teach others
+Ability to work the afternoon shift which is Monday through Friday from 2pm – 10pm
+ Experience with any of the following; Salesforce, Jira, Asana, Talk Desk
+BS in Technology or Business fields; or significant eDiscovery data processing  Experience in lieu of degree
+ Experience creating technical documentation
+Prior litigation support or consulting  Experience","Use your technical skills to understand and address data file issues, identify and navigate network problems, and diagnose issues
+Analyze client's needs, fully understand their requirements and determine the appropriate course of action
+Proactively monitor open tickets, contact customers, and provide updates on a timely basis
+Work with engineering, project managers and other groups within DISCO to resolve technical problems and/or client concerns
+Work directly with customers advising them on how to best leverage DISCO in their day to day activities
+Proactively contribute to improvements in documentation and our product
+Help define business and technical requirements for improving the day to day activities of the department
+Display professionalism, quality service and a ""can do"" attitude to internal members/departments of DISCO as well as external clients and vendors via written and verbal communication",Today,06:54.9,NA,NA,NA,기타,기타,기타
+4006,Technical Support Associate (Day Shift),Technical Support Associate,DISCO,0,0,1,0,"1+ years  Experience in a technical support role at a technology company
+Strong interest in technology with  Excellent problem-solving skills, with an initiative to research and craft creative technical solutions
+Strong communication skills (written and verbal) in order to interact effectively with coworkers and clients. 
+Ability to communicate effectively to both technical and non-technical users
+Passionate about providing a great customer  Experience and helping users
+Strong attention to detail and organization skills
+Ability to empathize with and advocate for our customers
+Ability to quickly learn new concepts and teach others
+Able to work one of the following shifts; M-F 7am – 3pm, M-F 10am – 6pm, or M-F 2pm – 10pm
+ Experience with any of the following; Salesforce, Jira, Asana, Talk Desk
+BS in Technology or Business fields; or significant eDiscovery data processing  Experience in lieu of degree
+ Experience creating technical documentation
+Prior litigation support or consulting  Experience","Use your technical skills to understand and address data file issues, identify and navigate network problems, and diagnose issues
+Analyze client's needs, fully understand their requirements and determine the appropriate course of action
+Proactively monitor open tickets, contact customers, and provide updates on a timely basis
+Work with engineering, project managers and other groups within DISCO to resolve technical problems and/or client concerns
+Work directly with customers advising them on how to best leverage DISCO in their day to day activities
+Proactively contribute to improvements in documentation and our product
+Help define business and technical requirements for improving the day to day activities of the department
+Display professionalism, quality service and a ""can do"" attitude to internal members/departments of DISCO as well as external clients and vendors via written and verbal communication",Today,06:54.9,NA,NA,NA,기타,기타,기타
+4986,"WIFIRE Lab Associate Director,Operational Programs",Lab Associate Director,UC San Diego,1,0,1,0,"Strong demonstrated  Experience developing community partnerships and engagements for applying scientific research to practice.  Ability to communicate technical information in a clear and concise manner. 
+Strong theoretical knowledge of environmental hazards and sustainability, attained through a graduate degree in a related field, or equivalent combination of  Experience/education. 
+In-depth knowledge of GIS software, applications programming, database administration, user interface and  Experience design and web application development.   Excellent knowledge of GIS systems.   Experience with open source GIS tools such as GDAL, and GIS formats including Shapefiles, GeoJSON, and GeoTIFF. 
+ Experience with the synthesis and analysis of data for research, scientific visualization, and related public policy management issues. 
+Advanced demonstrated research  Experience with a focus on interdisciplinary and spatial data science research methods with scientific visualization using GIS and remote sensing. ","The Associate Director for Operational Programs for the WIFIRE Lab directs the public and private operational programs in the WIFIRE Lab, and supports the Lab Director by identifying and enabling strategic research and application thrusts related to translating the research-driven products to operational use.  To do this, the incumbent will leverage and continue development of partnerships and collaborations with disaster response groups and agencies in public and private sectors to identify needs for research-based applications for disaster response in practice. 
+The incumbent will also oversee integration of solutions for disaster response needs in operations to spatial data science infrastructure within the WIFIRE Lab, evaluate emerging technologies and industry offerings applicable to the Lab’s efforts in public/private partnerships, and manage the Lab personnel participating in the WIFIRE Lab operational programs.  The incumbent will also work with the Research and Product branches of the WIFIRE Lab to identify gaps between practice and research, implement the work above, and contribute to development of a roadmap for development.  The incumbent will also develop partnerships and work with other initiatives at UCSD that require problem solving using geospatial and remote sensing data (e. g. , BigPixel Initiative and Study of Mothers and Infants (SOMI) ) through the WorDS Center. ",Today,25:14.0,"10,000+",Education and Schools,NA,9,기타,교육
