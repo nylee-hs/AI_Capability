@@ -3,10 +3,11 @@ import pickle
 from collections import defaultdict
 
 import pyLDAvis
+import pytagcloud as pytagcloud
 from gensim import corpora
 from gensim.models import ldamulticore, CoherenceModel, LdaModel
 import operator
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 import numpy as np
 import pyLDAvis.gensim as gensimvis
 
@@ -199,6 +200,8 @@ class LDAModeler:
         with open(dic_fname, 'rb') as f:
             dictionary = pickle.load(f)
         return dictionary
+
+
 
 
 

@@ -1,5 +1,7 @@
 import pickle
 import os.path
+
+import pytagcloud
 from tqdm import tqdm
 import spacy
 from datamanager import DataManager
@@ -16,6 +18,9 @@ import pandas as pd
 import logging
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 import numpy as np
+from matplotlib import pyplot as plt
+from sklearn.feature_extraction.text import CountVectorizer,TfidfVectorizer
+
 
 class TMInput:
     def __init__(self):
@@ -24,10 +29,11 @@ class TMInput:
         self.data_path = self.make_save_path()
         self.data_file_name = self.get_file_name()
         self.factor = self.get_factor()
-        self.capa_terms = ['Strong', 'Experience in', 'experience in', 'Experience', 'experience with', 'proven', 'Proven', 'Valid', 'Familiarity with', 'familiarity with',
+        self.capa_terms = ['Strong', 'Experience in', 'experience in', 'experience', 'Experience', 'experience with', 'proven', 'Proven', 'Valid', 'Familiarity with', 'familiarity with',
                            'Excellent', 'Understading', 'Ability to', 'Ability', "degree in", "Knowledge of", "Must be", 'Skills', 'Degree in', "Bachelor's", "Master", "Doctoral", 'MS degree', 'BS degree', 'Must have',
-                           'Evidence', 'Exposure', 'Graduate degree', 'Expert', 'Ph. D.', 'Proficiency in', 'proficiency', 'BS', 'MS', 'Ph.D', 'Must', 'Certifications']
-        self.capa_terms_cap = ['Strong', 'Experience', 'Proven', 'Familiarity', 'Ability', 'Excellent', 'Understading', 'Must have', 'Must be', 'Expert', 'Evidence', 'Exposure', 'Knowledge', 'Ability to', 'Proficiency', 'Demonstrate']
+                           'Evidence', 'Exposure', 'Graduate degree', 'Expert', 'Ph. D.', 'Proficiency in', 'proficiency', 'BS', 'MS', 'Ph.D', 'Must', 'Certifications', 'Skills in', 'skills in']
+        self.capa_terms_cap = ['Strong', 'Experience', 'Proven', 'Familiarity', 'Ability', 'Excellent', 'Understading', 'Must have', 'Must be', 'Expert', 'Evidence', 'Exposure', 'Knowledge', 'Ability to', 'Proficiency', 'Demonstrate', 'Deep Understanding',
+                               'Bachelors', 'Masters', 'Skills in']
 
 
         # self.job_id, self.description = self.pre_prosseccing()
@@ -60,14 +66,14 @@ class TMInput:
         #             Heavily depends on concrete scoring-function, see the scoring parameter.
         if n == 2:
             print(' ...make bigram...')
-            bigram = gensim.models.Phrases(text, min_count=3, threshold=10.0)
+            bigram = gensim.models.Phrases(text, min_count=1, threshold=10.0)
             bigram_mod = gensim.models.phrases.Phraser(bigram)
             return [bigram_mod[doc] for doc in text]
         elif n == 3:
             print(' ...make trigram...')
-            bigram = gensim.models.Phrases(text, min_count=5, threshold=20.0)
+            bigram = gensim.models.Phrases(text, min_count=1, threshold=10.0)
             bigram_mod = gensim.models.phrases.Phraser(bigram)
-            trigram = gensim.models.Phrases(bigram[text], threshold=40.0)
+            trigram = gensim.models.Phrases(bigram[text], threshold=100.0)
             trigram_mod = gensim.models.phrases.Phraser(trigram)
             return [trigram_mod[bigram_mod[doc]] for doc in text]
 
@@ -77,10 +83,15 @@ class TMInput:
         c_terms = '|'.join(self.capa_terms)
         p = re.compile(c_terms)
         for texts in descpription:
+
             texts = texts.replace('\n', '. ')   ## 줄바꿈 --> 마침표 으로 처리
+            texts = texts.replace("’", '')
+            texts = texts.replace('“', '')
+            texts = texts.replace('”', '')
             for term in self.capa_terms_cap:
                 texts = texts.replace(term, '. '+term)
             str_list = texts.split('.') ## 마침표 기준 split()
+
             find_sentence = []
             for sentence in str_list:
                 m = p.search(sentence)
@@ -88,6 +99,7 @@ class TMInput:
                     find_sentence.append(sentence)
             new_texts = '. '.join(find_sentence)
             new_description.append(new_texts)
+
         data['job_description_requirements'] = new_description
         data.to_csv(self.data_path+ self.data_file_name+'_new.csv', mode='w', encoding='utf-8')
         data['job_description'] = new_description
@@ -175,8 +187,9 @@ class TMInput:
         stop_words = stopwords.words('english')
         stopwords_list = self.get_stop_words()
         print('   -> Append stopwords list: ', len(stopwords_list), 'words')
-        # stop_words.extend(stopwords_list)  #추가할 stopwords list
-        return [[word for word in simple_preprocess(str(doc)) if word not in stop_words] for doc in texts]
+        stop_words.extend(stopwords_list)  #추가할 stopwords list
+        return [[word for word in simple_preprocess(str(doc), deacc=True, min_len=1) if word not in stop_words] for doc in texts]
+        # return [[word for word in doc if word not in stop_words] for doc in texts]
 
     def word_filtering(self, texts):
         print(' ...Filtering words...')
@@ -186,7 +199,7 @@ class TMInput:
         else:
             return [[word for word in simple_preprocess(str(doc)) if word in including_list] for doc in texts]
 
-    def lematization(self, texts, allowed_postags=['NOUN', 'PROPN']): #['NOUN', 'ADJ', 'VERB', 'ADV']
+    def lematization(self, texts, allowed_postags=['NOUN', 'PROPN', 'NUM']): #['NOUN', 'ADJ', 'VERB', 'ADV']
         print(' ...Make lematization...')
         texts_out = []
         tagging_out = []
@@ -209,7 +222,7 @@ class TMInput:
 
     def sent_to_words(self, sentences):
         for sentence in sentences:
-            yield (gensim.utils.simple_preprocess(str(sentence), deacc=True))
+            yield (gensim.utils.simple_preprocess(str(sentence), min_len=1, deacc=True))
 
     def make_unique_words(self, data_lemmatized):
         print(data_lemmatized)
@@ -220,12 +233,69 @@ class TMInput:
         file_name = input(' > file_name : ')
         return file_name
 
+    def get_word_cloud(self, word_count_dict):
+        taglist = pytagcloud.make_tags(word_count_dict.items(), maxsize=100)
+        pytagcloud.create_tag_image(taglist, self.data_path+self.data_file_name+'_word_cloud.jpg', size=(1200, 800), rectangular=False)
+
+    def get_word_graph(self, word_count_dict):
+        plt.xlabel('Word')
+        plt.ylabel('Frequency')
+        plt.grid(True)
+
+
+        Sorted_Dict_Values = sorted(word_count_dict.values(), reverse=True)
+        Sorted_Dict_Keys = sorted(word_count_dict, key=word_count_dict.get, reverse=True)
+
+        plt.bar(range(len(word_count_dict)), Sorted_Dict_Values, align='center')
+        plt.xticks(range(len(word_count_dict)), list(Sorted_Dict_Keys), rotation='90', fontsize=5)
+        plt.figure(num=None, figsize=(20, 10), dpi=80)
+        plt.show()
+
+    def get_word_count(self, data_lemmatized):
+        sline = [' '.join(line) for line in data_lemmatized]
+
+        #단어 빈도 계산
+        word_list = []
+        for line in sline:
+            for word in line.split():
+                word_list.append(word)
+        word_count = {}
+        for word in word_list:
+            if word in word_count:
+                word_count[word] += 1
+            else:
+                word_count[word] = 1
+        word_count_list = sorted(word_count.items(), key=lambda x:x[1], reverse=True)
+        key_list = []
+        value_list = []
+        for item in word_count_list:
+            key_list.append(item[0])
+            value_list.append(item[1])
+        new_word_count_dict = dict(zip(key_list[:50], value_list[:50]))  ## 워드 클라우드는 50개까지 보여주기
+        self.get_word_cloud(new_word_count_dict)
+        self.get_word_graph((new_word_count_dict))
+        df = pd.DataFrame({'Terms': key_list, 'Frequency': value_list})
+        df.to_csv(self.data_path + self.data_file_name + '_frequency.csv', mode='w', encoding='utf-8') ## 빈도 데이터 저장
+
+        ## tfidf 계산
+        tfidf = TfidfVectorizer(min_df=0)
+        tfidf_sp = tfidf.fit_transform(sline)
+        tfidf_dict = tfidf.get_feature_names()
+        data_array = tfidf_sp.toarray()
+        df = pd.DataFrame(data_array, columns=tfidf_dict)
+        df.to_csv(self.data_path + self.data_file_name + '_tf_idf.csv', mode='w', encoding='utf-8') ## tf-idf 데이터 저장
+
+        ## 문서 별 tfidf 0.5 이상되는 단어
+
+
+
+
+
+
     def pre_prosseccing(self):
         dm = DataManager()
         data = dm.load_csv(file=self.data_path + self.data_file_name+'.csv', encoding='utf-8')
         data = self.get_requirements_from_document(data)
-        print(data.head())
-
         description_reset = data.dropna(axis=0).reset_index(drop=True)
         description = data[self.factor]
         description_reset = description.dropna(axis=0).reset_index(drop=True)
@@ -246,8 +316,11 @@ class TMInput:
         # 수정된 description set 불러와 데이터 전처리 수행
         # data = dm.load_csv(file='data/doc2vec_test_data/0702/merge_0629_adj.csv', encoding='utf-8')
         sentences = self.data_text_cleansing(data)
+
         data_words = list(self.sent_to_words(sentences))
+
         data_words_nostops = self.remove_stopwords(data_words)
+
         bigram = self.make_ngram(data_words_nostops, n=2)
         data_lemmatized = self.lematization(bigram)
 
@@ -265,6 +338,8 @@ class TMInput:
         # # uniquewords = self.make_unique_words(data_lemmatized)
         with open(self.data_path + self.data_file_name+'.corpus', 'wb') as f:
             pickle.dump(data_lemmatized_filter, f)
+
+        self.get_word_count(data_lemmatized_filter)
 
         print('=== end preprocessing ===')
         return data['id'], data_lemmatized_filter
