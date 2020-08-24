@@ -4,6 +4,7 @@ from collections import defaultdict
 
 import pyLDAvis
 import pytagcloud as pytagcloud
+os.environ['PYGAME_HIDE_SUPPORT_Prompt'] = "hide"
 from gensim import corpora
 from gensim.models import ldamulticore, CoherenceModel, LdaModel
 import operator
@@ -167,6 +168,7 @@ class LDAModeler:
         topic_dict = defaultdict(list)
         with open(result_fname, 'r', encoding='utf-8') as f:
             for line in f:
+                print(line)
                 sentence, _, topic_id, prob = line.strip().split('\u241E')
                 topic_dict[int(topic_id)].append((sentence, float(prob)))
 

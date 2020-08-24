@@ -88,6 +88,7 @@ class TMInput:
             texts = texts.replace("’", '')
             texts = texts.replace('“', '')
             texts = texts.replace('”', '')
+            texts = texts.replace('\r', '')
             for term in self.capa_terms_cap:
                 texts = texts.replace(term, '. '+term)
             str_list = texts.split('.') ## 마침표 기준 split()
@@ -204,7 +205,7 @@ class TMInput:
         texts_out = []
         tagging_out = []
         # nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
-        nlp = spacy.load('en_core_web_sm')
+        nlp = spacy.load('en_core_web_lg')
         for sent in tqdm(texts):
             doc = nlp(" ".join(sent))
             texts_out.append([token.lemma_ for token in doc if token.pos_ in allowed_postags])
@@ -296,10 +297,12 @@ class TMInput:
         dm = DataManager()
         data = dm.load_csv(file=self.data_path + self.data_file_name+'.csv', encoding='utf-8')
         data = self.get_requirements_from_document(data)
-        description_reset = data.dropna(axis=0).reset_index(drop=True)
+        # description_reset = data.dropna(axis=0).reset_index(drop=True)
         description = data[self.factor]
         description_reset = description.dropna(axis=0).reset_index(drop=True)
+
         description = [sent.replace('\n', ' ') for sent in description_reset]
+
         with open(self.data_path + self.data_file_name+'_tm.documents', 'wb') as f:
             pickle.dump(description, f)
         # # 수정된 job_title에서 posting_id 가지고 오기
@@ -364,4 +367,4 @@ class TMInput:
                 continue
 
 
-tmi = TMInput()
+# tmi = TMInput()
