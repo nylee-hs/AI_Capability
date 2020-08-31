@@ -37,7 +37,10 @@ class TMInput:
 
 
         # self.job_id, self.description = self.pre_prosseccing()
-        self.description = self.pre_prosseccing()
+        # if type == 'tm':
+        #     self.description = self.pre_prosseccing()
+        # elif type == 'd2v':
+        self.job_id, self.description = self.pre_prosseccing()
 
 
     def get_factor(self): ## '0: responsiblities' 또는 '1: requirements' 입력
@@ -171,6 +174,29 @@ class TMInput:
 
     def get_including_words(self):
         print('    -> Getting including word list...')
+        dm = DataManager()
+        # tfidf_file = self.data_file_name+'_tf_idf.csv'
+        # tf_idf_df = dm.load_csv(file=self.data_path+tfidf_file, encoding='utf-8')
+        # tf_idf_sum = tf_idf_df.iloc[-1:]
+        # tf_idf_sum = tf_idf_sum.transpose()
+        # print(tf_idf_sum)
+        # print(tf_idf_sum.iloc[1])
+
+        file = self.data_file_name+'_includings_list.csv'
+        print(file)
+        including_words_list = []
+        if os.path.isfile(self.data_path+file):
+            print('     -> Including Words File is found')
+
+            df = dm.load_csv(file=self.data_path+file, encoding='utf-8')
+            including_words_list = df['Includingwords'].tolist()
+        else:
+            print('     -> Including Words File is not found')
+        print(including_words_list)
+        return including_words_list
+
+    def get_including_words(self):
+        print('    -> Getting including word list...')
         file = 'including_words_list.csv'
         including_words_list = []
         if os.path.isfile(self.data_path+file):
@@ -198,7 +224,7 @@ class TMInput:
         if len(including_list) == 0:
             return texts
         else:
-            return [[word for word in simple_preprocess(str(doc)) if word in including_list] for doc in texts]
+            return [[word for word in doc if word in including_list] for doc in texts]
 
     def lematization(self, texts, allowed_postags=['NOUN', 'PROPN', 'NUM']): #['NOUN', 'ADJ', 'VERB', 'ADV']
         print(' ...Make lematization...')
@@ -284,13 +310,11 @@ class TMInput:
         tfidf_dict = tfidf.get_feature_names()
         data_array = tfidf_sp.toarray()
         df = pd.DataFrame(data_array, columns=tfidf_dict)
-        df.to_csv(self.data_path + self.data_file_name + '_tf_idf.csv', mode='w', encoding='utf-8') ## tf-idf 데이터 저장
+        # sum_array = df.sum(axis=0)
+        df.loc['TF_IDF_SUM', :] = df.sum()
+        df.to_csv(self.data_path + self.data_file_name + '_tf_idf.csv', mode='w', encoding='utf-8')  ## tf-idf 데이터 저장
 
-        ## 문서 별 tfidf 0.5 이상되는 단어
-
-
-
-
+        ## tfidf 0.5 이상되는 단어
 
 
     def pre_prosseccing(self):
@@ -334,11 +358,11 @@ class TMInput:
         # for i in range(len(bigram)):
         #     print(f'[{i}] : {bigram[i]}')
 
-        # data_lemmatized_filter = self.word_filtering(bigram)
-        data_lemmatized_filter = data_lemmatized
+        data_lemmatized_filter = self.word_filtering(data_lemmatized)
+        # data_lemmatized_filter = data_lemmatized
         for i in range(len(data_lemmatized_filter)):
             print(f'[{i}] : {data_lemmatized_filter[i]}')
-        # # uniquewords = self.make_unique_words(data_lemmatized)
+        # uniquewords = self.make_unique_words(data_lemmatized)
         with open(self.data_path + self.data_file_name+'.corpus', 'wb') as f:
             pickle.dump(data_lemmatized_filter, f)
 

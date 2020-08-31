@@ -143,6 +143,7 @@ class Doc2VecInput:
     def pre_prosseccing(self):
         dm = DataManager()
         data = dm.load_csv(file=self.data_path + self.data_file_name+'.csv', encoding='utf-8')
+
         with open(self.data_path + self.data_file_name+'.documents', 'wb') as f:
             pickle.dump(data, f)
         with open(self.data_path + self.data_file_name+'_tm.documents', 'wb') as f:

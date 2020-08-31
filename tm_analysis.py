@@ -4,7 +4,7 @@ from collections import defaultdict
 
 import pyLDAvis
 import pytagcloud as pytagcloud
-os.environ['PYGAME_HIDE_SUPPORT_Prompt'] = "hide"
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 from gensim import corpora
 from gensim.models import ldamulticore, CoherenceModel, LdaModel
 import operator
@@ -92,7 +92,7 @@ class LDABuilder:
         print('==== Modeling Building Process ====')
         analysis_date = input(' > date : ')
         data_directory = 'data/doc2vec_test_data/'+ analysis_date + '/data/'
-        model_directory = 'data/doc2vec_test_data/'+ analysis_date + '/model/'
+        model_directory = 'data/doc2vec_test_data/'+ analysis_date + '/model_doc2vec/'
         if not os.path.exists(data_directory):
             os.makedirs(data_directory)
         if not os.path.exists(model_directory):
@@ -100,7 +100,7 @@ class LDABuilder:
         return data_directory, model_directory
 
     def saveLDAModel(self):
-        print(' ...start to build lda model...')
+        print(' ...start to build lda model_doc2vec...')
         dictionary = corpora.Dictionary(self.corpus)
         corpus = [dictionary.doc2bow(text) for text in self.corpus]
 
@@ -123,7 +123,7 @@ class LDABuilder:
                     print(doc_idx, ' || ', topic[0])
                     topic_id, prob = topic[0]
                     f.writelines(documents[doc_idx].strip() + "\u241E" + ' '.join(self.corpus[doc_idx]) + "\u241E" + str(topic_id) + "\u241E" + str(prob) + '\n')
-        lda_model.save(self.model_path + self.data_name +'_lda.model')
+        lda_model.save(self.model_path + self.data_name +'_lda.model_doc2vec')
         with open(self.model_path+self.data_name+'_model.dictionary', 'wb') as f:
             pickle.dump(dictionary, f)
 
@@ -138,9 +138,9 @@ class LDAModeler:
         self.data_path, self.model_path = self.get_path()
         self.data_name = self.get_data_name()
         self.all_topics = self.load_results(result_fname=self.model_path + self.data_name + '_lda.results')
-        self.model = LdaModel.load(self.model_path + self.data_name + '_lda.model')
+        self.model = LdaModel.load(self.model_path + self.data_name + '_lda.model_doc2vec')
         self.corpus = self.get_corpus(self.data_path + self.data_name + '.corpus')
-        self.dictionary = self.get_dictionary(self.model_path + self.data_name + '_lda.model.id2word')
+        self.dictionary = self.get_dictionary(self.model_path + self.data_name + '_lda.model_doc2vec.id2word')
 
     def get_data_name(self):
         data_name = input(' > data_name for lda : ')
@@ -149,14 +149,14 @@ class LDAModeler:
     def get_path(self):  ## directory는 'models/날짜'의 형식으로 설정해야 함
         print('==== LDA Model Analyzer ====')
         date = input(' > date : ')
-        model_directory = 'data/doc2vec_test_data/' + date + '/model/'
+        model_directory = 'data/doc2vec_test_data/' + date + '/model_doc2vec/'
         data_directory = 'data/doc2vec_test_data/' + date + '/data/'
         return data_directory, model_directory
 
     def view_lda_model(self, model, corpus, dictionary):
         corpus = [dictionary.doc2bow(doc) for doc in corpus]
         prepared_data = gensimvis.prepare(model, corpus, dictionary, mds='mmds')
-        print(prepared_data)
+        pyLDAvis.save_json(prepared_data, self.model_path+self.data_name+'_vis_result.json')
         pyLDAvis.save_html(prepared_data, self.model_path+self.data_name+'_vis_result.html')
 
     def get_corpus(self, corpus_file):
@@ -180,17 +180,24 @@ class LDAModeler:
         return self.all_topics[topic_id][:topn]
 
     def show_topic_words(self, topic_id, topn=10):
-        return self.model.show_topic(topic_id, topn)
+        print(self.model.show_topic(topic_id, len(self.corpus)))
+        return self.model.show_topic(topic_id, len(self.corpus))
 
     def show_topics(self, model):
         return self.model.show_topics(fommated=False)
 
-    # def show_new_document_topic(self, documents, model):
+    def show_document_topics(self):
+        topics = self.model.get_document_topics(self.corpus, minimum_probability=0.5, per_word_topics=False)
+        for doc_idx, topic in enumerate(topics):
+            print(doc_idx, ' : ', topic)
+
+
+    # def show_new_document_topic(self, documents, model_doc2vec):
     #     mecab = Mecab()
     #     tokenized_documents = [mecab.morphs(document) for document in documents]
-    #     curr_corpus = [self.model.id2word.doc2bow(tokenized_documents) for tokenized_document in
+    #     curr_corpus = [self.model_doc2vec.id2word.doc2bow(tokenized_documents) for tokenized_document in
     #                    tokenized_documents]
-    #     topics = self.model.get_document_topics(curr_corpus, minimum_probability=0.5, per_word_topics=False)
+    #     topics = self.model_doc2vec.get_document_topics(curr_corpus, minimum_probability=0.5, per_word_topics=False)
     #     for doc_idx, topic in enumerate(topics):
     #         if len(topic) == 1:
     #             topic_id, prob = topic[0]

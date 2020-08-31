@@ -1,22 +1,14 @@
-import spacy
+import json
 import pandas as pd
 
 
-texts = [['Minimum years of work experience: 12 years experience']]
-df = pd.DataFrame({'desc':texts})
-print(df)
-data = df['desc']
-data = data.str.replace(pat=r'[^A-Za-z0-9]', repl= r' ', regex=True)
-nlp = spacy.load('en_core_web_sm')
-print(data)
-for sent in texts:
-    # print(sent)
-    doc = nlp(" ".join(sent))
-    # print(doc)
-    print([token.lemma_ for token in doc])
-    print([token.pos_ for token in doc])
-# import matplotlib.pyplot as plt
-# plt.plot(['a', 'b'], [1.0, 1.1], marker='o')
-# plt.xlabel('topic')
-# plt.ylabel('coherence value')
-# plt.draw()
+with open("data/doc2vec_test_data/0828/model/0828_manager_vis_result.json", "r") as st_json:
+    st_python = json.load(st_json)
+total = st_python['tinfo']['Total']
+freq = st_python['tinfo']['Freq']
+term = st_python['tinfo']['Term']
+logprob = st_python['tinfo']['logprob']
+loglift = st_python['tinfo']['loglift']
+
+df = pd.DataFrame({'Term': term, 'Freq':freq, 'Total':total, 'logprob':logprob, 'loglift':loglift})
+df.to_csv('data/doc2vec_test_data/0828/model_doc2vec/test_json2.csv', encoding='utf-8', mode='w')

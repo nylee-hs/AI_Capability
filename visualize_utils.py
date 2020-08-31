@@ -5,7 +5,7 @@ from sklearn.manifold import TSNE
 from sklearn.metrics.pairwise import cosine_similarity
 
 from bokeh.io import export_png, output_notebook, show
-from bokeh.plotting import figure
+from bokeh.plotting import figure, output_file, save
 from bokeh.models import Plot, Range1d, MultiLine, Circle, HoverTool, TapTool, BoxSelectTool, LinearColorMapper, ColumnDataSource, LabelSet, SaveTool, ColorBar, BasicTicker
 from bokeh.models.graphs import from_networkx, NodesAndLinkedEdges, EdgesAndLinkedNodes
 from bokeh.palettes import Spectral8
@@ -237,6 +237,8 @@ def visualize_between_words(words, vecs, palette="Viridis256", filename="/notebo
                          label_standoff=6, border_line_color=None, location=(0, 0))
     p.add_layout(color_bar, 'right')
     show(p)
+
+
     # if use_notebook:
     #     output_notebook()
     #     show(p)
