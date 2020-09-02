@@ -20,14 +20,41 @@ import numpy as np
 import logging
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
-class Doc2VecInput:
+class Configuration:
     def __init__(self):
-        # self.tokenizer = Mecab()
-        # self.corpus_fname = 'data/doc2vec_test_data/processed_review_movieid.txt'
-        self.data_path = self.make_save_path()
+        self.date = self.make_save_path()
+        self.data_path = self.date + '/data/'
+        self.model_path = self.date + '/model_doc2vec/'
         self.data_file_name = self.get_file_name()
-
         self.factor = self.get_factor()
+
+    def get_file_name(self):
+        file_name = input(' > file_name : ')
+        return file_name
+
+    def get_factor(self): ## '0: responsiblities' 또는 '1: requirements' 입력
+        factor = input(' > factor(description: 0, responsibilities:1, requirements:2) : ')
+        if factor == '0':
+            factor = 'job_description'
+        elif factor == '1':
+            factor = 'job_description_responsibilities'
+        elif factor == '2':
+            factor = 'job_description_requirements'
+        return factor
+
+    def make_save_path(self): ## directory는 'models/날짜'의 형식으로 설정해야 함
+        print('==== Configuration ====')
+        directory = 'data/doc2vec_test_data/' + input('data date : ')
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        return directory
+
+
+class Doc2VecInput:
+    def __init__(self, config):
+        self.data_path = config.data_path
+        self.data_file_name = config.data_file_name
+        self.factor = config.factor
         self.capa_terms = ['Strong', 'Experience in', 'experience in', 'experience', 'Experience', 'experience with', 'proven', 'Proven', 'Valid', 'Familiarity with', 'familiarity with',
                            'Excellent', 'Understading', 'Ability to', 'Ability', "degree in", "Knowledge of", "Must be", 'Skills', 'Degree in', "Bachelor's", "Master", "Doctoral", 'MS degree', 'BS degree', 'Must have',
                            'Evidence', 'Exposure', 'Graduate degree', 'Expert', 'Ph. D.', 'Proficiency in', 'proficiency', 'BS', 'MS', 'Ph.D', 'Must', 'Certifications', 'Skills in', 'skills in']
@@ -117,13 +144,13 @@ class Doc2VecInput:
         file = 'including_words_list.csv'
         including_words_list = []
         if os.path.isfile(self.data_path+file):
-            print('     -> Including Words File is found')
+            print('    -> Including Words File is found')
             dm = DataManager()
             df = dm.load_csv(file=self.data_path+file, encoding='utf-8')
+            print(f'    -> total : {df.size} words')
             including_words_list = df['Includingwords'].tolist()
         else:
             print('     -> Including Words File is not found')
-        print(including_words_list)
         return including_words_list
 
     def remove_stopwords(self, texts):
@@ -251,6 +278,7 @@ class Doc2VecInput:
         plt.show()
 
     def pre_prosseccing(self):
+        print('==== Preprocessing ====')
         dm = DataManager()
         data = dm.load_csv(file=self.data_path + self.data_file_name+'.csv', encoding='utf-8')
         data = self.get_requirements_from_document(data)
@@ -290,8 +318,8 @@ class Doc2VecInput:
         #     print(f'[{i}] : {bigram[i]}')
 
         data_lemmatized_filter = self.word_filtering(bigram)
-        for i in range(len(data_lemmatized_filter)):
-            print(f'[{i}] : {data_lemmatized_filter[i]}')
+        # for i in range(len(data_lemmatized_filter)):
+        #     print(f'[{i}] : {data_lemmatized_filter[i]}')
         # # uniquewords = self.make_unique_words(data_lemmatized)
         with open(self.data_path + self.data_file_name+'.corpus', 'wb') as f:
             pickle.dump(data_lemmatized_filter, f)

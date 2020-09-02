@@ -17,58 +17,62 @@ import multiprocessing
 from sklearn.manifold import TSNE
 
 class Doc2VecModeler:
-    def __init__(self, tagged_doc):
-        self.model_path = self.make_save_path()
-        self.data_name = self.get_file_name()
+    def __init__(self, tagged_doc, config):
+        self.model_path = config.model_path
+        self.data_path = config.data_path
+        self.data_name = config.data_file_name
         self.tagged_doc = tagged_doc
         self.model = self.run()
 
     def run(self):
-        cores = multiprocessing.cpu_count()
-        model = Doc2Vec(self.tagged_doc, dm=0, dbow_words=1, window=10, seed=1234, alpha=0.025, vector_size=850, min_count=10,
-                min_alpha=0.025, workers=cores, hs=1, negative=20, epochs=10)
+        # cores = multiprocessing.cpu_count()
+        model = Doc2Vec(self.tagged_doc, dm=0, dbow_words=1, window=10, alpha=0.025, vector_size=1024, min_count=10,
+                min_alpha=0.025, workers=4, hs=1, negative=20, epochs=10)
         model.save(self.model_path + self.data_name + '_doc2vec.model')
         print('==== End Doc2Vec Process ====')
         return model
 
-    def make_save_path(self): ## directory는 'models/날짜'의 형식으로 설정해야 함
-        print('==== Start Doc2Vec Process ====')
-        directory = 'data/doc2vec_test_data/' + input('data date : ') + '/model_doc2vec/'
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-        return directory
-
-    def get_file_name(self):
-        file_name = input(' > file_name : ')
-        return file_name
+    # def make_save_path(self): ## directory는 'models/날짜'의 형식으로 설정해야 함
+    #     print('==== Start Doc2Vec Process ====')
+    #     directory = 'data/doc2vec_test_data/' + input('data date : ') + '/model_doc2vec/'
+    #     if not os.path.exists(directory):
+    #         os.makedirs(directory)
+    #     return directory
+    #
+    # def get_file_name(self):
+    #     file_name = input(' > file_name : ')
+    #     return file_name
 
 class Doc2VecEvaluator:
 
-    def __init__(self, model_fname, use_notebook=False):
-        self.model = Doc2Vec.load(model_fname)
+    def __init__(self, config, use_notebook=False):
+        self.data_path = config.data_path
+        self.model_path = config.model_path
+        self.data_name = config.data_file_name
+
+        self.model = Doc2Vec.load(self.model_path+self.data_name+'_doc2vec.model')
         self.doc2idx = {el:idx for idx, el in enumerate(self.model.docvecs.doctags.keys())}
         self.use_notebook = use_notebook
         dm = DataManager()
-        self.data_path, self.model_path = self.make_save_path()
-        self.data_name = self.get_data_name()
+
         self.data = dm.load_csv(file=self.data_path+self.data_name+'.csv', encoding='utf-8')
         self.size = len(self.doc2idx.values())
 
 
-    def get_data_name(self):
-        data_name = input(' > data_name for doc2vec : ') ## 분석하고자 하는 csv 파일의 이름을 입력
-        return data_name
-
-    def make_save_path(self): ## directory는 'models/날짜'의 형식으로 설정해야 함
-        print('==== Analyzing Doc2Vec Process ====')
-        analysis_date = input(' > date : ')
-        data_directory = 'data/doc2vec_test_data/'+ analysis_date + '/data/'
-        model_directory = 'data/doc2vec_test_data/' + analysis_date + '/model_doc2vec/'
-        if not os.path.exists(data_directory):
-            os.makedirs(data_directory)
-        if not os.path.exists(model_directory):
-            os.makedirs(model_directory)
-        return data_directory, model_directory
+    # def get_data_name(self):
+    #     data_name = input(' > data_name for doc2vec : ') ## 분석하고자 하는 csv 파일의 이름을 입력
+    #     return data_name
+    #
+    # def make_save_path(self): ## directory는 'models/날짜'의 형식으로 설정해야 함
+    #     print('==== Analyzing Doc2Vec Process ====')
+    #     analysis_date = input(' > date : ')
+    #     data_directory = 'data/doc2vec_test_data/'+ analysis_date + '/data/'
+    #     model_directory = 'data/doc2vec_test_data/' + analysis_date + '/model_doc2vec/'
+    #     if not os.path.exists(data_directory):
+    #         os.makedirs(data_directory)
+    #     if not os.path.exists(model_directory):
+    #         os.makedirs(model_directory)
+    #     return data_directory, model_directory
 
     def get_words(self, corpus_file):
         with open(corpus_file, 'rb') as f:
@@ -147,6 +151,7 @@ class Doc2VecEvaluator:
         return word_count, word_count_list
 
     def most_similar_result(self, data_size, topn):
+        print('   -> creating most similar job matrix')
         df = pd.DataFrame()
         i = 0
         keys_list = list(self.doc2idx.keys())
@@ -155,7 +160,7 @@ class Doc2VecEvaluator:
 
             title = self.get_job_title(job_id)[0]
             title = f'{title}({str(i)})'
-            similar_jobs = self.model.docvecs.most_similar(job_id, topn=topn)
+            similar_jobs = self.model.docvecs.most_similar(job_id, topn=len(keys_list))
             sim_list = []
             for sim_job_id, score in similar_jobs:
                 if score >= 0.7:
@@ -182,7 +187,8 @@ class Doc2VecEvaluator:
         # print(s)
         return s
 
-    def get_simiarity(self, model):
+    def get_similarity(self, model):
+        print('   -> get similarity values')
         keys_list = list(self.doc2idx.keys())
         size = len(keys_list)
         keys_list = [key.split('_')[2] for key in keys_list]
@@ -216,6 +222,8 @@ class Doc2VecEvaluator:
 
     def word_visulize(self, words, vecs, palette="Viridis256", filename="/notebooks/embedding/words.png",
                         use_notebook=False):
+        circle_size = input('     >> circle size : ')
+        text_size = input('     >> font size : ') + 'pt'
 
         tsne = TSNE(n_components=2)
         tsne_results = tsne.fit_transform(vecs)
@@ -228,12 +236,12 @@ class Doc2VecEvaluator:
         # print(ColumnDataSource.from_df(df))
         source = ColumnDataSource(ColumnDataSource.from_df(df))
         labels = LabelSet(x="x", y="y", text="word", y_offset=8,
-                          text_font_size="5pt", text_color="#555555",
+                          text_font_size=text_size, text_color="#555555",
                           source=source, text_align='center')
 
         color_mapper = LinearColorMapper(palette=palette, low=min(tsne_results[:, 1]), high=max(tsne_results[:, 1]))
         plot = figure(plot_width=1200, plot_height=1200)
-        plot.scatter("x", "y", size=5, source=source, color={'field': 'y', 'transform': color_mapper}, line_color=None,
+        plot.scatter("x", "y", size=int(circle_size), source=source, color={'field': 'y', 'transform': color_mapper}, line_color=None,
                      fill_alpha=0.8)
         plot.add_layout(labels)
         show(plot)
@@ -241,7 +249,7 @@ class Doc2VecEvaluator:
         save(plot)
 
     def visualize_jobs(self, palette='Viridis256', type='between'):
-        print('Visualization Start')
+        print('   -> Visualization Start')
         job_ids = self.get_titles_in_corpus(n_sample=len(self.model.docvecs.doctags.keys()))
         #job_titles = [key for key in job_ids.keys()]
         keys_list = [key for key in job_ids.keys()]
