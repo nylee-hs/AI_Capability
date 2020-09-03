@@ -2,7 +2,8 @@ import pickle
 import os.path
 import pytagcloud
 from matplotlib import pyplot as plt
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn import preprocessing
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from tqdm import tqdm
 import spacy
 from datamanager import DataManager
@@ -147,8 +148,8 @@ class Doc2VecInput:
             print('    -> Including Words File is found')
             dm = DataManager()
             df = dm.load_csv(file=self.data_path+file, encoding='utf-8')
-            print(f'    -> total : {df.size} words')
             including_words_list = df['Includingwords'].tolist()
+            print(f'    -> total : {len(including_words_list)} words')
         else:
             print('     -> Including Words File is not found')
         return including_words_list
@@ -225,7 +226,8 @@ class Doc2VecInput:
 
     def get_word_count(self, data_lemmatized):
         sline = [' '.join(line) for line in data_lemmatized]
-
+        print('>>>>>>>>>>>>>>>>>>>>>')
+        print(len(sline))
         #단어 빈도 계산
         word_list = []
         for line in sline:
@@ -250,8 +252,19 @@ class Doc2VecInput:
         df.to_csv(self.data_path + self.data_file_name + '_frequency.csv', mode='w', encoding='utf-8') ## 빈도 데이터 저장
 
         ## tfidf 계산
-        tfidf = TfidfVectorizer(min_df=0)
-        tfidf_sp = tfidf.fit_transform(sline)
+        cvectorizer = CountVectorizer(min_df=0)
+        dtm = cvectorizer.fit_transform(sline)
+        dtm_features = cvectorizer.get_feature_names()
+        temp = dtm.toarray()
+        print(len(temp))
+        print(len(temp[0]))
+        print(len(dtm_features))
+        cvec_df = pd.DataFrame(temp, columns=dtm_features)
+        cvec_df.to_csv(self.data_path + self.data_file_name + '_dtm.csv', mode='w', encoding='utf-8')  ## dtm 데이터 저장
+
+
+        tfidf = TfidfVectorizer(min_df=0,  sublinear_tf=True, max_df=0.8).fit(sline)
+        tfidf_sp = tfidf.transform(sline)
         tfidf_dict = tfidf.get_feature_names()
         data_array = tfidf_sp.toarray()
         df = pd.DataFrame(data_array, columns=tfidf_dict)
@@ -335,6 +348,7 @@ class Doc2VecInput:
                 tokens = self.description[i]
                 # tokens = self.tokenizer.morphs(sentence)
                 job_id = self.job_id[i]
+                print(job_id)
                 tagged_doc = TaggedDocument(words=tokens, tags=['Job_ID_%s' % job_id])
                 yield tagged_doc
 
@@ -349,4 +363,5 @@ class Doc2VecInput:
                 print(ex)
                 continue
 
-# dvi = Doc2VecInput()
+#config = Configuration()
+#dvi = Doc2VecInput(config)

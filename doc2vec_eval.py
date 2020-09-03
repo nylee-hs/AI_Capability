@@ -27,7 +27,7 @@ class Doc2VecModeler:
     def run(self):
         # cores = multiprocessing.cpu_count()
         model = Doc2Vec(self.tagged_doc, dm=0, dbow_words=1, window=10, alpha=0.025, vector_size=1024, min_count=10,
-                min_alpha=0.025, workers=4, hs=1, negative=20, epochs=10)
+                min_alpha=0.025, workers=4, hs=1, negative=20, epochs=20)
         model.save(self.model_path + self.data_name + '_doc2vec.model')
         print('==== End Doc2Vec Process ====')
         return model
@@ -190,8 +190,9 @@ class Doc2VecEvaluator:
     def get_similarity(self, model):
         print('   -> get similarity values')
         keys_list = list(self.doc2idx.keys())
-        size = len(keys_list)
+
         keys_list = [key.split('_')[2] for key in keys_list]
+        print(keys_list)
         # total_result_dict = []
         # for i in range(size):
         #     result = self.model_doc2vec.docvecs.most_similar('Job_ID_'+str(i), topn=size)
@@ -216,6 +217,7 @@ class Doc2VecEvaluator:
         df.columns = col_name
         df.index = row_name
         print(df.head())
+        df.loc['Similarity_Average', :] = df.mean()
         df.to_csv(self.model_path+self.data_name+'_sim_matrix.csv', mode='w', encoding='utf-8')
         return df
 
@@ -264,7 +266,7 @@ class Doc2VecEvaluator:
 
 
         #job_titles = self.get_job_title()
-        job_vecs = [self.model.docvecs[self.doc2idx[job_id]] for job_id in tqdm(job_ids.keys())]
+        job_vecs = [self.model.docvecs[self.doc2idx[job_id]] for job_id in job_ids.keys()]
 
         if type == 'between':
             self.word_visulize(job_titles, job_vecs, palette, use_notebook=self.use_notebook)
