@@ -23,11 +23,12 @@ def main():
     choice = input(' >> Select Number : ')
 
     if choice == '1':
-        tagged_doc = Doc2VecInput(config)
+        input_data = Doc2VecInput(config)
+
         #cores = multiprocessing.cpu_count()
 
         #model = Doc2Vec(tagged_doc, dm=0, dbow_words=1, window=8, seed=1234, alpha=0.025, vector_size=850, min_count=1, min_alpha=0.025, workers=cores, hs=1, negative=10, epochs=10)
-        Doc2VecModeler(config=config, tagged_doc=tagged_doc)
+        Doc2VecModeler(config=config, tagged_doc=input_data.tagged_doc_)
 
         #
         model = Doc2VecEvaluator(config=config)

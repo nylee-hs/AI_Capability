@@ -63,6 +63,7 @@ class Doc2VecInput:
                                'Bachelors', 'Masters', 'Skills in']
 
         self.job_id, self.description = self.pre_prosseccing()
+        self.tagged_doc_ = self.make_tag_document()
 
 
     def get_factor(self): ## '0: responsiblities' 또는 '1: requirements' 입력
@@ -226,8 +227,7 @@ class Doc2VecInput:
 
     def get_word_count(self, data_lemmatized):
         sline = [' '.join(line) for line in data_lemmatized]
-        print('>>>>>>>>>>>>>>>>>>>>>')
-        print(len(sline))
+        # print(len(sline))
         #단어 빈도 계산
         word_list = []
         for line in sline:
@@ -256,9 +256,9 @@ class Doc2VecInput:
         dtm = cvectorizer.fit_transform(sline)
         dtm_features = cvectorizer.get_feature_names()
         temp = dtm.toarray()
-        print(len(temp))
-        print(len(temp[0]))
-        print(len(dtm_features))
+        # print(len(temp))
+        # print(len(temp[0]))
+        # print(len(dtm_features))
         cvec_df = pd.DataFrame(temp, columns=dtm_features)
         cvec_df.to_csv(self.data_path + self.data_file_name + '_dtm.csv', mode='w', encoding='utf-8')  ## dtm 데이터 저장
 
@@ -331,6 +331,7 @@ class Doc2VecInput:
         #     print(f'[{i}] : {bigram[i]}')
 
         data_lemmatized_filter = self.word_filtering(bigram)
+
         # for i in range(len(data_lemmatized_filter)):
         #     print(f'[{i}] : {data_lemmatized_filter[i]}')
         # # uniquewords = self.make_unique_words(data_lemmatized)
@@ -342,26 +343,37 @@ class Doc2VecInput:
         print('=== end preprocessing ===')
         return data['id'], data_lemmatized_filter
 
-    def __iter__(self):
-        for i in range(len(self.description)):
-            try:
-                tokens = self.description[i]
-                # tokens = self.tokenizer.morphs(sentence)
-                job_id = self.job_id[i]
-                print(job_id)
-                tagged_doc = TaggedDocument(words=tokens, tags=['Job_ID_%s' % job_id])
-                yield tagged_doc
+    def make_tag_document(self):
+        tagged_doc = []
+        i = 0
+        for id in self.job_id:
+            tokens = self.description[i]
+            doc = TaggedDocument(words=tokens, tags=['Job_ID_%s' % id])
+            tagged_doc.append(doc)
+            i += 1
+        return tagged_doc
 
-        # with open(self.corpus_fname, encoding='utf-8') as f:
-        #     for line in f:
-        #         try:
-        #             sentence, movie_id = line.strip().split("\u241E")
-        #             tokens = self.tokenizer.morphs(sentence)
-        #             tagged_doc = TaggedDocument(words=tokens, tags=['MOVIE_%s' % movie_id])
-        #             yield tagged_doc
-            except Exception as ex:
-                print(ex)
-                continue
+
+    # def __iter__(self):
+    #     for i in range(len(self.description)):
+    #         try:
+    #             tokens = self.description[i]
+    #             # tokens = self.tokenizer.morphs(sentence)
+    #             job_id = self.job_id[i]
+    #             tagged_doc = TaggedDocument(words=tokens, tags=['Job_ID_%s' % job_id])
+    #             print(tagged_doc.tags)
+    #             yield tagged_doc
+    #
+    #     # with open(self.corpus_fname, encoding='utf-8') as f:
+    #     #     for line in f:
+    #     #         try:
+    #     #             sentence, movie_id = line.strip().split("\u241E")
+    #     #             tokens = self.tokenizer.morphs(sentence)
+    #     #             tagged_doc = TaggedDocument(words=tokens, tags=['MOVIE_%s' % movie_id])
+    #     #             yield tagged_doc
+    #         except Exception as ex:
+    #             print(ex)
+    #             continue
 
 #config = Configuration()
 #dvi = Doc2VecInput(config)

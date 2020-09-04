@@ -1,6 +1,7 @@
 from bokeh.models import ColumnDataSource, LabelSet, LinearColorMapper
 from bokeh.plotting import figure, output_file, save
 from bokeh.io import export_png, output_notebook, show
+from bokeh.transform import factor_cmap
 from gensim.models import Doc2Vec
 from datamanager import DataManager
 import random
@@ -25,6 +26,7 @@ class Doc2VecModeler:
         self.model = self.run()
 
     def run(self):
+        print('==== Start Doc2Vec Modeling ====')
         # cores = multiprocessing.cpu_count()
         model = Doc2Vec(self.tagged_doc, dm=0, dbow_words=1, window=10, alpha=0.025, vector_size=1024, min_count=10,
                 min_alpha=0.025, workers=4, hs=1, negative=20, epochs=20)
@@ -192,7 +194,7 @@ class Doc2VecEvaluator:
         keys_list = list(self.doc2idx.keys())
 
         keys_list = [key.split('_')[2] for key in keys_list]
-        print(keys_list)
+
         # total_result_dict = []
         # for i in range(size):
         #     result = self.model_doc2vec.docvecs.most_similar('Job_ID_'+str(i), topn=size)
@@ -221,13 +223,12 @@ class Doc2VecEvaluator:
         df.to_csv(self.model_path+self.data_name+'_sim_matrix.csv', mode='w', encoding='utf-8')
         return df
 
-
     def word_visulize(self, words, vecs, palette="Viridis256", filename="/notebooks/embedding/words.png",
                         use_notebook=False):
         circle_size = input('     >> circle size : ')
         text_size = input('     >> font size : ') + 'pt'
 
-        tsne = TSNE(n_components=2)
+        tsne = TSNE(n_components=2, perplexity=5)
         tsne_results = tsne.fit_transform(vecs)
 
         df = pd.DataFrame(columns=['x', 'y', 'word'])
@@ -242,8 +243,55 @@ class Doc2VecEvaluator:
                           source=source, text_align='center')
 
         color_mapper = LinearColorMapper(palette=palette, low=min(tsne_results[:, 1]), high=max(tsne_results[:, 1]))
+
         plot = figure(plot_width=1200, plot_height=1200)
         plot.scatter("x", "y", size=int(circle_size), source=source, color={'field': 'y', 'transform': color_mapper}, line_color=None,
+                     fill_alpha=0.8)
+
+        plot.add_layout(labels)
+        show(plot)
+        output_file(self.model_path+self.data_name+'_tsne.html')
+        save(plot)
+
+    def word_visulize_group(self, words, vecs, palette="Viridis256", filename="/notebooks/embedding/words.png",
+                        use_notebook=False):
+        circle_size = input('     >> circle size : ')
+        text_size = input('     >> font size : ') + 'pt'
+        groups=['Manager', 'Senior', 'Intermediate', 'Junior']
+        group_list =[]
+        for word in words:
+            if word.split('_')[1] == 'M':
+                group_list.append(groups[0])
+            elif word.split('_')[1] == 'S':
+                group_list.append(groups[1])
+            elif word.split('_')[1] == 'I':
+                group_list.append(groups[2])
+            elif word.split('_')[1] == 'J':
+                group_list.append(groups[3])
+
+        tsne = TSNE(n_components=2, perplexity=10)
+        tsne_results = tsne.fit_transform(vecs)
+
+        df = pd.DataFrame(columns=['x', 'y', 'word', 'group'])
+        df['x'], df['y'], df['word'], df['group'] = tsne_results[:, 0], tsne_results[:, 1], list(words), group_list
+        # df['x'], df['y'] = tsne_results[:, 0], tsne_results[:, 1]
+        df = df.fillna('')
+        print(df.head())
+        # print(ColumnDataSource.from_df(df))
+        source = ColumnDataSource(ColumnDataSource.from_df(df))
+        labels = LabelSet(x="x", y="y", text="word", y_offset=8,
+                          text_font_size=text_size, text_color="#555555",
+                          source=source, text_align='center')
+
+        color_mapper = LinearColorMapper(palette=palette, low=min(tsne_results[:, 1]), high=max(tsne_results[:, 1]))
+
+        group_name = ['Manager', 'Senior', 'Intermediate', 'Junior']
+        colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
+        plot = figure(plot_width=1200, plot_height=1200)
+        # plot.scatter("x", "y", size=int(circle_size), source=source, color={'field': 'y', 'transform': color_mapper}, line_color=None,
+        #              fill_alpha=0.8)
+        plot.scatter("x", "y", size=int(circle_size), source=source, color=factor_cmap('group', colors, group_name),legend_field='group',
+                     line_color=None,
                      fill_alpha=0.8)
         plot.add_layout(labels)
         show(plot)
@@ -252,6 +300,7 @@ class Doc2VecEvaluator:
 
     def visualize_jobs(self, palette='Viridis256', type='between'):
         print('   -> Visualization Start')
+        view_type = input('    >> Group(Y/N) : ').capitalize()
         job_ids = self.get_titles_in_corpus(n_sample=len(self.model.docvecs.doctags.keys()))
         #job_titles = [key for key in job_ids.keys()]
         keys_list = [key for key in job_ids.keys()]
@@ -268,8 +317,8 @@ class Doc2VecEvaluator:
         #job_titles = self.get_job_title()
         job_vecs = [self.model.docvecs[self.doc2idx[job_id]] for job_id in job_ids.keys()]
 
-        if type == 'between':
-            self.word_visulize(job_titles, job_vecs, palette, use_notebook=self.use_notebook)
+        if view_type == 'Y':
+            self.word_visulize_group(job_titles, job_vecs, palette, use_notebook=self.use_notebook)
         else:
             self.word_visulize(job_titles, job_vecs, palette, use_notebook=self.use_notebook)
 
