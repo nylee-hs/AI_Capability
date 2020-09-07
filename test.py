@@ -1,14 +1,14 @@
-import json
-import pandas as pd
+import spacy
 
+# Load English tokenizer, tagger, parser, NER and word vectors
+nlp = spacy.load("en_core_web_lg")
 
-with open("data/doc2vec_test_data/0828/model/0828_manager_vis_result.json", "r") as st_json:
-    st_python = json.load(st_json)
-total = st_python['tinfo']['Total']
-freq = st_python['tinfo']['Freq']
-term = st_python['tinfo']['Term']
-logprob = st_python['tinfo']['logprob']
-loglift = st_python['tinfo']['loglift']
+text = ("programming ")
+doc = nlp(text)
 
-df = pd.DataFrame({'Term': term, 'Freq':freq, 'Total':total, 'logprob':logprob, 'loglift':loglift})
-df.to_csv('data/doc2vec_test_data/0828/model_doc2vec/test_json2.csv', encoding='utf-8', mode='w')
+print("Noun phrases:", [chunk.text for chunk in doc.noun_chunks])
+print("Verbs:", [token.lemma_ for token in doc if token.pos_ == "VERB"])
+
+# Find named entities, phrases and concepts
+for entity in doc.ents:
+    print(entity.text, entity.label_)

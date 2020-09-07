@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 import os
 import multiprocessing
 from sklearn.manifold import TSNE
+from sklearn.cross_decomposition import PLSRegression
 
 class Doc2VecModeler:
     def __init__(self, tagged_doc, config):
@@ -29,7 +30,7 @@ class Doc2VecModeler:
         print('==== Start Doc2Vec Modeling ====')
         # cores = multiprocessing.cpu_count()
         model = Doc2Vec(self.tagged_doc, dm=0, dbow_words=1, window=10, alpha=0.025, vector_size=1024, min_count=10,
-                min_alpha=0.025, workers=4, hs=1, negative=20, epochs=20)
+                min_alpha=0.025, workers=4, hs=1, negative=20, epochs=20, sample=0.001)
         model.save(self.model_path + self.data_name + '_doc2vec.model')
         print('==== End Doc2Vec Process ====')
         return model
@@ -168,10 +169,10 @@ class Doc2VecEvaluator:
                 if score >= 0.7:
                     sim_job_titles = self.get_job_title(sim_job_id)[0]
                     sim_job_id = sim_job_id.split('_')[2]
-                    input = f'{sim_job_titles}({sim_job_id})'
+                    input = f'{sim_job_titles}'
                     sim_list.append(input)
                 else:
-                    sim_list.append('None')
+                    sim_list.append('')
             i = i + 1
             df.loc[:, title] = pd.Series(sim_list)
 
@@ -269,7 +270,7 @@ class Doc2VecEvaluator:
             elif word.split('_')[1] == 'J':
                 group_list.append(groups[3])
 
-        tsne = TSNE(n_components=2, perplexity=10)
+        tsne = TSNE(n_components=2, perplexity=1, n_iter=300, random_state=0)
         tsne_results = tsne.fit_transform(vecs)
 
         df = pd.DataFrame(columns=['x', 'y', 'word', 'group'])

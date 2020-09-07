@@ -15,6 +15,7 @@ from gensim.utils import simple_preprocess
 import re
 import nltk
 from nltk.corpus import stopwords
+from utilizer import Integration
 from pprint import pprint
 import pandas as pd
 import numpy as np
@@ -171,7 +172,7 @@ class Doc2VecInput:
         else:
             return [[word for word in doc if word in including_list] for doc in texts]
 
-    def lematization(self, texts, allowed_postags=['NOUN', 'PROPN', 'NUM']): #['NOUN', 'ADJ', 'VERB', 'ADV']
+    def lematization(self, texts, allowed_postags=['NOUN', 'PROPN', 'NUM', 'VERB']): #['NOUN', 'ADJ', 'VERB', 'ADV']
         print(' ...Make lematization...')
         texts_out = []
         nlp = spacy.load('en_core_web_lg', disable=['parser', 'ner'])
@@ -293,7 +294,9 @@ class Doc2VecInput:
     def pre_prosseccing(self):
         print('==== Preprocessing ====')
         dm = DataManager()
-        data = dm.load_csv(file=self.data_path + self.data_file_name+'.csv', encoding='utf-8')
+        integ = Integration()
+        # data = dm.load_csv(file=self.data_path + self.data_file_name+'.csv', encoding='utf-8')
+        data = integ.getIntegratedData()
         data = self.get_requirements_from_document(data)
 
         description = data[self.factor]
@@ -332,15 +335,17 @@ class Doc2VecInput:
 
         data_lemmatized_filter = self.word_filtering(bigram)
 
-        # for i in range(len(data_lemmatized_filter)):
-        #     print(f'[{i}] : {data_lemmatized_filter[i]}')
+        for i in range(len(data_lemmatized_filter)):
+            print(f'[{i}] : {data_lemmatized_filter[i]}')
         # # uniquewords = self.make_unique_words(data_lemmatized)
         with open(self.data_path + self.data_file_name+'.corpus', 'wb') as f:
             pickle.dump(data_lemmatized_filter, f)
 
         self.get_word_count(data_lemmatized_filter)
-
+        final_terms = pd.DataFrame({'terms': data_lemmatized_filter})
+        final_terms.to_csv(self.data_path + self.data_file_name + '_final_terms.csv', mode='w', encoding='utf-8')
         print('=== end preprocessing ===')
+
         return data['id'], data_lemmatized_filter
 
     def make_tag_document(self):
@@ -375,5 +380,5 @@ class Doc2VecInput:
     #             print(ex)
     #             continue
 
-#config = Configuration()
-#dvi = Doc2VecInput(config)
+config = Configuration()
+dvi = Doc2VecInput(config)

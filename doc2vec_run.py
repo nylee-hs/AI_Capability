@@ -91,5 +91,9 @@ def main():
         model = Doc2VecEvaluator(config=config)
         model.visualize_jobs(type='tsne')
 
+    elif choice == '4':
+        model = Doc2VecEvaluator(config=config)
+        model.most_similar_result(len(model.doc2idx.values()), 10)
+
 if __name__=='__main__':
     main()
