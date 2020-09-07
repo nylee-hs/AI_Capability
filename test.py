@@ -1,14 +1,15 @@
-import spacy
+import networkx as nx
+import matplotlib.pyplot as plt
 
-# Load English tokenizer, tagger, parser, NER and word vectors
-nlp = spacy.load("en_core_web_lg")
+# 그래프 생성
+G = nx.DiGraph()
 
-text = ("programming ")
-doc = nlp(text)
+G.add_nodes_from(['Strategic Program Manager, Customer Solutions (Contract)(66)', 'Strategic Program Manager, Customer Solutions (Contract)(89)', 'Contracts Manager(78)', 'LCS Project Manager(13192)'])
 
-print("Noun phrases:", [chunk.text for chunk in doc.noun_chunks])
-print("Verbs:", [token.lemma_ for token in doc if token.pos_ == "VERB"])
+G.add_weighted_edges_from([('Strategic Program Manager, Customer Solutions (Contract)(66)', 'Strategic Program Manager, Customer Solutions (Contract)(89)', 0.125), ('Contracts Manager(78)', 'LCS Project Manager(13192)', 0.5)])
 
-# Find named entities, phrases and concepts
-for entity in doc.ents:
-    print(entity.text, entity.label_)
+degree = nx.degree(G)
+print(degree)
+
+nx.draw(G,node_size=[500 + v[1]*500 for v in degree], with_labels=True)
+plt.show()

@@ -19,6 +19,7 @@ def main():
     print('==== 1. Processing All    ====')
     print('==== 2. Similarity        ==== ')
     print('==== 3. Visualization     ==== ')
+    print('==== 4. Preprocessing only ===')
 
     choice = input(' >> Select Number : ')
 
@@ -92,8 +93,11 @@ def main():
         model.visualize_jobs(type='tsne')
 
     elif choice == '4':
+        dvi = Doc2VecInput()
+
+    elif choice == '5':
         model = Doc2VecEvaluator(config=config)
-        model.most_similar_result(len(model.doc2idx.values()), 10)
+        model.most_similar_result_with_newwork(len(model.doc2idx.values()), 10)
 
 if __name__=='__main__':
     main()

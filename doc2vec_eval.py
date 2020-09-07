@@ -11,12 +11,13 @@ import pickle
 from visualize_utils import visualize_between_words, visualize_words
 from tqdm import tqdm
 import pytagcloud
-import matplotlib
+import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import os
 import multiprocessing
 from sklearn.manifold import TSNE
-from sklearn.cross_decomposition import PLSRegression
+
+import networkx as nx
 
 class Doc2VecModeler:
     def __init__(self, tagged_doc, config):
@@ -162,14 +163,14 @@ class Doc2VecEvaluator:
             job_id = 'Job_ID_' + str(job_id).split('_')[2]
 
             title = self.get_job_title(job_id)[0]
-            title = f'{title}({str(i)})'
+            title = f'{title}({str(job_id)})'
             similar_jobs = self.model.docvecs.most_similar(job_id, topn=len(keys_list))
             sim_list = []
             for sim_job_id, score in similar_jobs:
-                if score >= 0.7:
+                if score >= 0.6:
                     sim_job_titles = self.get_job_title(sim_job_id)[0]
                     sim_job_id = sim_job_id.split('_')[2]
-                    input = f'{sim_job_titles}'
+                    input = f'{sim_job_titles}({sim_job_id})'
                     sim_list.append(input)
                 else:
                     sim_list.append('')
@@ -177,6 +178,61 @@ class Doc2VecEvaluator:
             df.loc[:, title] = pd.Series(sim_list)
 
         df.to_csv(self.model_path+self.data_name+'_sim_title_result.csv', mode='w', encoding='utf-8')
+        return df
+
+    def most_similar_result_with_newwork(self, data_size, topn):
+        print('   -> creating most similar job matrix with network')
+        df = pd.DataFrame()
+        G = nx.karate_club_graph()
+
+        i = 0
+        keys_list = list(self.doc2idx.keys())
+        nodes = [] ## node list
+        edges = [] ## edge list(튜플의 형태로 저장)
+
+        for job_id in keys_list:
+            node_id = str(job_id).split('_')[2]
+            job_id = 'Job_ID_' + str(job_id).split('_')[2]
+
+            title = self.get_job_title(job_id)[0]
+            title = f'{title}({str(job_id)})'
+
+            similar_jobs = self.model.docvecs.most_similar(job_id, topn=len(keys_list))
+
+            sim_list = []
+            for sim_job_id, score in similar_jobs:
+                if score >= 0.6:
+                    nodes.append(node_id)  ## node list
+                    sim_job_titles = self.get_job_title(sim_job_id)[0]
+                    sim_job_id = sim_job_id.split('_')[2]
+                    input = f'{sim_job_titles}({sim_job_id})'
+                    sim_list.append(input)
+                    temp_tuple = (node_id, sim_job_id, score)
+                    edges.append(temp_tuple)
+
+                else:
+                    sim_list.append('')
+            i = i + 1
+            df.loc[:, title] = pd.Series(sim_list)
+
+        df.to_csv(self.model_path+self.data_name+'_sim_title_result.csv', mode='w', encoding='utf-8')
+        nodes = set(nodes)
+        nodes = list(nodes)
+        print(len(nodes))
+        print(nodes[:])
+        print(edges[:])
+        G.add_nodes_from(nodes)
+        G.add_weighted_edges_from(edges)
+
+        degree = nx.degree(G)
+        print(degree)
+        plt.figure(figsize=(20, 10))
+        graph_pos = nx.spring_layout(G, k=0.42, iterations=17)
+        nx.draw_networkx_labels(G, graph_pos, font_size=10, font_family='sans-serif')
+        nx.draw_networkx_nodes(G, graph_pos, node_size=10, cmap='jet')
+        nx.draw_networkx_edges(G, graph_pos, edge_color='gray')
+        # nx.draw(G, node_size=[100 + v[1] * 100 for v in degree], with_labels=True)
+        plt.show()
         return df
 
     def get_job_title(self, job_id):
@@ -229,7 +285,7 @@ class Doc2VecEvaluator:
         circle_size = input('     >> circle size : ')
         text_size = input('     >> font size : ') + 'pt'
 
-        tsne = TSNE(n_components=2, perplexity=5)
+        tsne = TSNE(n_components=2, perplexity=1)
         tsne_results = tsne.fit_transform(vecs)
 
         df = pd.DataFrame(columns=['x', 'y', 'word'])
@@ -261,13 +317,13 @@ class Doc2VecEvaluator:
         groups=['Manager', 'Senior', 'Intermediate', 'Junior']
         group_list =[]
         for word in words:
-            if word.split('_')[1] == 'M':
+            if word.split('_')[1] == 'manager':
                 group_list.append(groups[0])
-            elif word.split('_')[1] == 'S':
+            elif word.split('_')[1] == 'senior':
                 group_list.append(groups[1])
-            elif word.split('_')[1] == 'I':
+            elif word.split('_')[1] == 'intermediate':
                 group_list.append(groups[2])
-            elif word.split('_')[1] == 'J':
+            elif word.split('_')[1] == 'junior':
                 group_list.append(groups[3])
 
         tsne = TSNE(n_components=2, perplexity=1, n_iter=300, random_state=0)
