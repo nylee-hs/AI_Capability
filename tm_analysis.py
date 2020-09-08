@@ -31,7 +31,7 @@ class LDABuilder:
         return corpus
 
     def get_documents(self):
-        with open(self.data_path + self.data_name+'_tm.documents', 'rb') as f:
+        with open(self.data_path + self.data_name+'.documents', 'rb') as f:
             documents = pickle.load(f)
         return documents
 
@@ -92,7 +92,7 @@ class LDABuilder:
         print('==== Modeling Building Process ====')
         analysis_date = input(' > date : ')
         data_directory = 'data/doc2vec_test_data/'+ analysis_date + '/data/'
-        model_directory = 'data/doc2vec_test_data/'+ analysis_date + '/model_doc2vec/'
+        model_directory = 'data/doc2vec_test_data/'+ analysis_date + '/model_tm/'
         if not os.path.exists(data_directory):
             os.makedirs(data_directory)
         if not os.path.exists(model_directory):
@@ -149,7 +149,7 @@ class LDAModeler:
     def get_path(self):  ## directory는 'models/날짜'의 형식으로 설정해야 함
         print('==== LDA Model Analyzer ====')
         date = input(' > date : ')
-        model_directory = 'data/doc2vec_test_data/' + date + '/model_doc2vec/'
+        model_directory = 'data/doc2vec_test_data/' + date + '/model_tm/'
         data_directory = 'data/doc2vec_test_data/' + date + '/data/'
         return data_directory, model_directory
 
@@ -168,7 +168,6 @@ class LDAModeler:
         topic_dict = defaultdict(list)
         with open(result_fname, 'r', encoding='utf-8') as f:
             for line in f:
-                print(line)
                 sentence, _, topic_id, prob = line.strip().split('\u241E')
                 topic_dict[int(topic_id)].append((sentence, float(prob)))
 

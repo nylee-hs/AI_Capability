@@ -201,7 +201,7 @@ class Doc2VecEvaluator:
 
             sim_list = []
             for sim_job_id, score in similar_jobs:
-                if score >= 0.6:
+                if score >= 0.8:
                     nodes.append(node_id)  ## node list
                     sim_job_titles = self.get_job_title(sim_job_id)[0]
                     sim_job_id = sim_job_id.split('_')[2]
@@ -229,9 +229,9 @@ class Doc2VecEvaluator:
         plt.figure(figsize=(20, 10))
         graph_pos = nx.spring_layout(G, k=0.42, iterations=17)
         nx.draw_networkx_labels(G, graph_pos, font_size=10, font_family='sans-serif')
-        nx.draw_networkx_nodes(G, graph_pos, node_size=10, cmap='jet')
+        # nx.draw_networkx_nodes(G, graph_pos, node_size=[ var * 50 for var in degree], cmap='jet')
         nx.draw_networkx_edges(G, graph_pos, edge_color='gray')
-        # nx.draw(G, node_size=[100 + v[1] * 100 for v in degree], with_labels=True)
+        nx.draw(G, node_size=[100 + v[1] * 100 for v in degree], with_labels=True)
         plt.show()
         return df
 
@@ -289,7 +289,10 @@ class Doc2VecEvaluator:
         tsne_results = tsne.fit_transform(vecs)
 
         df = pd.DataFrame(columns=['x', 'y', 'word'])
-        df['x'], df['y'], df['word'] = tsne_results[:, 0], tsne_results[:, 1], list(words)
+        df['word'] = list(words)
+        words = [ word.split('_')[0] for word in words]
+
+        df['x'], df['y'], df['word'] = tsne_results[:, 0], tsne_results[:, 1], words
         # df['x'], df['y'] = tsne_results[:, 0], tsne_results[:, 1]
         df = df.fillna('')
         print(df.head())

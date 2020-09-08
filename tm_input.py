@@ -105,7 +105,7 @@ class TMInput:
             new_description.append(new_texts)
 
         data['job_description_requirements'] = new_description
-        data.to_csv(self.data_path+ self.data_file_name+'_new.csv', mode='w', encoding='utf-8')
+        # data.to_csv(self.data_path+ self.data_file_name+'_new.csv', mode='w', encoding='utf-8')
         data['job_description'] = new_description
         data['job_description'].replace('', np.nan, inplace=True)
         data.dropna(subset=['job_description'], inplace=True)
@@ -226,7 +226,7 @@ class TMInput:
         else:
             return [[word for word in doc if word in including_list] for doc in texts]
 
-    def lematization(self, texts, allowed_postags=['NOUN', 'PROPN', 'NUM']): #['NOUN', 'ADJ', 'VERB', 'ADV']
+    def lematization(self, texts, allowed_postags=['NOUN', 'PROPN', 'NUM', 'VERB']): #['NOUN', 'ADJ', 'VERB', 'ADV']
         print(' ...Make lematization...')
         texts_out = []
         tagging_out = []

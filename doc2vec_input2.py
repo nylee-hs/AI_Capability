@@ -197,11 +197,11 @@ class Doc2VecInput:
 
     def get_requirements_from_document(self, data):
         descpription = data['job_description']
+        # print(descpription)
         new_description = []
         c_terms = '|'.join(self.capa_terms)
         p = re.compile(c_terms)
         for texts in descpription:
-
             texts = texts.replace('\n', '. ')   ## 줄바꿈 --> 마침표 으로 처리
             texts = texts.replace("’", '')
             texts = texts.replace('“', '')
@@ -304,7 +304,7 @@ class Doc2VecInput:
 
         description = [sent.replace('\n', ' ') for sent in description_reset]
 
-        with open(self.data_path + self.data_file_name+'_d2v.documents', 'wb') as f:
+        with open(self.data_path + self.data_file_name+'.documents', 'wb') as f:
             pickle.dump(description, f)
 
         # # 수정된 job_title에서 posting_id 가지고 오기

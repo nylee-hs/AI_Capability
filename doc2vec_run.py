@@ -1,5 +1,6 @@
 from doc2vec_eval import Doc2VecEvaluator, Doc2VecModeler
 from doc2vec_input2 import Doc2VecInput, Configuration
+from tm_analysis import LDABuilder, LDAModeler
 from tm_input import TMInput
 from gensim.models import Doc2Vec
 import pandas as pd
@@ -93,11 +94,29 @@ def main():
         model.visualize_jobs(type='tsne')
 
     elif choice == '4':
-        dvi = Doc2VecInput()
+        dvi = Doc2VecInput(config=config)
 
     elif choice == '5':
         model = Doc2VecEvaluator(config=config)
         model.most_similar_result_with_newwork(len(model.doc2idx.values()), 10)
+
+    elif choice == '6':
+        builder = LDABuilder()
+        topic_num = builder.getOptimalTopicNum()
+        builder.num_topics = topic_num
+        # builder.num_topics = 90
+        builder.main()
+        model = LDAModeler()
+        for i in range(1):
+            print(model.show_topic_words(i))
+        # terms = [terms[0] for terms in model_doc2vec.show_topic_words(0)]
+        # values = [terms[1] for terms in model_doc2vec.show_topic_words(0)]
+        # print(values)
+        #
+        # df = pd.DataFrame({'terms':terms, 'values':values})
+        # df.to_csv('data/doc2vec_test_data/0828/model_doc2vec/lda_value.csv', mode='w', encoding='utf-8')
+
+        model.view_lda_model(model.model, model.corpus, model.dictionary)
 
 if __name__=='__main__':
     main()
