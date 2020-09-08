@@ -21,6 +21,8 @@ def main():
     print('==== 2. Similarity        ==== ')
     print('==== 3. Visualization     ==== ')
     print('==== 4. Preprocessing only ===')
+    print('==== 5. make sim title matrix ===')
+    print('==== 6. topicmodeling ===')
 
     choice = input(' >> Select Number : ')
 
