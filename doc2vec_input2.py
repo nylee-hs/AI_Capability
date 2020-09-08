@@ -27,6 +27,7 @@ class Configuration:
         self.date = self.make_save_path()
         self.data_path = self.date + '/data/'
         self.model_path = self.date + '/model_doc2vec/'
+        self.tm_model_path = self.date + '/model_tm/'
         self.data_file_name = self.get_file_name()
         self.factor = self.get_factor()
 

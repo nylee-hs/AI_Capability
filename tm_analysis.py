@@ -13,9 +13,10 @@ import numpy as np
 import pyLDAvis.gensim as gensimvis
 
 class LDABuilder:
-    def __init__(self):
-        self.data_path, self.model_path = self.make_save_path()
-        self.data_name = self.get_data_name()
+    def __init__(self, config):
+        self.data_path = config.data_path
+        self.model_path = config.tm_model_path
+        self.data_name = config.data_file_name
         self.corpus = self.get_corpus()
         self.documents = self.get_documents()
         self.num_topics = 0
@@ -134,9 +135,10 @@ class LDABuilder:
         self.saveLDAModel()
 
 class LDAModeler:
-    def __init__(self):
-        self.data_path, self.model_path = self.get_path()
-        self.data_name = self.get_data_name()
+    def __init__(self, config):
+        self.data_path = config.data_path
+        self.model_path = config.tm_model_path
+        self.data_name = config.data_file_name
         self.all_topics = self.load_results(result_fname=self.model_path + self.data_name + '_lda.results')
         self.model = LdaModel.load(self.model_path + self.data_name + '_lda.model_doc2vec')
         self.corpus = self.get_corpus(self.data_path + self.data_name + '.corpus')

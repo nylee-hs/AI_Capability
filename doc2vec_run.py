@@ -103,21 +103,41 @@ def main():
         model.most_similar_result_with_newwork(len(model.doc2idx.values()), 10)
 
     elif choice == '6':
-        builder = LDABuilder()
+        builder = LDABuilder(config=config)
         topic_num = builder.getOptimalTopicNum()
         builder.num_topics = topic_num
-        # builder.num_topics = 90
+        # builder.num_topics = 10
         builder.main()
-        model = LDAModeler()
-        for i in range(1):
-            print(model.show_topic_words(i))
-        # terms = [terms[0] for terms in model_doc2vec.show_topic_words(0)]
-        # values = [terms[1] for terms in model_doc2vec.show_topic_words(0)]
+
+        model = LDAModeler(config=config)
+        topics = []
+        for i in range(builder.num_topics):
+            topic = model.show_topic_words(i)
+            topics.append(topic)
+
+
+        topic_terms = []
+        topic_values = []
+        for topic in topics:
+            each_terms = []
+            each_values = []
+            for term in topic:
+                each_terms.append(term[0])
+                each_values.append(term[1])
+            topic_terms.append(each_terms)
+            topic_values.append(each_values)
+        print(topic_terms)
+
+        topic_number = [f'Topic_{i}' for i in range(len(topic_terms))]
+        # terms = [terms[0] for terms in model.show_topic_words(0)]
+        # values = [terms[1] for terms in model.show_topic_words(0)]
         # print(values)
         #
-        # df = pd.DataFrame({'terms':terms, 'values':values})
-        # df.to_csv('data/doc2vec_test_data/0828/model_doc2vec/lda_value.csv', mode='w', encoding='utf-8')
-
+        df_term = pd.DataFrame(topic_terms)
+        df_value = pd.DataFrame(topic_values)
+        df_term.to_csv(config.tm_model_path + config.data_file_name + '_lda_term.csv', mode='w', encoding='utf-8')
+        df_value.to_csv(config.tm_model_path + config.data_file_name + '_lda_value.csv', mode='w', encoding='utf-8')
+        #
         model.view_lda_model(model.model, model.corpus, model.dictionary)
 
 if __name__=='__main__':
