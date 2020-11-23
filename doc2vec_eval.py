@@ -115,6 +115,21 @@ class Doc2VecEvaluator:
         df.to_csv(self.model_path+self.data_name+'_sim_matrix.csv', mode='w', encoding='utf-8')
         return df
 
+    def get_types(self, job_id):
+        data = self.data
+        job_id = str(job_id)
+        job_id = job_id.split('_')
+        job_id = int(job_id[2])
+        s = data[data['id'] == job_id]['type']
+        s = s.tolist()
+        # s = data[data['id']==int(job_id)]['job_title']
+        # print(s)
+        return s
+
+    def get_types_in_corpus(self, n_sample=5):
+        job_ids = self.model.docvecs.doctags.keys()
+        return {job_id: self.get_types(job_id) for job_id in job_ids}
+
     def get_titles_in_corpus(self, n_sample=5):
         job_ids = self.model.docvecs.doctags.keys()
         # job_ids = random.sample(self.model_doc2vec.docvecs.doctags.keys(), n_sample)
@@ -251,6 +266,8 @@ class Doc2VecEvaluator:
         keys_list = list(self.doc2idx.keys())
 
         keys_list = [key.split('_')[2] for key in keys_list]
+        type_list = self.data['type'].tolist()
+
 
         # total_result_dict = []
         # for i in range(size):
@@ -272,7 +289,7 @@ class Doc2VecEvaluator:
         np_matrix = np.array(sim_matrix)
         df = pd.DataFrame(np_matrix)
         col_name = ['Job_ID_'+str(i) for i in keys_list]
-        row_name = ['Job_ID_'+str(i) for i in keys_list]
+        row_name = ['Job_ID_'+str(i)+'_'+str(j) for i, j in zip(keys_list, type_list)]
         df.columns = col_name
         df.index = row_name
         print(df.head())
@@ -285,20 +302,20 @@ class Doc2VecEvaluator:
         circle_size = input('     >> circle size : ')
         text_size = input('     >> font size : ') + 'pt'
 
-        tsne = TSNE(n_components=2, perplexity=1)
+        tsne = TSNE(n_components=2, perplexity=50, early_exaggeration=10, metric="jacard")
         tsne_results = tsne.fit_transform(vecs)
 
-        df = pd.DataFrame(columns=['x', 'y', 'word'])
-        df['word'] = list(words)
+        df = pd.DataFrame(columns=['x', 'y', 'id'])
+        df['id'] = list(words)
         words = [ word.split('_')[0] for word in words]
 
-        df['x'], df['y'], df['word'] = tsne_results[:, 0], tsne_results[:, 1], words
+        df['x'], df['y'], df['id'] = tsne_results[:, 0], tsne_results[:, 1], words
         # df['x'], df['y'] = tsne_results[:, 0], tsne_results[:, 1]
         df = df.fillna('')
         print(df.head())
         # print(ColumnDataSource.from_df(df))
         source = ColumnDataSource(ColumnDataSource.from_df(df))
-        labels = LabelSet(x="x", y="y", text="word", y_offset=8,
+        labels = LabelSet(x="x", y="y", text="id", y_offset=8,
                           text_font_size=text_size, text_color="#555555",
                           source=source, text_align='center')
 
@@ -317,19 +334,23 @@ class Doc2VecEvaluator:
                         use_notebook=False):
         circle_size = input('     >> circle size : ')
         text_size = input('     >> font size : ') + 'pt'
-        groups=['Manager', 'Senior', 'Intermediate', 'Junior']
+        groups=['A', 'B', 'C', 'D', 'E', 'F']
         group_list =[]
         for word in words:
-            if word.split('_')[1] == 'manager':
+            if word.split('_')[1] == 'A':
                 group_list.append(groups[0])
-            elif word.split('_')[1] == 'senior':
+            elif word.split('_')[1] == 'B':
                 group_list.append(groups[1])
-            elif word.split('_')[1] == 'intermediate':
+            elif word.split('_')[1] == 'C':
                 group_list.append(groups[2])
-            elif word.split('_')[1] == 'junior':
+            elif word.split('_')[1] == 'D':
                 group_list.append(groups[3])
+            elif word.split('_')[1] == 'E':
+                group_list.append(groups[4])
+            elif word.split('_')[1] == 'F':
+                group_list.append(groups[5])
 
-        tsne = TSNE(n_components=2, perplexity=1, n_iter=300, random_state=0)
+        tsne = TSNE(n_components=2, perplexity=50, early_exaggeration=10, metric='cosine')
         tsne_results = tsne.fit_transform(vecs)
 
         df = pd.DataFrame(columns=['x', 'y', 'word', 'group'])
@@ -345,8 +366,8 @@ class Doc2VecEvaluator:
 
         color_mapper = LinearColorMapper(palette=palette, low=min(tsne_results[:, 1]), high=max(tsne_results[:, 1]))
 
-        group_name = ['Manager', 'Senior', 'Intermediate', 'Junior']
-        colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
+        group_name = ['A', 'B', 'C', 'D', 'E', 'F']
+        colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#FFC314', '#3CBCBC']
         plot = figure(plot_width=1200, plot_height=1200)
         # plot.scatter("x", "y", size=int(circle_size), source=source, color={'field': 'y', 'transform': color_mapper}, line_color=None,
         #              fill_alpha=0.8)
@@ -362,10 +383,18 @@ class Doc2VecEvaluator:
         print('   -> Visualization Start')
         view_type = input('    >> Group(Y/N) : ').capitalize()
         job_ids = self.get_titles_in_corpus(n_sample=len(self.model.docvecs.doctags.keys()))
+        job_ids_2 = self.get_types_in_corpus(n_sample=len(self.model.docvecs.doctags.keys()))
+
         #job_titles = [key for key in job_ids.keys()]
         keys_list = [key for key in job_ids.keys()]
         values_list = [value for value in job_ids.values()]
+
+        keys_list_t = [key for key in job_ids_2.keys()]
+        values_list_t = [value for value in job_ids_2.values()]
+
         job_titles = []
+        job_types = []
+
         for i in range(len(keys_list)):
             key = keys_list[i]
             key = key.split('_')[2]
@@ -373,12 +402,20 @@ class Doc2VecEvaluator:
             value = value.split('_')[-1]
             job_titles.append(key+'_'+value)
 
+        for i in range(len(keys_list_t)):
+            key = keys_list_t[i]
+            key = key.split('_')[2]
+            value = values_list_t[i][0]
+            # value = value.split('_')[-1]
+            job_types.append(key+'_'+str(value))
+
 
         #job_titles = self.get_job_title()
         job_vecs = [self.model.docvecs[self.doc2idx[job_id]] for job_id in job_ids.keys()]
+        job_vecs_t = [self.model.docvecs[self.doc2idx[job_id]] for job_id in job_ids_2.keys()]
 
-        if view_type == 'Y':
-            self.word_visulize_group(job_titles, job_vecs, palette, use_notebook=self.use_notebook)
+        if view_type == 'Y' or 'y':
+            self.word_visulize_group(job_types, job_vecs_t, palette, use_notebook=self.use_notebook)
         else:
             self.word_visulize(job_titles, job_vecs, palette, use_notebook=self.use_notebook)
 

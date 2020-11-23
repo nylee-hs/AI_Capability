@@ -58,11 +58,16 @@ class Doc2VecInput:
         self.data_path = config.data_path
         self.data_file_name = config.data_file_name
         self.factor = config.factor
-        self.capa_terms = ['Strong', 'Experience in', 'experience in', 'experience', 'Experience', 'experience with', 'proven', 'Proven', 'Valid', 'Familiarity with', 'familiarity with',
-                           'Excellent', 'Understading', 'Ability to', 'Ability', "degree in", "Knowledge of", "Must be", 'Skills', 'Degree in', "Bachelor's", "Master", "Doctoral", 'MS degree', 'BS degree', 'Must have',
+        
+        ## 'experience', 'Experience',  제외
+        self.capa_terms = ['Strong', "strong", 'Experience in', 'experience in', "Experience with", 'experience with', 'proven', 'Proven', 'Valid', 'Familiarity with', 'familiarity with',
+                           'Excellent', 'excellent', 'Understading', 'understanding', 'Ability to', 'Ability', "ability to", "degree in", "Knowledge of", "Must be", 'Skills', 'Degree in', "Bachelor's", "Master", "Doctoral", 'MS degree', 'BS degree', 'Must have',
                            'Evidence', 'Exposure', 'Graduate degree', 'Expert', 'Ph. D.', 'Proficiency in', 'proficiency', 'BS', 'MS', 'Ph.D', 'Must', 'Certifications', 'Skills in', 'skills in']
-        self.capa_terms_cap = ['Strong', 'Experience', 'Proven', 'Familiarity', 'Ability', 'Excellent', 'Understading', 'Must have', 'Must be', 'Expert', 'Evidence', 'Exposure', 'Knowledge', 'Ability to', 'Proficiency', 'Demonstrate', 'Deep Understanding',
+
+        ## 'Must be', 'Exposure', 'Demonstrate',
+        self.capa_terms_cap = ['Strong', 'Experience', 'Proven', 'Familiarity', 'Ability', 'Excellent', 'Understading', 'Must have', 'Expert', 'Evidence', 'Knowledge', 'Ability to', 'Proficiency', 'Deep Understanding',
                                'Bachelors', 'Masters', 'Skills in']
+
 
         self.job_id, self.description = self.pre_prosseccing()
         self.tagged_doc_ = self.make_tag_document()
@@ -295,9 +300,10 @@ class Doc2VecInput:
     def pre_prosseccing(self):
         print('==== Preprocessing ====')
         dm = DataManager()
-        integ = Integration()
+
         data = dm.load_csv(file=self.data_path + self.data_file_name+'.csv', encoding='utf-8')
-        # data = integ.getIntegratedData()
+        # integ = Integration()
+        # data = integ.getIntegratedData(self.data_path, self.data_file_name)
         data = self.get_requirements_from_document(data)
 
         description = data[self.factor]

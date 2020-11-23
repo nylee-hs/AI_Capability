@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['indeed_run.py'],
-             pathex=['D:\\GoogleDrive_HS\\Pycharm_projects\\WebCrawler_AI'],
+             pathex=['C:\\python_project\\AI_Capability'],
              binaries=[],
              datas=[],
              hiddenimports=[],

@@ -2,15 +2,13 @@ import urllib.request
 import urllib
 from bs4 import BeautifulSoup
 import pandas as pd
-# from pandas import DataFrame,Series
 from tqdm import tqdm
 import requests
-from datetime import datetime, timedelta
+from datetime import datetime
 import os
 import json
 import sys
-import schedule
-import time
+# import schedule
 
 # LIMIT = 15
 # directory = 'data\\indeed\\'  ## 수집 데이터 저장 폴더
@@ -25,8 +23,8 @@ html_header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb
                'cookie': 'CTK=1e3goal6b1fq3000; loctip=1; _gcl_au=1.1.695759262.1584331576; _ga=GA1.2.1671762697.1584331576; pjps=1; JCLK=1; hpnoproxy=1; RF="J0HMqjBXMIS7-jp7Y_exixEX9uvoa-6wBrjIcvshJb-kHka7arvzqwM8vijeii-fHKGT8nDzuyli2rJqZJsaAfX8byBw_Tems65ng9Pa8JX-CY_8q4F_XD9cRNRaLEijNBXerOn-ESAYklDAumKEIA=="; PREF="TM=1584429116502:L="; LC="co=US&hl=en"; RSJC=d2ed92024d429eb1; _gid=GA1.2.1148651147.1584693266; INDEED_CSRF_TOKEN=YYKX4H3Mk4r2dMpLhiwHICplLuZvnE2T; LV="LA=1584693643:LV=1584525858:CV=1584693386:TS=1584331576"; gonetap=2; SURF=t0yz1tjhPGhSvJYN6Z6DPU7dUbjOzRLf; JSESSIONID=83E2AF7E5537EEC1559A2A1F9AF39081.jasxB_sjc-job20; jasx_pool_id=5a51c9; jobAlertPopoverShown=1; ROJC=9c83e18de3b9d4f8:10c75165529d4156:d3c473040c07df53:7eb8f88edc8db970:29df5c8bc063734b:a12804a373c15b32:4fbbe2bd93bcdc12:b3bced9faac432cd:64534b8877b04ace:4e60c84279b7a054; _gali=resultsCol; _gat=1; JCLK=1; UD="LA=1584705483:CV=1584704496:TS=1584704496:SG=645475b75b78bb7c767d8604629ee7f0"; RQ="q=artificial+intelligence&l=&ts=1584705483771&pts=1584596647618:q=Artificial+Intelligence+Engineer&l=&ts=1584693643509:q=Artificial+Intelligence+Engineer+Specialist&l=&ts=1584693386467&pts=1584417158333:q=Director%2C+Software+Engineering+Search+Advertisement&l=&ts=1584430252655:q=artificial+intelligence&l=50&sort=date&ts=1584429048431:q=Software+Development+Engineer%2C+Alexa+Artificial+Intelligence&l=&ts=1584428996742:q=title%3A%28artificial+intelligence%29&l=&ts=1584332163423"; jaSerpCount=16; PPN=2',
           }
 
-# print(URL)
 
+## 수집 크롤러 설정 읽어오기
 def get_conf():
     con_file = ''
     with open('indeed_config.json', 'r', encoding='utf-8') as f:
@@ -34,7 +32,6 @@ def get_conf():
 
     if len(sys.argv) > 1:
         query_keyword = sys.argv[1]
-        # print(query_keyword)
         if query_keyword == 'ai':
             con_file = con_file['CONFIGURE_AI']
         if query_keyword == 'ml':
@@ -43,15 +40,13 @@ def get_conf():
             con_file = con_file['CONFIGURE_DS']
         if query_keyword == 'ba':
             con_file = con_file['CONFIGURE_BA']
-    # print(con_file)
+
     return con_file
 
 def resultCount():
     global html_header
     con_file = get_conf()
-    # limit = get_conf()['CONFIGURE']['LIMIT']
-    # age = get_conf()['CONFIGURE']['AGE']
-    # query = get_conf()['CONFIGURE']['QUERY']
+
     limit = con_file['LIMIT']
     age = con_file['AGE']
     query = con_file['QUERY']
@@ -60,26 +55,16 @@ def resultCount():
     header = html_header
     response = requests.get(url, headers=header)
     soup = BeautifulSoup(response.text, 'html.parser')
-    #     print(soup)
-    #     pagination = soup.findAll('div.resultsTop > div.showing')
     pagination = soup.select('div#searchCountPages')[0].text.strip().split()[3].replace(',', '')
     pages = (int(pagination) // limit)
     lefts = (int(pagination) % limit)
     if lefts > 0:
         pages = pages + 1
-    print("Total count = " + pagination)
+    print("Total postings = " + pagination)
     print("Total pages = " + str(pages))
     return pages
 
-
-#     print(results)
-
 def extract_job(start, last):
-    # directory = get_conf()['CONFIGURE']['DIRECTORY']
-    # age = get_conf()['CONFIGURE']['AGE']
-    # limit = get_conf()['CONFIGURE']['LIMIT']
-    # query = get_conf()['CONFIGURE']['QUERY']
-    # fname = get_conf()['CONFIGURE']['FNAME']
     con_file = get_conf()
     directory = con_file['DIRECTORY']
     age = con_file['AGE']
@@ -90,19 +75,17 @@ def extract_job(start, last):
 
     today = datetime.today()
 
-    # for page in range(start, last):
     for page in range(start, last):
         print('PAGE NUM: ' + str(page))
         search_url = f'https://www.indeed.com/jobs?q={query}&limit={limit}&sort=date&filter=0&fromage='+str(age)+'&start=' + str(page * limit)
         print(' - URL: ' + search_url)
         html = requests.get(search_url, headers=html_header)
-        # html = urllib.request.urlopen(search_url)
+
         try:
             if not os.path.exists(os.getcwd() + directory):
                 os.makedirs(directory)
                 print(' - New directory is created.')
         except OSError:
-
             print(' - Directory is existed.')
 
         with open(os.path.join(os.getcwd(), directory)+'doc.html', 'w', encoding='utf-8-sig') as f:
@@ -113,14 +96,11 @@ def extract_job(start, last):
         html_file.close()
 
         soup = BeautifulSoup(html, 'html.parser')
-
-
         job_info = soup.findAll('h2', 'title')
-
         dates = soup.findAll('span', 'date')
         companies = soup.select('div.sjcl > div > span.company')
 
-        info = zip(job_info, dates, companies)
+        # info = zip(job_info, dates, companies)
 
         title_list = []
         date_list = []
@@ -136,6 +116,7 @@ def extract_job(start, last):
         for job, date, company in tqdm(zip(job_info, dates, companies), total=len(job_info), desc=' -- GET DATA'):
             try:
                 job_des_url = job.a['href']
+
                 return_text = get_details(job_des_url=job_des_url)
                 title = return_text[0]
                 title_list.append(title)
@@ -157,7 +138,6 @@ def extract_job(start, last):
                 date = date.text
                 date_list.append(date)
                 today_list.append(today)
-                # print(title, " || ", "https://www.indeed.com" + job_des_url)
 
             except Exception as ex:
                 print('Error!', title, ex)
@@ -170,11 +150,7 @@ def extract_job(start, last):
                 company_employees_list.append('NA')
                 company_industry_list.append('NA')
                 company_revenues_list.append('NA')
-
                 pass
-
-        #             if(title == 'Artificial Intelligence Engineer (Specialist)' and company == 'Fulcrum'):
-        #                 print(title, company, description)
 
         df = pd.DataFrame({'job_title': title_list, 'company': company_list, 'url': job_des_url_list, 'job_description': description_list, 'published_date': date_list, 'scrap_date': today_list, 'company_employees': company_employees_list,
                            'company_industry': company_industry_list, 'company_revenue': company_revenues_list})
@@ -182,7 +158,6 @@ def extract_job(start, last):
             save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_09")+fname+'.csv')
         else:
             save_csv(df, os.path.join(os.getcwd(), directory) + datetime.today().strftime("%Y%m%d_21") + fname+".csv")
-
 
     return df
 
@@ -210,11 +185,6 @@ def get_company_info(company_url): ## 기업 정보 받아오기
         temp2 = [item.text for item in com_info_b2]
         dic_com = dict(zip(temp1, temp2))
 
-
-        # if dic_com.get('Headquarters'):
-        #     c_info.append(dic_com['Headquarters'])
-        # else:
-        #     c_info.append('NA')
         if dic_com.get('Employees'):
             c_info.append(dic_com['Employees'])
         else:
@@ -238,9 +208,6 @@ def get_company_info(company_url): ## 기업 정보 받아오기
 
     return c_info
 
-
-
-
 def get_details(job_des_url):
     html = urllib.request.urlopen('https://www.indeed.com' + job_des_url)
     soup = BeautifulSoup(html, 'html.parser')
@@ -250,23 +217,21 @@ def get_details(job_des_url):
     return_text = ''
     if len(description) is 0:  # 일부 페이지의 경우 상세페이지의 구조가 다르게 나타남.
         description = soup.select('div.jobDetailDescription')
-        # print(description)
         for t in description:
-            return_text = return_text + t.text
+            return_text = return_text + t.text + ' '
     else:
-        return_text = description[0].text
+        return_text = description[0].text + ' '
 
     # job title 받아오기
-    title = soup.select('h3.jobsearch-JobInfoHeader-title')
-
+    title = soup.select('h1.jobsearch-JobInfoHeader-title')
     return_list = [title[0].text, return_text]
 
     return return_list
 
 
-def load_csv(file):
-    csv_data = pd.read_csv(file, encoding='utf-8-sig')
-    return csv_data
+# def load_csv(file):
+#     csv_data = pd.read_csv(file, encoding='utf-8-sig')
+#     return csv_data
 
 
 def save_csv(dataFrame, file_name):
@@ -330,11 +295,11 @@ def save_csv(dataFrame, file_name):
 #     # return df
 
 
-def load_csv(file_name):
-    col_names = ['job_title', 'company', 'url', 'job_description', 'published_date', 'scrap_date', 'company_employees', 'company_industry', 'company_revenue']
-    df = pd.read_csv(file_name, delimiter=',', names=col_names, encoding='utf-8-sig')
-
-    return df
+# def load_csv(file_name):
+#     col_names = ['job_title', 'company', 'url', 'job_description', 'published_date', 'scrap_date', 'company_employees', 'company_industry', 'company_revenue']
+#     df = pd.read_csv(file_name, delimiter=',', names=col_names, encoding='utf-8-sig')
+#
+#     return df
 
 def job():
     con_file = get_conf()
@@ -345,8 +310,8 @@ def job():
 
 
 def main():
-    # timer1 = get_conf()['CONFIGURE']['TIMER1']
-    # timer2 = get_conf()['CONFIGURE']['TIMER2']
+    # timer1 = get_conf()['TIMER1']
+    # timer2 = get_conf()['TIMER2']
     print("===========================================================================")
     print("==========================  Indeed Crawler  ===============================")
     print("==========================       Start!     ===============================")
@@ -362,11 +327,6 @@ def main():
     # pages = resultCount()
     # extract_job(0, pages)
 
-    # print(get_conf()['CONFIGURE']['AGE'])
-    # get_details('/rc/clk?jk=f4837c61ead9b1ea&fccid=2525cc4a9a704809&vjs=3')
-    # return df
-    # print(get_company_info('https://www.indeed.com/cmp/UBS?from=SERP&fromjk=a92d0d0ba1e8396a&jcid=1c76c3a36f6c7557&attributionid=serp-linkcompanyname'))
-    # print(get_company_info('https://www.indeed.com/cmp/Woods-Hole-Oceanographic-Institution'))
 
 if __name__ == '__main__':
     main()
