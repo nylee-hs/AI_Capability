@@ -360,13 +360,15 @@ class Doc2VecInput:
     def make_tag_document(self):
         tagged_doc = []
         i = 0
-        for j_type, id in zip(self.job_id, self.job_type):
+        print(f'job_id size = {len(self.job_id)}')
+        print(f'job_type size = {len(self.job_type)}')
+        for id, j_type in zip(self.job_id, self.job_type):
             tokens = self.description[i]
             doc = TaggedDocument(words=tokens, tags=[f'Job_ID_{id}_{j_type}'])
             tagged_doc.append(doc)
             i += 1
         with open(self.data_path+self.data_file_name+'.tag_doc', 'wb') as f:
-            pickle.dump(f)
+            pickle.dump(tagged_doc, f)
         return tagged_doc
 
 
@@ -390,6 +392,6 @@ class Doc2VecInput:
     #         except Exception as ex:
     #             print(ex)
     #             continue
-
+#
 # config = Configuration()
 # dvi = Doc2VecInput(config)

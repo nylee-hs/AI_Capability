@@ -9,6 +9,7 @@ import visualize_utils
 import multiprocessing
 import logging
 import pandas as pd
+import pickle
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
@@ -16,13 +17,14 @@ def main():
     dm = DataManager()
     config = Configuration()
 
-    print('============ MENU ============')
-    print('==== 1. Processing All    ====')
-    print('==== 2. Similarity        ==== ')
-    print('==== 3. Visualization     ==== ')
-    print('==== 4. Preprocessing only ===')
-    print('==== 5. make sim title matrix ===')
-    print('==== 6. topicmodeling ===')
+    print('=============== MENU ===============')
+    print('==== 1. Doc2Vec All             ====')
+    print('==== 2. Preprocessing(only)     ====')
+    print('==== 3. Modeling(only)          ====')
+    print('==== 4. Similarity(only)        ==== ')
+    print('==== 5. Visualization(only)     ==== ')
+    print('==== 6. make sim title matrix   ====')
+    print('==== 7. Topic Modeling          ====')
 
     choice = input(' >> Select Number : ')
 
@@ -87,22 +89,30 @@ def main():
         model.most_similar_result(len(model.doc2idx.values()), 10)
 
     elif choice == '2':
+        dvi = Doc2VecInput(config=config)
+
+    elif choice == '3':
+        input_data=''
+        with open(config.data_path+config.data_file_name+'.tag_doc', 'rb') as f:
+            input_data = pickle.load(f)
+
+        Doc2VecModeler(config=config, tagged_doc=input_data)
+
+    elif choice == '4':
         model = Doc2VecEvaluator(config=config)
         model.get_similarity(model)
         model.most_similar_result(len(model.doc2idx.values()), 10)
 
-    elif choice == '3':
+    elif choice == '5':
         model = Doc2VecEvaluator(config=config)
         model.visualize_jobs(type='tsne')
 
-    elif choice == '4':
-        dvi = Doc2VecInput(config=config)
 
-    elif choice == '5':
+    elif choice == '6':
         model = Doc2VecEvaluator(config=config)
         model.most_similar_result_with_newwork(len(model.doc2idx.values()), 10)
 
-    elif choice == '6':
+    elif choice == '7':
         builder = LDABuilder(config=config)
         topic_num = builder.getOptimalTopicNum()
         builder.num_topics = topic_num

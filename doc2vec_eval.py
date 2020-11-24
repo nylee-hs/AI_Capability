@@ -9,13 +9,16 @@ import pandas as pd
 import numpy as np
 import pickle
 from visualize_utils import visualize_between_words, visualize_words
-from tqdm import tqdm
+from tqdm import tqdm, tnrange
 import pytagcloud
 import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import os
 import multiprocessing
 from sklearn.manifold import TSNE
+from doc2vec_input2 import Configuration
+from statsmodels.formula.api import ols
+from statsmodels.stats.anova import anova_lm
 
 import networkx as nx
 
@@ -174,12 +177,12 @@ class Doc2VecEvaluator:
         df = pd.DataFrame()
         i = 0
         keys_list = list(self.doc2idx.keys())
-        for job_id in keys_list:
-            job_id = 'Job_ID_' + str(job_id).split('_')[2]
+        for i in tqdm(range(len(keys_list))):
+            # job_id = 'Job_ID_' + str(job_id).split('_')[2]
 
-            title = self.get_job_title(job_id)[0]
-            title = f'{title}({str(job_id)})'
-            similar_jobs = self.model.docvecs.most_similar(job_id, topn=len(keys_list))
+            title = self.get_job_title(keys_list[i])[0]
+            title = f'{title}({str(keys_list[i])})'
+            similar_jobs = self.model.docvecs.most_similar(keys_list[i], topn=len(keys_list))
             sim_list = []
             for sim_job_id, score in similar_jobs:
                 if score >= 0.6:
@@ -189,7 +192,7 @@ class Doc2VecEvaluator:
                     sim_list.append(input)
                 else:
                     sim_list.append('')
-            i = i + 1
+            # i = i + 1
             df.loc[:, title] = pd.Series(sim_list)
 
         df.to_csv(self.model_path+self.data_name+'_sim_title_result.csv', mode='w', encoding='utf-8')
@@ -264,8 +267,7 @@ class Doc2VecEvaluator:
     def get_similarity(self, model):
         print('   -> get similarity values')
         keys_list = list(self.doc2idx.keys())
-
-        keys_list = [key.split('_')[2] for key in keys_list]
+        # keys_list = [key.split('_')[2] for key in keys_list]
         type_list = self.data['type'].tolist()
 
 
@@ -281,15 +283,17 @@ class Doc2VecEvaluator:
         sim_matrix=[]
         # print(total_result_dict[0])
         # for dic in total_result_dict:
-        for i in keys_list:
+        for i in tqdm(range((len(keys_list)))):
             _matrix = []
             for j in keys_list:
-                _matrix.append(self.model.docvecs.similarity('Job_ID_'+str(i), 'Job_ID_'+str(j)))
+                _matrix.append(self.model.docvecs.similarity(keys_list[i], j))
             sim_matrix.append(_matrix)
         np_matrix = np.array(sim_matrix)
         df = pd.DataFrame(np_matrix)
-        col_name = ['Job_ID_'+str(i) for i in keys_list]
-        row_name = ['Job_ID_'+str(i)+'_'+str(j) for i, j in zip(keys_list, type_list)]
+        # col_name = ['Job_ID_'+str(i) for i in keys_list]
+        # row_name = ['Job_ID_'+str(i)+'_'+str(j) for i, j in zip(keys_list, type_list)]
+        col_name = keys_list
+        row_name = keys_list
         df.columns = col_name
         df.index = row_name
         print(df.head())
@@ -367,7 +371,7 @@ class Doc2VecEvaluator:
         color_mapper = LinearColorMapper(palette=palette, low=min(tsne_results[:, 1]), high=max(tsne_results[:, 1]))
 
         group_name = ['A', 'B', 'C', 'D', 'E', 'F']
-        colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#FFC314', '#3CBCBC']
+        colors = ['#FF0000', '#FFBB00', '#00D8FF', '#0055FF', '#6600FF', '#000000']
         plot = figure(plot_width=1200, plot_height=1200)
         # plot.scatter("x", "y", size=int(circle_size), source=source, color={'field': 'y', 'transform': color_mapper}, line_color=None,
         #              fill_alpha=0.8)
@@ -420,6 +424,118 @@ class Doc2VecEvaluator:
             self.word_visulize(job_titles, job_vecs, palette, use_notebook=self.use_notebook)
 
 
+
+    def get_group_data(self, job_type):
+        raw = pd.read_csv(self.model_path+self.data_name+'_sim_matrix.csv')
+        ## 타입 별 데이터의 사이즈 찾기
+        filtered_data = raw.filter(like='_'+job_type, axis=1)
+        # filtered_data = filtered_data.filter(like='_'+job_type, axis=0)
+        # print(filtered_data)
+        size = filtered_data.columns.size
+        return filtered_data.iloc[:size, :]
+
+    def get_average_value_groupBy(self):
+        print('  --> average of similarity ')
+        raw = pd.read_csv(self.model_path + self.data_name + '_sim_matrix.csv')
+        types = ['A', 'B', 'C', 'D', 'E', 'F']
+        sizes = []
+        ## 타입 별 데이터의 사이즈 찾기
+        size_1 = 0
+        for j_type in types:
+            filtered_data = raw.filter(like='_' + j_type, axis=1)
+            size_2 = filtered_data.columns.size
+            size_2 = size_1 + size_2
+            sizes.append([size_1, size_2])
+            size_1 = size_2
+        print(sizes)
+
+        results_data = []
+        groups_data = []
+        for j_type in types:
+            temp = []
+            temp_group = []
+            filtered_data = raw.filter(like='_' + j_type, axis=1) ## 타입 데이터 전체
+            temp.append(j_type)
+            temp_group.append(j_type)
+            for i in range(len(types)):
+                extracted_data = filtered_data.iloc[sizes[i][0]:sizes[i][1] , : ]
+                group_data = extracted_data.mean()
+                temp.append(extracted_data.mean().mean())
+                temp_group.append(group_data)
+            results_data.append(temp)
+            groups_data.append(temp_group)
+        with open(self.model_path+self.data_name+'.groups_data', 'wb') as f:
+            pickle.dump(groups_data, f)
+        print(results_data)
+
+    def anova_test(self):
+        # with open('data/doc2vec_test_data/1119/model_doc2vec/1120_all.groups_data', 'rb') as f:
+        with open(self.model_path+self.data_name+'.groups_data', 'rb') as f:
+            groups_data = pickle.load(f)
+        groups = [group for group in groups_data]
+        print(groups[0][2][0])
+        print(groups[0][1][0])
+
+        types = [data[0] for data in groups]
+        results = []
+        sim_matrix = []
+        for i in range(len(groups)):
+            _matrix = []
+            check_i = 1
+            base = groups[i][check_i]
+            base_name = [types[i] for temp in range(len(base))]
+            df_base = pd.DataFrame({'Value': base, 'Type': base_name})
+            for j in range(1,7):
+                type_index = 0
+                compare = groups[i][j].tolist()
+                compare_name = [types[j-1] for temp in range(len(compare))]
+                print(f'BASE = {base_name[0]} - COMPARE = {compare_name[0]}')
+
+                df_compare = pd.DataFrame({'Value': compare, 'Type': compare_name})
+                print(df_base.mean())
+                print(df_compare.mean())
+                frames = [df_base, df_compare]
+                result_df = pd.concat(frames)
+
+                model = ols('Value ~ C(Type)', result_df).fit()
+                # print(anova_lm(model))
+                # print(anova_lm(model)['PR(>F)'][0])
+                _matrix.append(anova_lm(model)['PR(>F)'][0])
+                type_index += 1
+            sim_matrix.append(_matrix)
+            check_i += 1
+        np_matrix = np.array(sim_matrix)
+        df = pd.DataFrame(np_matrix)
+        col_name = types
+        row_name = types
+        df.columns = col_name
+        df.index = row_name
+        print(df.head())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # results = [[(self.get_group_data(j_type).sum(axis=0)-1)/2] for j_type in types]
+
+
+        # i = 0
+        # for j_type in types:
+        #     print(f'{j_type} : {results[i].mean()}')
+        #     i += 1
+
+
+
         #     temp = []
         #     for i in range(len(dic)):
         #         temp.append(dic[i])
@@ -434,5 +550,7 @@ class Doc2VecEvaluator:
     #         title = ""
     #     return title
 
-# dve = Doc2VecEvaluator('data/doc2vec_test_data/doc2vec.model_doc2vec')
-# dve.visualize_jobs()
+config = Configuration()
+dve = Doc2VecEvaluator(config)
+# dve.get_average_value_groupBy()
+dve.anova_test()
