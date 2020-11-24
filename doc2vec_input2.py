@@ -69,7 +69,7 @@ class Doc2VecInput:
                                'Bachelors', 'Masters', 'Skills in']
 
 
-        self.job_id, self.description = self.pre_prosseccing()
+        self.job_type, self.job_id, self.description = self.pre_prosseccing()
         self.tagged_doc_ = self.make_tag_document()
 
 
@@ -226,10 +226,11 @@ class Doc2VecInput:
             new_description.append(new_texts)
 
         data['job_description_requirements'] = new_description
-        data.to_csv(self.data_path+ self.data_file_name+'_new.csv', mode='w', encoding='utf-8')
+
         data['job_description'] = new_description
         data['job_description'].replace('', np.nan, inplace=True)
         data.dropna(subset=['job_description'], inplace=True)
+        data.to_csv(self.data_path + self.data_file_name + '_new.csv', mode='w', encoding='utf-8')
         return data
 
     def get_word_count(self, data_lemmatized):
@@ -354,16 +355,18 @@ class Doc2VecInput:
         # final_terms.to_csv(self.data_path + self.data_file_name + '_final_terms.csv', mode='w', encoding='utf-8')
         print('=== end preprocessing ===')
 
-        return data['id'], data_lemmatized_filter_re
+        return data['type'], data['id'], data_lemmatized_filter_re
 
     def make_tag_document(self):
         tagged_doc = []
         i = 0
-        for id in self.job_id:
+        for j_type, id in zip(self.job_id, self.job_type):
             tokens = self.description[i]
-            doc = TaggedDocument(words=tokens, tags=['Job_ID_%s' % id])
+            doc = TaggedDocument(words=tokens, tags=[f'Job_ID_{id}_{j_type}'])
             tagged_doc.append(doc)
             i += 1
+        with open(self.data_path+self.data_file_name+'.tag_doc', 'wb') as f:
+            pickle.dump(f)
         return tagged_doc
 
 
