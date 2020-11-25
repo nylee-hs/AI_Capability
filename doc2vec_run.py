@@ -23,8 +23,9 @@ def main():
     print('==== 3. Modeling(only)          ====')
     print('==== 4. Similarity(only)        ==== ')
     print('==== 5. Visualization(only)     ==== ')
-    print('==== 6. make sim title matrix   ====')
-    print('==== 7. Topic Modeling          ====')
+    print('==== 6. Make sim title matrix   ====')
+    print('==== 7. Average Analysis(only)  ==== ')
+    print('==== 8. Topic Modeling          ====')
 
     choice = input(' >> Select Number : ')
 
@@ -113,6 +114,10 @@ def main():
         model.most_similar_result_with_newwork(len(model.doc2idx.values()), 10)
 
     elif choice == '7':
+        model = Doc2VecEvaluator(config=config)
+        model.get_average_value_groupBy()
+
+    elif choice == '8':
         builder = LDABuilder(config=config)
         topic_num = builder.getOptimalTopicNum()
         builder.num_topics = topic_num

@@ -1,8 +1,11 @@
-from bokeh.models import ColumnDataSource, LabelSet, LinearColorMapper
+from bokeh.models import ColumnDataSource, LabelSet, LinearColorMapper, HoverTool, value
 from bokeh.plotting import figure, output_file, save
 from bokeh.io import export_png, output_notebook, show
+from bokeh.palettes import brewer
 from bokeh.transform import factor_cmap
 from gensim.models import Doc2Vec
+from sklearn.cluster import KMeans
+
 from datamanager import DataManager
 import random
 import pandas as pd
@@ -34,7 +37,7 @@ class Doc2VecModeler:
         print('==== Start Doc2Vec Modeling ====')
         # cores = multiprocessing.cpu_count()
         model = Doc2Vec(self.tagged_doc, dm=0, dbow_words=1, window=10, alpha=0.025, vector_size=1024, min_count=10,
-                min_alpha=0.025, workers=4, hs=1, negative=20, epochs=20, sample=0.001)
+                min_alpha=0.025, workers=4, hs=0, negative=20, epochs=20, sample=0.1)
         model.save(self.model_path + self.data_name + '_doc2vec.model')
         print('==== End Doc2Vec Process ====')
         return model
@@ -301,16 +304,28 @@ class Doc2VecEvaluator:
         df.to_csv(self.model_path+self.data_name+'_sim_matrix.csv', mode='w', encoding='utf-8')
         return df
 
+
+    def get_clustering(self):
+        nc = range(1,50)
+        kmeans = [KMeans(n_clusters = i, init = 'k-means++', max_iter=500) for i in nc]
+        score = [kmeans[i].fit(self.model.docvecs.vectors_docs).inertia_ for i in tqdm(range(len(kmeans)))]
+        plt.plot(nc, score, marker='o')
+        plt.xlabel('Number of Clusters')
+        plt.ylabel('Score')
+        plt.title('Elbow Curve')
+        plt.show()
+
     def word_visulize(self, words, vecs, palette="Viridis256", filename="/notebooks/embedding/words.png",
                         use_notebook=False):
-        circle_size = input('     >> circle size : ')
-        text_size = input('     >> font size : ') + 'pt'
+        # circle_size = input('     >> circle size : ')
+        # text_size = input('     >> font size : ') + 'pt'
 
-        tsne = TSNE(n_components=2, perplexity=50, early_exaggeration=10, metric="jacard")
+        tsne = TSNE(n_components=2, perplexity=50, early_exaggeration=10, metric="cosine")
         tsne_results = tsne.fit_transform(vecs)
 
         df = pd.DataFrame(columns=['x', 'y', 'id'])
         df['id'] = list(words)
+
         words = [ word.split('_')[0] for word in words]
 
         df['x'], df['y'], df['id'] = tsne_results[:, 0], tsne_results[:, 1], words
@@ -318,18 +333,32 @@ class Doc2VecEvaluator:
         df = df.fillna('')
         print(df.head())
         # print(ColumnDataSource.from_df(df))
-        source = ColumnDataSource(ColumnDataSource.from_df(df))
-        labels = LabelSet(x="x", y="y", text="id", y_offset=8,
-                          text_font_size=text_size, text_color="#555555",
-                          source=source, text_align='center')
+        # source = ColumnDataSource(ColumnDataSource.from_df(df))
+        source = ColumnDataSource(df.to_dict(orient='list'))
+        # labels = LabelSet(x="x", y="y", text="id", y_offset=8,
+        #                   text_font_size=text_size, text_color="#555555",
+        #                   source=source, text_align='center')
 
-        color_mapper = LinearColorMapper(palette=palette, low=min(tsne_results[:, 1]), high=max(tsne_results[:, 1]))
+        # color_mapper = LinearColorMapper(palette=palette, low=min(tsne_results[:, 1]), high=max(tsne_results[:, 1]))
+        print(brewer[["Spectral"][:]])
+        # print(b)
+        colors = brewer[["Spectral"][len(df['id'].unique())]]
+        colormap = {i: colors[i] for i in df['id'].unique()}
+        colors = [colormap[x] for x in df['id']]
+        print(colors)
+        df['color'] = colors
 
-        plot = figure(plot_width=1200, plot_height=1200)
-        plot.scatter("x", "y", size=int(circle_size), source=source, color={'field': 'y', 'transform': color_mapper}, line_color=None,
-                     fill_alpha=0.8)
+        plot = figure(plot_width=1200, plot_height=1200, output_backend="webgl")
+        plot.add_tools(
+            HoverTool(
+                tooltips='@word'
+            )
+        )
+        # plot.scatter("x", "y", size=int(circle_size), source=source, color={'field': 'y', 'transform': color_mapper}, line_color=None,
+        #              fill_alpha=0.8)
 
-        plot.add_layout(labels)
+        plot.circle(source=source, x='x', y='y', line_alplha=0.3, fill_alpha=0.2, size=10, fill_color='color', line_color='color')
+        # plot.add_layout(labels)
         show(plot)
         output_file(self.model_path+self.data_name+'_tsne.html')
         save(plot)
@@ -386,6 +415,7 @@ class Doc2VecEvaluator:
     def visualize_jobs(self, palette='Viridis256', type='between'):
         print('   -> Visualization Start')
         view_type = input('    >> Group(Y/N) : ').capitalize()
+        print(view_type)
         job_ids = self.get_titles_in_corpus(n_sample=len(self.model.docvecs.doctags.keys()))
         job_ids_2 = self.get_types_in_corpus(n_sample=len(self.model.docvecs.doctags.keys()))
 
@@ -418,9 +448,9 @@ class Doc2VecEvaluator:
         job_vecs = [self.model.docvecs[self.doc2idx[job_id]] for job_id in job_ids.keys()]
         job_vecs_t = [self.model.docvecs[self.doc2idx[job_id]] for job_id in job_ids_2.keys()]
 
-        if view_type == 'Y' or 'y':
+        if view_type == 'Y':
             self.word_visulize_group(job_types, job_vecs_t, palette, use_notebook=self.use_notebook)
-        else:
+        elif view_type == 'N':
             self.word_visulize(job_titles, job_vecs, palette, use_notebook=self.use_notebook)
 
 
@@ -451,12 +481,12 @@ class Doc2VecEvaluator:
 
         results_data = []
         groups_data = []
-        for j_type in types:
+        for j_type in tqdm(range(len(types))):
             temp = []
             temp_group = []
-            filtered_data = raw.filter(like='_' + j_type, axis=1) ## 타입 데이터 전체
-            temp.append(j_type)
-            temp_group.append(j_type)
+            filtered_data = raw.filter(like='_' + types(j_type), axis=1) ## 타입 데이터 전체
+            temp.append(types[j_type])
+            temp_group.append(types[j_type])
             for i in range(len(types)):
                 extracted_data = filtered_data.iloc[sizes[i][0]:sizes[i][1] , : ]
                 group_data = extracted_data.mean()
@@ -469,6 +499,7 @@ class Doc2VecEvaluator:
         print(results_data)
 
     def anova_test(self):
+        print('   --> ANOVA Test...')
         # with open('data/doc2vec_test_data/1119/model_doc2vec/1120_all.groups_data', 'rb') as f:
         with open(self.model_path+self.data_name+'.groups_data', 'rb') as f:
             groups_data = pickle.load(f)
@@ -479,7 +510,7 @@ class Doc2VecEvaluator:
         types = [data[0] for data in groups]
         results = []
         sim_matrix = []
-        for i in range(len(groups)):
+        for i in tqdm(range(len(groups))):
             _matrix = []
             check_i = 1
             base = groups[i][check_i]
@@ -552,5 +583,6 @@ class Doc2VecEvaluator:
 
 config = Configuration()
 dve = Doc2VecEvaluator(config)
+dve.get_clustering()
 # dve.get_average_value_groupBy()
-dve.anova_test()
+# dve.anova_test()
