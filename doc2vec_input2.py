@@ -23,13 +23,29 @@ import logging
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 class Configuration:
-    def __init__(self):
-        self.date = self.make_save_path()
-        self.data_path = self.date + '/data/'
-        self.model_path = self.date + '/model_doc2vec/'
-        self.tm_model_path = self.date + '/model_tm/'
-        self.data_file_name = self.get_file_name()
-        self.factor = self.get_factor()
+    # def __init__(self):
+    #     self.date = self.make_save_path()
+    #     self.data_path = self.date + '/data/'
+    #     self.model_path = self.date + '/model_doc2vec/'
+    #     self.tm_model_path = self.date + '/model_tm/'
+    #     self.data_file_name = self.get_file_name()
+    #     self.factor = self.get_factor()
+
+    def __init__(self, filename=None, date=None):
+        if filename is not None and date is not None:
+            self.date = 'data/doc2vec_test_data/'+date
+            self.data_path = self.date + '/data/'
+            self.model_path = self.date + '/model_doc2vec/'
+            self.tm_model_path = self.date + '/model_tm/'
+            self.data_file_name = filename
+            self.factor = 'job_description'
+        else:
+            self.date = self.make_save_path()
+            self.data_path = self.date + '/data/'
+            self.model_path = self.date + '/model_doc2vec/'
+            self.tm_model_path = self.date + '/model_tm/'
+            self.data_file_name = self.get_file_name()
+            self.factor = self.get_factor()
 
     def get_file_name(self):
         file_name = input(' > file_name : ')
@@ -140,12 +156,12 @@ class Doc2VecInput:
         file = 'stopwords_list.csv'
         stop_words_list = []
         if os.path.isfile(self.data_path+file):
-            print('     -> Stop Words File is found')
+            print('     -> Stop Words File : Found')
             dm = DataManager()
             df = dm.load_csv(file=self.data_path + file, encoding='utf-8')
             stop_words_list = df['Stopwords'].tolist()
         else:
-            print('     -> Stop Words File is not found')
+            print('     -> Stop Words File : Not Found')
         return stop_words_list
 
     def get_including_words(self):
@@ -153,13 +169,13 @@ class Doc2VecInput:
         file = 'including_words_list.csv'
         including_words_list = []
         if os.path.isfile(self.data_path+file):
-            print('    -> Including Words File is found')
+            print('    -> Including Words File : Found')
             dm = DataManager()
             df = dm.load_csv(file=self.data_path+file, encoding='utf-8')
             including_words_list = df['Includingwords'].tolist()
             print(f'    -> total : {len(including_words_list)} words')
         else:
-            print('     -> Including Words File is not found')
+            print('     -> Including Words File : Not found')
         return including_words_list
 
     def remove_stopwords(self, texts):
@@ -350,7 +366,9 @@ class Doc2VecInput:
         with open(self.data_path + self.data_file_name+'.corpus', 'wb') as f:
             pickle.dump(data_lemmatized_filter_re, f)
 
-        self.get_word_count(data_lemmatized_filter_re)
+        
+        # self.get_word_count(data_lemmatized_filter_re)  ## 워드 클라우드
+        
         # final_terms = pd.DataFrame({'terms': data_lemmatized_filter})
         # final_terms.to_csv(self.data_path + self.data_file_name + '_final_terms.csv', mode='w', encoding='utf-8')
         print('=== end preprocessing ===')

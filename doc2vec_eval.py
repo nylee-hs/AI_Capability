@@ -22,6 +22,7 @@ from sklearn.manifold import TSNE
 from doc2vec_input2 import Configuration
 from statsmodels.formula.api import ols
 from statsmodels.stats.anova import anova_lm
+from yellowbrick.cluster import KElbowVisualizer
 
 import networkx as nx
 
@@ -36,8 +37,8 @@ class Doc2VecModeler:
     def run(self):
         print('==== Start Doc2Vec Modeling ====')
         # cores = multiprocessing.cpu_count()
-        model = Doc2Vec(self.tagged_doc, dm=0, dbow_words=1, window=10, alpha=0.025, vector_size=1024, min_count=10,
-                min_alpha=0.025, workers=4, hs=0, negative=20, epochs=20, sample=0.1)
+        model = Doc2Vec(self.tagged_doc, dm=0, dbow_words=1, window=10, alpha=0.025, vector_size=1024, min_count=50,
+                min_alpha=0.025, workers=4, hs=0, negative=10, epochs=20, sample=0.1, ns_exponent=1e-07)
         model.save(self.model_path + self.data_name + '_doc2vec.model')
         print('==== End Doc2Vec Process ====')
         return model
@@ -306,59 +307,84 @@ class Doc2VecEvaluator:
 
 
     def get_clustering(self):
-        nc = range(1,50)
-        kmeans = [KMeans(n_clusters = i, init = 'k-means++', max_iter=500) for i in nc]
-        score = [kmeans[i].fit(self.model.docvecs.vectors_docs).inertia_ for i in tqdm(range(len(kmeans)))]
-        plt.plot(nc, score, marker='o')
-        plt.xlabel('Number of Clusters')
-        plt.ylabel('Score')
-        plt.title('Elbow Curve')
-        plt.show()
+        # nc = range(1,51)
+        # kmeans = [KMeans(n_clusters = i, init = 'k-means++', max_iter=500) for i in nc]
+        # scores = [kmeans[i].fit(self.model.docvecs.vectors_docs).inertia_ for i in tqdm(range(len(kmeans)))]
+        # plt.plot(nc, scores, marker='o')
+        # plt.xlabel('Number of Clusters')
+        # plt.ylabel('Score')
+        # plt.title('Elbow Curve')
+        # plt.show()
+        model = KMeans()
+        visualizer = KElbowVisualizer(model, k = (1, 20))
+        visualizer.fit(self.model.docvecs.vectors_docs)
+        visualizer.show()
+        cluster_no = visualizer.elbow_value_
+        print(f'   --> cluster number = {cluster_no}')
+        model = KMeans(n_clusters=cluster_no, algorithm='auto')
+        model.fit(self.model.docvecs.vectors_docs)
+        job_ids = self.model.docvecs.doctags.keys()
+        job_titles = [self.get_job_title(jid) for jid in job_ids]
+        df = pd.DataFrame({'Job_Title': job_titles, 'Cluster': model.labels_})
+        df.to_csv(self.model_path+self.data_name+'_cluster.csv', mode='w', encoding='utf-8')
+        with open(self.model_path+self.data_name+'_cluster.model', 'wb') as f:
+            pickle.dump(model, f)
+
+        return model
+
+
+
 
     def word_visulize(self, words, vecs, palette="Viridis256", filename="/notebooks/embedding/words.png",
                         use_notebook=False):
         # circle_size = input('     >> circle size : ')
         # text_size = input('     >> font size : ') + 'pt'
 
+        with open(self.model_path+self.data_name+'_cluster.model', 'rb') as f:
+            model = pickle.load(f)
+
+        # cluster = [ f'group{cluster}' for cluster in model.labels_.tolist()]
+        cluster = model.labels_.tolist()
         tsne = TSNE(n_components=2, perplexity=50, early_exaggeration=10, metric="cosine")
         tsne_results = tsne.fit_transform(vecs)
 
-        df = pd.DataFrame(columns=['x', 'y', 'id'])
-        df['id'] = list(words)
-
+        df = pd.DataFrame(columns=['x', 'y', 'id', 'cluster'])
+        # df['id'] = list(words)
         words = [ word.split('_')[0] for word in words]
 
-        df['x'], df['y'], df['id'] = tsne_results[:, 0], tsne_results[:, 1], words
+        df['x'], df['y'], df['id'], df['cluster'] = tsne_results[:, 0], tsne_results[:, 1], words, cluster
         # df['x'], df['y'] = tsne_results[:, 0], tsne_results[:, 1]
         df = df.fillna('')
         print(df.head())
         # print(ColumnDataSource.from_df(df))
         # source = ColumnDataSource(ColumnDataSource.from_df(df))
-        source = ColumnDataSource(df.to_dict(orient='list'))
-        # labels = LabelSet(x="x", y="y", text="id", y_offset=8,
-        #                   text_font_size=text_size, text_color="#555555",
-        #                   source=source, text_align='center')
+        source = ColumnDataSource(ColumnDataSource.from_df(df))
+        labels = LabelSet(x="x", y="y", text="cluster", y_offset=8,
+                          text_font_size="3pt", text_color="#555555",
+                          source=source, text_align='center')
 
-        # color_mapper = LinearColorMapper(palette=palette, low=min(tsne_results[:, 1]), high=max(tsne_results[:, 1]))
-        print(brewer[["Spectral"][:]])
+        color_mapper = LinearColorMapper(palette=palette, low=min(df['cluster']), high=max(df['cluster']))
+        group_name = [str(category) for category in df['cluster']]
+
+        # print(brewer[["Spectral"][:]])
         # print(b)
-        colors = brewer[["Spectral"][len(df['id'].unique())]]
-        colormap = {i: colors[i] for i in df['id'].unique()}
-        colors = [colormap[x] for x in df['id']]
-        print(colors)
-        df['color'] = colors
+        # colors = brewer[["Spectral"][len(df['cluster'].unique())]]
+        # colormap = {i: colors[i] for i in df['cluster'].unique()}
+        # colors = [colormap[x] for x in df['cluster']]
+        # print(colors)
+        # df['color'] = colors
 
         plot = figure(plot_width=1200, plot_height=1200, output_backend="webgl")
         plot.add_tools(
             HoverTool(
-                tooltips='@word'
+                tooltips='@id'
             )
         )
-        # plot.scatter("x", "y", size=int(circle_size), source=source, color={'field': 'y', 'transform': color_mapper}, line_color=None,
-        #              fill_alpha=0.8)
+        plot.scatter("x", "y", size=20, source=source, color={'field': 'cluster', 'transform': color_mapper}, line_color=None,
+                     fill_alpha=0.8, legend_field='cluster')
 
-        plot.circle(source=source, x='x', y='y', line_alplha=0.3, fill_alpha=0.2, size=10, fill_color='color', line_color='color')
-        # plot.add_layout(labels)
+        # plot.circle(source=source, x='x', y='y', line_alplha=0.3, fill_alpha=0.2, size=10, fill_color='color', line_color='color')
+        plot.add_layout(labels)
         show(plot)
         output_file(self.model_path+self.data_name+'_tsne.html')
         save(plot)
@@ -412,10 +438,13 @@ class Doc2VecEvaluator:
         output_file(self.model_path+self.data_name+'_tsne.html')
         save(plot)
 
-    def visualize_jobs(self, palette='Viridis256', type='between'):
+    def visualize_jobs(self, palette='Viridis256', type='between', choice = None):
         print('   -> Visualization Start')
-        view_type = input('    >> Group(Y/N) : ').capitalize()
-        print(view_type)
+        if choice == None:
+            view_type = 'N'
+        else:
+            view_type = input('    >> Group(Y/N) : ').capitalize()
+
         job_ids = self.get_titles_in_corpus(n_sample=len(self.model.docvecs.doctags.keys()))
         job_ids_2 = self.get_types_in_corpus(n_sample=len(self.model.docvecs.doctags.keys()))
 
@@ -581,8 +610,8 @@ class Doc2VecEvaluator:
     #         title = ""
     #     return title
 
-config = Configuration()
-dve = Doc2VecEvaluator(config)
-dve.get_clustering()
+# config = Configuration()
+# dve = Doc2VecEvaluator(config)
+# dve.get_clustering()
 # dve.get_average_value_groupBy()
 # dve.anova_test()

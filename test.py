@@ -1,15 +1,22 @@
-import networkx as nx
-import matplotlib.pyplot as plt
+import pandas as pd
+num = ['10', '20', '30', '40']
+co=[-10, -20, -30, -50]
+df = pd.DataFrame({'num': num, 'value': co})
+df['delta'] = df['value'].diff() / df['value'][1:]
+print(df)
+print(df['value'].pct_change(1))
+find = df['delta'] == df['delta'].max()
+df_find = df[find]
 
-# 그래프 생성
-G = nx.DiGraph()
 
-G.add_nodes_from(['Strategic Program Manager, Customer Solutions (Contract)(66)', 'Strategic Program Manager, Customer Solutions (Contract)(89)', 'Contracts Manager(78)', 'LCS Project Manager(13192)'])
+# if co[0] > df_find['value'].tolist()[0]:
+#     print("yes")
+# else:
+#     print("no")
 
-G.add_weighted_edges_from([('Strategic Program Manager, Customer Solutions (Contract)(66)', 'Strategic Program Manager, Customer Solutions (Contract)(89)', 0.125), ('Contracts Manager(78)', 'LCS Project Manager(13192)', 0.5)])
 
-degree = nx.degree(G)
-print(degree)
 
-nx.draw(G,node_size=[500 + v[1]*500 for v in degree], with_labels=True)
-plt.show()
+
+# print(df['value'][0], df['delta'].max()[0])
+
+
