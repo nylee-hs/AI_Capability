@@ -26,8 +26,9 @@ def main():
         print('==== 6. Visualization(only)     ==== ')
         print('==== 7. Make sim title matrix   ====')
         print('==== 8. Average Analysis(only)  ==== ')
-        print('==== 9. Topic Modeling          ====')
-        print('==== 10. END                    ====')
+        print('==== 9. Topic Modeling(build)   ====')
+        print('==== 10. Topic Modeling(model)   ====')
+        print('==== 11. END                    ====')
 
 
         choice = input(' >> Select Number : ')
@@ -70,6 +71,9 @@ def main():
             # similarity matrix 저장하기
             df = model.get_similarity(model)
 
+
+            ## doc2vec 결과 클러스터링
+            model.get_clustering()
 
             # ## JOB_ID - Job Title 매칭 파일 저장하기
             # df = pd.DataFrame(columns=['Job_ID', 'Job_Title'])
@@ -126,18 +130,15 @@ def main():
 
         elif choice == '9':
             builder = LDABuilder(config=config)
-            topic_num = builder.getOptimalTopicNum()
-            builder.num_topics = topic_num
-            # builder.num_topics = 10
-            builder.main()
+            builder.num_topics = builder.getOptimalTopicNum()
+            # builder.num_topics = 30
 
+            builder.main()
             model = LDAModeler(config=config)
             topics = []
             for i in range(builder.num_topics):
                 topic = model.show_topic_words(i)
                 topics.append(topic)
-
-
             topic_terms = []
             topic_values = []
             for topic in topics:
@@ -149,7 +150,7 @@ def main():
                 topic_terms.append(each_terms)
                 topic_values.append(each_values)
             # print(topic_terms)
-
+            # model.show_document_topics()
             # topic_number = [f'Topic_{i}' for i in range(len(topic_terms))]
             # terms = [terms[0] for terms in model.show_topic_words(0)]
             # values = [terms[1] for terms in model.show_topic_words(0)]
@@ -160,10 +161,42 @@ def main():
             df_term.to_csv(config.tm_model_path + config.data_file_name + '_lda_term.csv', mode='w', encoding='utf-8')
             df_value.to_csv(config.tm_model_path + config.data_file_name + '_lda_value.csv', mode='w', encoding='utf-8')
             #
-            model.view_lda_model(model.model, model.corpus, model.dictionary)
-            model.show_topic_docs(topic_id=0)
+            model.view_lda_model(model.model, model.corpus_tfidf, model.dictionary)
+
 
         elif choice == '10':
+            model = LDAModeler(config=config)
+            print(f'topicNum = {model.topic_num}')
+            topics = []
+            for i in range(0, model.topic_num):
+                topic = model.show_topic_words(i)
+                topics.append(topic)
+            topic_terms = []
+            topic_values = []
+            for topic in topics:
+                each_terms = []
+                each_values = []
+                for term in topic:
+                    each_terms.append(term[0])
+                    each_values.append(term[1])
+                topic_terms.append(each_terms)
+                topic_values.append(each_values)
+            # print(topic_terms)
+            model.show_document_topics()
+            # topic_number = [f'Topic_{i}' for i in range(len(topic_terms))]
+            # terms = [terms[0] for terms in model.show_topic_words(0)]
+            # values = [terms[1] for terms in model.show_topic_words(0)]
+            # print(values)
+            #
+            df_term = pd.DataFrame(topic_terms)
+            df_value = pd.DataFrame(topic_values)
+            df_term.to_csv(config.tm_model_path + config.data_file_name + '_lda_term.csv', mode='w', encoding='utf-8')
+            df_value.to_csv(config.tm_model_path + config.data_file_name + '_lda_value.csv', mode='w', encoding='utf-8')
+            #
+            model.view_lda_model(model.model, model.corpus_tfidf, model.dictionary)
+
+
+        elif choice == '11':
             break
 
 def main_macro():
@@ -232,17 +265,15 @@ def main_macro():
         model.most_similar_result(len(model.doc2idx.values()), 10)
 
         builder = LDABuilder(config=config)
-        topic_num = builder.getOptimalTopicNum()
-        builder.num_topics = topic_num
-        # builder.num_topics = 10
-        builder.main()
+        builder.num_topics = builder.getOptimalTopicNum()
+        # builder.num_topics = 30
 
+        builder.main()
         model = LDAModeler(config=config)
         topics = []
         for i in range(builder.num_topics):
             topic = model.show_topic_words(i)
             topics.append(topic)
-
         topic_terms = []
         topic_values = []
         for topic in topics:
@@ -253,9 +284,9 @@ def main_macro():
                 each_values.append(term[1])
             topic_terms.append(each_terms)
             topic_values.append(each_values)
-        print(topic_terms)
-
-        topic_number = [f'Topic_{i}' for i in range(len(topic_terms))]
+        # print(topic_terms)
+        model.show_document_topics()
+        # topic_number = [f'Topic_{i}' for i in range(len(topic_terms))]
         # terms = [terms[0] for terms in model.show_topic_words(0)]
         # values = [terms[1] for terms in model.show_topic_words(0)]
         # print(values)
@@ -265,7 +296,7 @@ def main_macro():
         df_term.to_csv(config.tm_model_path + config.data_file_name + '_lda_term.csv', mode='w', encoding='utf-8')
         df_value.to_csv(config.tm_model_path + config.data_file_name + '_lda_value.csv', mode='w', encoding='utf-8')
         #
-        model.view_lda_model(model.model, model.corpus, model.dictionary)
+        model.view_lda_model(model.model, model.corpus_tfidf, model.dictionary)
 
 
 if __name__=='__main__':

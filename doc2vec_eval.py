@@ -330,6 +330,10 @@ class Doc2VecEvaluator:
         with open(self.model_path+self.data_name+'_cluster.model', 'wb') as f:
             pickle.dump(model, f)
 
+        # new_df = self.data
+        # new_df['cluster'] = model.labels_
+        # new_df.to_csv(self.data_path + self.data_name + '_new.csv', mode='w', encoding='utf-8')
+
         return model
 
 
