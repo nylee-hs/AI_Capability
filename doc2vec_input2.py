@@ -33,7 +33,7 @@ class Configuration:
 
     def __init__(self, filename=None, date=None):
         if filename is not None and date is not None:
-            self.date = 'data/doc2vec_test_data/'+date
+            self.date = 'analysis/test/'+date
             self.data_path = self.date + '/data/'
             self.model_path = self.date + '/model_doc2vec/'
             self.tm_model_path = self.date + '/model_tm/'
@@ -63,7 +63,7 @@ class Configuration:
 
     def make_save_path(self): ## directory는 'models/날짜'의 형식으로 설정해야 함
         print('==== Configuration ====')
-        directory = 'data/doc2vec_test_data/' + input('data date : ')
+        directory = 'analysis/test/' + input('data date : ')
         if not os.path.exists(directory):
             os.makedirs(directory)
         return directory
@@ -101,7 +101,7 @@ class Doc2VecInput:
 
     def make_save_path(self): ## directory는 'models/날짜'의 형식으로 설정해야 함
         print('==== Preprocessing ====')
-        directory = 'data/doc2vec_test_data/' + input('data date : ') + '/data/'
+        directory = 'analysis/test/' + input('data date : ') + '/data/'
         if not os.path.exists(directory):
             os.makedirs(directory)
         return directory
@@ -367,7 +367,7 @@ class Doc2VecInput:
             pickle.dump(data_lemmatized_filter_re, f)
 
         
-        # self.get_word_count(data_lemmatized_filter_re)  ## 워드 클라우드
+        self.get_word_count(data_lemmatized_filter_re)  ## 워드 클라우드
         
         # final_terms = pd.DataFrame({'terms': data_lemmatized_filter})
         # final_terms.to_csv(self.data_path + self.data_file_name + '_final_terms.csv', mode='w', encoding='utf-8')

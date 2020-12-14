@@ -147,8 +147,8 @@ class LDABuilder:
     def make_save_path(self): ## directory는 'models/날짜'의 형식으로 설정해야 함
         print('==== Modeling Building Process ====')
         analysis_date = input(' > date : ')
-        data_directory = 'data/doc2vec_test_data/'+ analysis_date + '/data/'
-        model_directory = 'data/doc2vec_test_data/'+ analysis_date + '/model_tm/'
+        data_directory = 'analysis/test/'+ analysis_date + '/data/'
+        model_directory = 'analysis/test/'+ analysis_date + '/model_tm/'
         if not os.path.exists(data_directory):
             os.makedirs(data_directory)
         if not os.path.exists(model_directory):
@@ -220,8 +220,8 @@ class LDAModeler:
     def get_path(self):  ## directory는 'models/날짜'의 형식으로 설정해야 함
         print('==== LDA Model Analyzer ====')
         date = input(' > date : ')
-        model_directory = 'data/doc2vec_test_data/' + date + '/model_tm/'
-        data_directory = 'data/doc2vec_test_data/' + date + '/data/'
+        model_directory = 'analysis/test/' + date + '/model_tm/'
+        data_directory = 'analysis/test/' + date + '/data/'
         return data_directory, model_directory
 
     def view_lda_model(self, model, corpus, dictionary):

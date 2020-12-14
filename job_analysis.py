@@ -87,7 +87,7 @@ class Job_analysis:
 
     def pre_prosseccing(self):
         dm = DataManager()
-        data = dm.load_csv(file='data/doc2vec_test_data/0702/job_title.csv', encoding='utf-8')
+        data = dm.load_csv(file='analysis/test/0702/job_title.csv', encoding='utf-8')
         print(data['job Title'].size)
         sentences = self.data_text_cleansing(data, 'job Title')
         data_words = list(self.sent_to_words(sentences))
@@ -100,7 +100,7 @@ class Job_analysis:
         df = pd.DataFrame({'id':data['id'], 'Job_Title':data_words_nostops, 'posting_id':data['posting_id']})
         # df = df.append(data_words_nostops)
 
-        df.to_csv('data/doc2vec_test_data/0702/job_title_adj_extend.csv', mode='w', encoding='utf-8')
+        df.to_csv('analysis/test/0702/job_title_adj_extend.csv', mode='w', encoding='utf-8')
 
         # 수정된 job title에 맞춰 분석 데이터 수정하기
 

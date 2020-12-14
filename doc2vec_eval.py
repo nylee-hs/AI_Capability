@@ -92,7 +92,7 @@ class Doc2VecEvaluator:
 
     def most_similar_terms(self, topn=10):
         df = pd.DataFrame()
-        data = pd.read_csv('data/doc2vec_test_data/0702/including_words_list.csv', encoding='utf-8')
+        data = pd.read_csv('analysis/test/0702/including_words_list.csv', encoding='utf-8')
         seed_term = data['Includingwords']
 
         for term in seed_term:
@@ -364,7 +364,7 @@ class Doc2VecEvaluator:
         # source = ColumnDataSource(ColumnDataSource.from_df(df))
         source = ColumnDataSource(ColumnDataSource.from_df(df))
         labels = LabelSet(x="x", y="y", text="cluster", y_offset=8,
-                          text_font_size="3pt", text_color="#555555",
+                          text_font_size="0pt", text_color="#555555",
                           source=source, text_align='center')
 
         color_mapper = LinearColorMapper(palette=palette, low=min(df['cluster']), high=max(df['cluster']))
@@ -384,7 +384,7 @@ class Doc2VecEvaluator:
                 tooltips='@id'
             )
         )
-        plot.scatter("x", "y", size=20, source=source, color={'field': 'cluster', 'transform': color_mapper}, line_color=None,
+        plot.scatter("x", "y", size=10, source=source, color={'field': 'cluster', 'transform': color_mapper}, line_color=None,
                      fill_alpha=0.8, legend_field='cluster')
 
         # plot.circle(source=source, x='x', y='y', line_alplha=0.3, fill_alpha=0.2, size=10, fill_color='color', line_color='color')

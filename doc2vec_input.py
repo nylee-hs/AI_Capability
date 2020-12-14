@@ -26,7 +26,7 @@ class Doc2VecInput:
 
     def make_save_path(self): ## directory는 'models/날짜'의 형식으로 설정해야 함
         print('==== Preprocessing ====')
-        directory = 'data/doc2vec_test_data/' + input('data date : ') + '/data/'
+        directory = 'analysis/test/' + input('data date : ') + '/data/'
         if not os.path.exists(directory):
             os.makedirs(directory)
         return directory

@@ -8,7 +8,7 @@ class Integration:
 
         texts = []
         contents_list = []
-        with open('data/doc2vec_test_data/0907/data/manager.txt', encoding='utf-8', mode='r') as f:
+        with open('analysis/test/0907/data/manager.txt', encoding='utf-8', mode='r') as f:
             line = f.readline()
             # print(line)
             while line !='':
@@ -26,7 +26,7 @@ class Integration:
         contents_list.append(texts)
 
         texts1 = []
-        with open('data/doc2vec_test_data/0907/data/senior.txt', encoding='utf-8', mode='r') as f:
+        with open('analysis/test/0907/data/senior.txt', encoding='utf-8', mode='r') as f:
             line = f.readline()
             while line !='':
                 line = line.rstrip('\n')
@@ -40,7 +40,7 @@ class Integration:
         contents_list.append(texts1)
 
         texts2 = []
-        with open('data/doc2vec_test_data/0907/data/intermediate.txt', encoding='utf-8', mode='r') as f:
+        with open('analysis/test/0907/data/intermediate.txt', encoding='utf-8', mode='r') as f:
             line = f.readline()
             while line !='':
                 line = line.rstrip('\n')
@@ -55,7 +55,7 @@ class Integration:
 
 
         texts3 = []
-        with open('data/doc2vec_test_data/0907/data/junior.txt', encoding='utf-8', mode='r') as f:
+        with open('analysis/test/0907/data/junior.txt', encoding='utf-8', mode='r') as f:
             line = f.readline()
             while line !='':
                 line = line.rstrip('\n')
