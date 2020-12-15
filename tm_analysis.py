@@ -28,10 +28,10 @@ class LDABuilder:
         self.tag_doc = self.get_tag_doc()
         self.corpus_tfidf, self.dictionary = self.get_corpus_tfidf()
 
-
-    def get_data_name(self):
-        data_name = input(' > data_name for lda : ') ## 분석하고자 하는 csv 파일의 이름을 입력
-        return data_name
+    #
+    # def get_data_name(self):
+    #     data_name = input(' > data_name for lda : ') ## 분석하고자 하는 csv 파일의 이름을 입력
+    #     return data_name
 
     def get_tag_doc(self):
         with open(self.data_path+self.data_name+'.tag_doc', 'rb') as f:
@@ -193,7 +193,7 @@ class LDABuilder:
         # self.model_path = self.make_save_path('models/0722')
         self.saveLDAModel()
 
-class LDAModeler:
+class LDAEvaluator:
     def __init__(self, config):
         self.data_path = config.data_path
         self.model_path = config.tm_model_path
@@ -206,23 +206,44 @@ class LDAModeler:
         self.data = pd.read_csv(self.data_path+self.data_name+'_new.csv', encoding='utf-8')
         self.topic_num = self.get_topic_num()
 
+    def get_topic_terms(self):
+        topics = []
+        for i in range(0, self.model.topic_num):
+            topic = self.model.show_topic_words(i)
+            topics.append(topic)
+        topic_terms = []
+        topic_values = []
+        for topic in topics:
+            each_terms = []
+            each_values = []
+            for term in topic:
+                each_terms.append(term[0])
+                each_values.append(term[1])
+            topic_terms.append(each_terms)
+            topic_values.append(each_values)
+
+        df_term = pd.DataFrame(topic_terms)
+        df_value = pd.DataFrame(topic_values)
+        df_term.to_csv(self.model_path + self.data_name + '_lda_term.csv', mode='w', encoding='utf-8')
+        df_value.to_csv(self.model_path + self.data_name + '_lda_value.csv', mode='w', encoding='utf-8')
+
 
     def get_topic_num(self):
         df = pd.read_csv(self.model_path+self.data_name+'_coherence_delta.csv', encoding='utf-8')
         max_value = df['delta'] == df['delta'].max()
         topic_num = df[max_value]
         return topic_num['num'].tolist()[0]
+    #
+    # def get_data_name(self):
+    #     data_name = input(' > data_name for lda : ')
+    #     return data_name
 
-    def get_data_name(self):
-        data_name = input(' > data_name for lda : ')
-        return data_name
-
-    def get_path(self):  ## directory는 'models/날짜'의 형식으로 설정해야 함
-        print('==== LDA Model Analyzer ====')
-        date = input(' > date : ')
-        model_directory = 'analysis/test/' + date + '/model_tm/'
-        data_directory = 'analysis/test/' + date + '/data/'
-        return data_directory, model_directory
+    # def get_path(self):  ## directory는 'models/날짜'의 형식으로 설정해야 함
+    #     print('==== LDA Model Analyzer ====')
+    #     date = input(' > date : ')
+    #     model_directory = 'analysis/test/' + date + '/model_tm/'
+    #     data_directory = 'analysis/test/' + date + '/data/'
+    #     return data_directory, model_directory
 
     def view_lda_model(self, model, corpus, dictionary):
         # corpus = [dictionary.doc2bow(doc) for doc in corpus]
@@ -274,7 +295,6 @@ class LDAModeler:
         print(topic_set)
         frequency = {}
         for t in topic_li:
-            print(t)
             if t in frequency:
                 frequency[t] += 1
             elif t not in frequency:
@@ -292,8 +312,6 @@ class LDAModeler:
         # plt.figure(num=None, figsize=(20, 10), dpi=80)
         # plt.tight_layout()
         # plt.show()
-
-
         plt.draw()
         plt.savefig(self.model_path+self.data_name+'_distribution.png', dpi=300, bbox_inches='tight')
 

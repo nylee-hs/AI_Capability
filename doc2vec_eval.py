@@ -92,7 +92,7 @@ class Doc2VecEvaluator:
 
     def most_similar_terms(self, topn=10):
         df = pd.DataFrame()
-        data = pd.read_csv('analysis/test/0702/including_words_list.csv', encoding='utf-8')
+        data = pd.read_csv('analysis/doc2vec_test_data/0702/including_words_list.csv', encoding='utf-8')
         seed_term = data['Includingwords']
 
         for term in seed_term:

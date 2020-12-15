@@ -33,7 +33,7 @@ class Configuration:
 
     def __init__(self, filename=None, date=None):
         if filename is not None and date is not None:
-            self.date = 'analysis/test/'+date
+            self.date = 'analysis/doc2vec_test_data/'+date
             self.data_path = self.date + '/data/'
             self.model_path = self.date + '/model_doc2vec/'
             self.tm_model_path = self.date + '/model_tm/'
@@ -63,7 +63,7 @@ class Configuration:
 
     def make_save_path(self): ## directory는 'models/날짜'의 형식으로 설정해야 함
         print('==== Configuration ====')
-        directory = 'analysis/test/' + input('data date : ')
+        directory = 'analysis/doc2vec_test_data/' + input('data date : ')
         if not os.path.exists(directory):
             os.makedirs(directory)
         return directory
@@ -88,23 +88,23 @@ class Doc2VecInput:
         self.job_type, self.job_id, self.description = self.pre_prosseccing()
         self.tagged_doc_ = self.make_tag_document()
 
+    #
+    # def get_factor(self): ## '0: responsiblities' 또는 '1: requirements' 입력
+    #     factor = input(' > factor(description: 0, responsibilities:1, requirements:2) : ')
+    #     if factor == '0':
+    #         factor = 'job_description'
+    #     elif factor == '1':
+    #         factor = 'job_description_responsibilities'
+    #     elif factor == '2':
+    #         factor = 'job_description_requirements'
+    #     return factor
 
-    def get_factor(self): ## '0: responsiblities' 또는 '1: requirements' 입력
-        factor = input(' > factor(description: 0, responsibilities:1, requirements:2) : ')
-        if factor == '0':
-            factor = 'job_description'
-        elif factor == '1':
-            factor = 'job_description_responsibilities'
-        elif factor == '2':
-            factor = 'job_description_requirements'
-        return factor
-
-    def make_save_path(self): ## directory는 'models/날짜'의 형식으로 설정해야 함
-        print('==== Preprocessing ====')
-        directory = 'analysis/test/' + input('data date : ') + '/data/'
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-        return directory
+    # def make_save_path(self): ## directory는 'models/날짜'의 형식으로 설정해야 함
+    #     print('==== Preprocessing ====')
+    #     directory = 'analysis/doc2vec_test_data/' + input('data date : ') + '/data/'
+    #     if not os.path.exists(directory):
+    #         os.makedirs(directory)
+    #     return directory
 
     def make_ngram(self, text, n):  ## n == 3 --> trigram, n==2 --> bigram
         # min_count : Ignore all words and bigrams with total collected count lower than this value.
@@ -316,9 +316,8 @@ class Doc2VecInput:
 
     def pre_prosseccing(self):
         print('==== Preprocessing ====')
-        dm = DataManager()
-
-        data = dm.load_csv(file=self.data_path + self.data_file_name+'.csv', encoding='utf-8')
+        data = pd.read_csv(self.data_path+self.data_file_name+'.csv', encoding='utf-8')
+            # (file=self.data_path + self.data_file_name+'.csv', encoding='utf-8')
         # integ = Integration()
         # data = integ.getIntegratedData(self.data_path, self.data_file_name)
         data = self.get_requirements_from_document(data)
@@ -326,7 +325,7 @@ class Doc2VecInput:
         description = data[self.factor]
         description_reset = description.dropna(axis=0).reset_index(drop=True)
 
-        description = [sent.replace('\n', ' ') for sent in description_reset]
+        description = [sent.replace('\n', ' ') for sent in description_reset] ##
 
         with open(self.data_path + self.data_file_name+'.documents', 'wb') as f:
             pickle.dump(description, f)
@@ -357,8 +356,8 @@ class Doc2VecInput:
         # for i in range(len(bigram)):
         #     print(f'[{i}] : {bigram[i]}')
 
-        data_lemmatized_filter = self.word_filtering(bigram)
-        data_lemmatized_filter_re = self.lematization(data_lemmatized_filter, allowed_postags=['NOUN', 'PROPN', 'NUM'])
+        # data_lemmatized_filter = self.word_filtering(bigram)
+        data_lemmatized_filter_re = self.lematization(bigram, allowed_postags=['NOUN', 'PROPN', 'NUM'])
 
         for i in range(len(data_lemmatized_filter_re)):
             print(f'[{i}] : {data_lemmatized_filter_re[i]}')

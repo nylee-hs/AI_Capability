@@ -1,6 +1,6 @@
 from doc2vec_eval import Doc2VecEvaluator, Doc2VecModeler
 from doc2vec_input2 import Doc2VecInput, Configuration
-from tm_analysis import LDABuilder, LDAModeler
+from tm_analysis import LDABuilder, LDAEvaluator
 from tm_input import TMInput
 from gensim.models import Doc2Vec
 import pandas as pd
@@ -18,17 +18,17 @@ def main():
     config = Configuration()
     while (True):
         print('=============== MENU ===============')
-        print('==== 1. Doc2Vec All             ====')
-        print('==== 2. Preprocessing(only)     ====')
-        print('==== 3. Modeling(only)          ====')
-        print('==== 4. Clustering(only)          ====')
-        print('==== 5. Similarity(only)        ==== ')
-        print('==== 6. Visualization(only)     ==== ')
-        print('==== 7. Make sim title matrix   ====')
-        print('==== 8. Average Analysis(only)  ==== ')
-        print('==== 9. Topic Modeling(build)   ====')
-        print('==== 10. Topic Modeling(model)   ====')
-        print('==== 11. END                    ====')
+        print('==== 1. Doc2Vec Analysis             ====')
+        print('==== 2. Preprocessing(only)          ====')
+        print('==== 3. Modeling(only)               ====')
+        print('==== 4. Clustering(only)             ====')
+        print('==== 5. Similarity(only)             ====')
+        print('==== 6. Visualization(only)          ====')
+        print('==== 7. Make sim title matrix        ====')
+        print('==== 8. Average Analysis(only)       ====')
+        print('==== 9. Topic Modeling(build)        ====')
+        print('==== 10. Topic Modeling(evaluation)  ====')
+        print('==== 11. END                         ====')
 
 
         choice = input(' >> Select Number : ')
@@ -134,7 +134,7 @@ def main():
             # builder.num_topics = 30
 
             builder.main()
-            model = LDAModeler(config=config)
+            model = LDAEvaluator(config=config)
             topics = []
             for i in range(builder.num_topics):
                 topic = model.show_topic_words(i)
@@ -165,22 +165,22 @@ def main():
 
 
         elif choice == '10':
-            model = LDAModeler(config=config)
+            model = LDAEvaluator(config=config)
             print(f'topicNum = {model.topic_num}')
-            topics = []
-            for i in range(0, model.topic_num):
-                topic = model.show_topic_words(i)
-                topics.append(topic)
-            topic_terms = []
-            topic_values = []
-            for topic in topics:
-                each_terms = []
-                each_values = []
-                for term in topic:
-                    each_terms.append(term[0])
-                    each_values.append(term[1])
-                topic_terms.append(each_terms)
-                topic_values.append(each_values)
+            # topics = []
+            # for i in range(0, model.topic_num):
+            #     topic = model.show_topic_words(i)
+            #     topics.append(topic)
+            # topic_terms = []
+            # topic_values = []
+            # for topic in topics:
+            #     each_terms = []
+            #     each_values = []
+            #     for term in topic:
+            #         each_terms.append(term[0])
+            #         each_values.append(term[1])
+            #     topic_terms.append(each_terms)
+            #     topic_values.append(each_values)
             # print(topic_terms)
             model.show_document_topics()
             # topic_number = [f'Topic_{i}' for i in range(len(topic_terms))]
@@ -188,10 +188,10 @@ def main():
             # values = [terms[1] for terms in model.show_topic_words(0)]
             # print(values)
             #
-            df_term = pd.DataFrame(topic_terms)
-            df_value = pd.DataFrame(topic_values)
-            df_term.to_csv(config.tm_model_path + config.data_file_name + '_lda_term.csv', mode='w', encoding='utf-8')
-            df_value.to_csv(config.tm_model_path + config.data_file_name + '_lda_value.csv', mode='w', encoding='utf-8')
+            # df_term = pd.DataFrame(topic_terms)
+            # df_value = pd.DataFrame(topic_values)
+            # df_term.to_csv(config.tm_model_path + config.data_file_name + '_lda_term.csv', mode='w', encoding='utf-8')
+            # df_value.to_csv(config.tm_model_path + config.data_file_name + '_lda_value.csv', mode='w', encoding='utf-8')
             #
             model.view_lda_model(model.model, model.corpus_tfidf, model.dictionary)
 
@@ -269,7 +269,7 @@ def main_macro():
         # builder.num_topics = 30
 
         builder.main()
-        model = LDAModeler(config=config)
+        model = LDAEvaluator(config=config)
         topics = []
         for i in range(builder.num_topics):
             topic = model.show_topic_words(i)
