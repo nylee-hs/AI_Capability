@@ -447,7 +447,7 @@ class Doc2VecEvaluator:
         if choice == None:
             view_type = 'N'
         else:
-            view_type = input('    >> Group(Y/N) : ').capitalize()
+            view_type = 'Y'
 
         job_ids = self.get_titles_in_corpus(n_sample=len(self.model.docvecs.doctags.keys()))
         job_ids_2 = self.get_types_in_corpus(n_sample=len(self.model.docvecs.doctags.keys()))
@@ -517,7 +517,7 @@ class Doc2VecEvaluator:
         for j_type in tqdm(range(len(types))):
             temp = []
             temp_group = []
-            filtered_data = raw.filter(like='_' + types(j_type), axis=1) ## 타입 데이터 전체
+            filtered_data = raw.filter(like='_' + types[j_type], axis=1) ## 타입 데이터 전체
             temp.append(types[j_type])
             temp_group.append(types[j_type])
             for i in range(len(types)):

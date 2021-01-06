@@ -63,7 +63,7 @@ class Configuration:
 
     def make_save_path(self): ## directory는 'models/날짜'의 형식으로 설정해야 함
         print('==== Configuration ====')
-        directory = 'analysis/doc2vec_test_data/' + input('data date : ')
+        directory = 'analysis/doc2vec_test_data/' + input('data folder : ')
         if not os.path.exists(directory):
             os.makedirs(directory)
         return directory

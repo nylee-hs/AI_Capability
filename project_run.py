@@ -17,7 +17,7 @@ def main():
     dm = DataManager()
     config = Configuration()
     while (True):
-        print('=============== MENU ===============')
+        print('================= MENU ==================')
         print('==== 1. Doc2Vec Analysis             ====')
         print('==== 2. Preprocessing(only)          ====')
         print('==== 3. Modeling(only)               ====')
@@ -29,6 +29,7 @@ def main():
         print('==== 9. Topic Modeling(build)        ====')
         print('==== 10. Topic Modeling(evaluation)  ====')
         print('==== 11. END                         ====')
+        print('=========================================')
 
 
         choice = input(' >> Select Number : ')
@@ -117,7 +118,8 @@ def main():
 
         elif choice == '6':
             model = Doc2VecEvaluator(config=config)
-            model.visualize_jobs(type='tsne')
+            sel = input(' >> Group(Y or N) : ')
+            model.visualize_jobs(type='tsne', choice=sel)
 
 
         elif choice == '7':
@@ -127,6 +129,7 @@ def main():
         elif choice == '8':
             model = Doc2VecEvaluator(config=config)
             model.get_average_value_groupBy()
+            model.anova_test()
 
         elif choice == '9':
             builder = LDABuilder(config=config)
