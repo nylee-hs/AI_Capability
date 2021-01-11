@@ -224,6 +224,7 @@ class Doc2VecInput:
         c_terms = '|'.join(self.capa_terms)
         p = re.compile(c_terms)
         for texts in descpription:
+            # print(texts)
             texts = texts.replace('\n', '. ')   ## 줄바꿈 --> 마침표 으로 처리
             texts = texts.replace("’", '')
             texts = texts.replace('“', '')

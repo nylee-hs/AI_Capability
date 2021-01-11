@@ -200,6 +200,11 @@ def main():
 
 
         elif choice == '11':
+            model = Doc2VecEvaluator(config=config)
+            print(len(model.model.docvecs))
+            # model.anova_test()
+
+        elif choice == '0':
             break
 
 def main_macro():

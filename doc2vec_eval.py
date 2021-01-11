@@ -37,7 +37,7 @@ class Doc2VecModeler:
     def run(self):
         print('==== Start Doc2Vec Modeling ====')
         # cores = multiprocessing.cpu_count()
-        model = Doc2Vec(self.tagged_doc, dm=0, dbow_words=1, window=10, alpha=0.025, vector_size=1024, min_count=50,
+        model = Doc2Vec(self.tagged_doc, dm=0, dbow_words=1, window=10, alpha=0.025, vector_size=1024, min_count=5,
                 min_alpha=0.025, workers=4, hs=0, negative=10, epochs=20, sample=0.1, ns_exponent=1e-07)
         model.save(self.model_path + self.data_name + '_doc2vec.model')
         print('==== End Doc2Vec Process ====')
@@ -268,6 +268,15 @@ class Doc2VecEvaluator:
         # print(s)
         return s
 
+    def get_job_type(self, job_id):
+        data = self.data
+        job_id = str(job_id)
+        job_id = job_id.split('_')
+        job_id = int(job_id[2])
+        types = data[data['id']==job_id]['type']
+        types = types.tolist()
+        return types
+
     def get_similarity(self, model):
         print('   -> get similarity values')
         keys_list = list(self.doc2idx.keys())
@@ -324,9 +333,14 @@ class Doc2VecEvaluator:
         model = KMeans(n_clusters=cluster_no, algorithm='auto')
         model.fit(self.model.docvecs.vectors_docs)
         job_ids = self.model.docvecs.doctags.keys()
+        for jid in job_ids:
+            print(f'{jid} - {self.get_job_title(jid)} - ')
         job_titles = [self.get_job_title(jid) for jid in job_ids]
-        df = pd.DataFrame({'Job_Title': job_titles, 'Cluster': model.labels_})
-        df.to_csv(self.model_path+self.data_name+'_cluster.csv', mode='w', encoding='utf-8')
+        job_types = [self.get_job_type(jid) for jid in job_ids]
+        df_1 = pd.DataFrame({'Job_Title': job_titles, 'Cluster': model.labels_})
+        df_2 = pd.DataFrame({'Job_Title': job_titles, 'Cluster': model.labels_, 'Types':job_types})
+        df_1.to_csv(self.model_path+self.data_name+'_cluster.csv', mode='w', encoding='utf-8')
+        df_2.to_csv(self.model_path + self.data_name + '_cluster_types.csv', mode='w', encoding='utf-8')
         with open(self.model_path+self.data_name+'_cluster.model', 'wb') as f:
             pickle.dump(model, f)
 
@@ -430,7 +444,7 @@ class Doc2VecEvaluator:
         color_mapper = LinearColorMapper(palette=palette, low=min(tsne_results[:, 1]), high=max(tsne_results[:, 1]))
 
         group_name = ['A', 'B', 'C', 'D', 'E', 'F']
-        colors = ['#FF0000', '#FFBB00', '#00D8FF', '#0055FF', '#6600FF', '#000000']
+        colors = ['#FF0000', '#FFBB00', '#00D8FF', '#0055FF', '#00FF00', '#000000']
         plot = figure(plot_width=1200, plot_height=1200)
         # plot.scatter("x", "y", size=int(circle_size), source=source, color={'field': 'y', 'transform': color_mapper}, line_color=None,
         #              fill_alpha=0.8)
@@ -537,8 +551,9 @@ class Doc2VecEvaluator:
         with open(self.model_path+self.data_name+'.groups_data', 'rb') as f:
             groups_data = pickle.load(f)
         groups = [group for group in groups_data]
-        print(groups[0][2][0])
-        print(groups[0][1][0])
+        print(len(groups))
+        print(groups[5][1][0])
+        print(groups[5][1][1])
 
         types = [data[0] for data in groups]
         results = []
@@ -546,25 +561,26 @@ class Doc2VecEvaluator:
         for i in tqdm(range(len(groups))):
             _matrix = []
             check_i = 1
-            base = groups[i][check_i]
+            base = groups[i][i+1]
             base_name = [types[i] for temp in range(len(base))]
             df_base = pd.DataFrame({'Value': base, 'Type': base_name})
+            # print(df_base)
             for j in range(1,7):
                 type_index = 0
-                compare = groups[i][j].tolist()
-                compare_name = [types[j-1] for temp in range(len(compare))]
-                print(f'BASE = {base_name[0]} - COMPARE = {compare_name[0]}')
+                compare = groups[i][j]
+                compare_list = compare.tolist()
+                compare_name = [types[j-1] for temp in range(len(compare_list))]
+                # print(f'BASE = {base_name[0]} - COMPARE = {compare_name[0]}')
 
                 df_compare = pd.DataFrame({'Value': compare, 'Type': compare_name})
-                print(df_base.mean())
-                print(df_compare.mean())
+                # print(df_base.mean())
+                # print(df_compare.mean())
                 frames = [df_base, df_compare]
                 result_df = pd.concat(frames)
-
                 model = ols('Value ~ C(Type)', result_df).fit()
                 # print(anova_lm(model))
                 # print(anova_lm(model)['PR(>F)'][0])
-                _matrix.append(anova_lm(model)['PR(>F)'][0])
+                _matrix.append(round(anova_lm(model)['PR(>F)'][0], 4))
                 type_index += 1
             sim_matrix.append(_matrix)
             check_i += 1
@@ -574,7 +590,8 @@ class Doc2VecEvaluator:
         row_name = types
         df.columns = col_name
         df.index = row_name
-        print(df.head())
+        df.to_csv(self.model_path+self.data_name+'_anova.csv', encoding='utf-8')
+        print(df.head(10))
 
 
 
