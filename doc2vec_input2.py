@@ -1,12 +1,12 @@
 import pickle
 import os.path
-import pytagcloud
+# import pytagcloud
 from matplotlib import pyplot as plt
 from sklearn import preprocessing
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from tqdm import tqdm
 import spacy
-from datamanager import DataManager
+# from datamanager import DataManager
 from gensim.models.doc2vec import TaggedDocument
 # from konlpy.tag import Mecab
 import gensim
@@ -157,8 +157,8 @@ class Doc2VecInput:
         stop_words_list = []
         if os.path.isfile(self.data_path+file):
             print('     -> Stop Words File : Found')
-            dm = DataManager()
-            df = dm.load_csv(file=self.data_path + file, encoding='utf-8')
+            # dm = DataManager()
+            df = pd.read_csv(self.data_path + file, encoding='utf-8')
             stop_words_list = df['Stopwords'].tolist()
         else:
             print('     -> Stop Words File : Not Found')
@@ -170,8 +170,8 @@ class Doc2VecInput:
         including_words_list = []
         if os.path.isfile(self.data_path+file):
             print('    -> Including Words File : Found')
-            dm = DataManager()
-            df = dm.load_csv(file=self.data_path+file, encoding='utf-8')
+            # dm = DataManager()
+            df = pd.read_csv(self.data_path+file, encoding='utf-8')
             including_words_list = df['Includingwords'].tolist()
             print(f'    -> total : {len(including_words_list)} words')
         else:
@@ -271,7 +271,7 @@ class Doc2VecInput:
             key_list.append(item[0])
             value_list.append(item[1])
         new_word_count_dict = dict(zip(key_list[:50], value_list[:50]))  ## 워드 클라우드는 50개까지 보여주기
-        self.get_word_cloud(new_word_count_dict)
+        # self.get_word_cloud(new_word_count_dict)
         self.get_word_graph((new_word_count_dict))
         df = pd.DataFrame({'Terms': key_list, 'Frequency': value_list})
         df.to_csv(self.data_path + self.data_file_name + '_frequency.csv', mode='w', encoding='utf-8') ## 빈도 데이터 저장
@@ -297,9 +297,9 @@ class Doc2VecInput:
         df.loc['TF_IDF_SUM', :] = df.sum()
         df.to_csv(self.data_path + self.data_file_name + '_tf_idf.csv', mode='w', encoding='utf-8')  ## tf-idf 데이터 저장
 
-    def get_word_cloud(self, word_count_dict):
-        taglist = pytagcloud.make_tags(word_count_dict.items(), maxsize=100)
-        pytagcloud.create_tag_image(taglist, self.data_path+self.data_file_name+'_word_cloud.jpg', size=(1200, 800), rectangular=False)
+    # def get_word_cloud(self, word_count_dict):
+    #     taglist = pytagcloud.make_tags(word_count_dict.items(), maxsize=100)
+    #     pytagcloud.create_tag_image(taglist, self.data_path+self.data_file_name+'_word_cloud.jpg', size=(1200, 800), rectangular=False)
 
     def get_word_graph(self, word_count_dict):
         plt.xlabel('Word')

@@ -3,7 +3,7 @@ import pickle
 from collections import defaultdict
 
 import pyLDAvis
-import pytagcloud as pytagcloud
+# import pytagcloud as pytagcloud
 
 from doc2vec_input2 import Configuration
 

@@ -6,14 +6,14 @@ from bokeh.transform import factor_cmap
 from gensim.models import Doc2Vec
 from sklearn.cluster import KMeans
 
-from datamanager import DataManager
+# from datamanager import DataManager
 import random
 import pandas as pd
 import numpy as np
 import pickle
 from visualize_utils import visualize_between_words, visualize_words
 from tqdm import tqdm, tnrange
-import pytagcloud
+# import pytagcloud
 import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import os
@@ -64,9 +64,9 @@ class Doc2VecEvaluator:
         self.model = Doc2Vec.load(self.model_path+self.data_name+'_doc2vec.model')
         self.doc2idx = {el:idx for idx, el in enumerate(self.model.docvecs.doctags.keys())}
         self.use_notebook = use_notebook
-        dm = DataManager()
+        # dm = DataManager()
 
-        self.data = dm.load_csv(file=self.data_path+self.data_name+'.csv', encoding='utf-8')
+        self.data = pd.read_csv(self.data_path+self.data_name+'.csv', encoding='utf-8')
         self.size = len(self.doc2idx.values())
 
 
@@ -142,9 +142,9 @@ class Doc2VecEvaluator:
         # job_ids = random.sample(self.model_doc2vec.docvecs.doctags.keys(), n_sample)
         return {job_id: self.get_job_title(job_id) for job_id in job_ids}
 
-    def get_word_cloud(self, word_count_dict):
-        taglist = pytagcloud.make_tags(word_count_dict.items(), maxsize=100)
-        pytagcloud.create_tag_image(taglist, self.model_path+self.data_name+'_word_cloud.jpg', size=(1200, 800), rectangular=False)
+    # def get_word_cloud(self, word_count_dict):
+    #     taglist = pytagcloud.make_tags(word_count_dict.items(), maxsize=100)
+    #     pytagcloud.create_tag_image(taglist, self.model_path+self.data_name+'_word_cloud.jpg', size=(1200, 800), rectangular=False)
 
     def get_word_graph(self, word_count_dict):
         plt.xlabel('Word')
@@ -511,10 +511,16 @@ class Doc2VecEvaluator:
         size = filtered_data.columns.size
         return filtered_data.iloc[:size, :]
 
-    def get_average_value_groupBy(self):
-        print('  --> average of similarity ')
+    def get_average_value_groupBy(self, type_input):
+        print('  == average of similarity ')
+        types = []
+        if type_input == False:
+            types = ['A', 'B', 'C', 'D', 'E', 'F']
+        elif type_input == True:
+            user_input = input('  >> Input Types : (ex: A, B, C, ..) : ')
+            types = user_input.split(',')
         raw = pd.read_csv(self.model_path + self.data_name + '_sim_matrix.csv')
-        types = ['A', 'B', 'C', 'D', 'E', 'F']
+
         sizes = []
         ## 타입 별 데이터의 사이즈 찾기
         size_1 = 0
@@ -545,6 +551,14 @@ class Doc2VecEvaluator:
             pickle.dump(groups_data, f)
         print(results_data)
 
+        np_matrix = np.array(results_data)
+        col_name = types
+        row_name = types
+        df = pd.DataFrame(np_matrix[:, 1:])
+        df.columns = col_name
+        df.index = row_name
+        df.to_csv(self.model_path+self.data_name+'_group_average.csv', encoding='utf-8')
+
     def anova_test(self):
         print('   --> ANOVA Test...')
         # with open('data/doc2vec_test_data/1119/model_doc2vec/1120_all.groups_data', 'rb') as f:
@@ -552,8 +566,8 @@ class Doc2VecEvaluator:
             groups_data = pickle.load(f)
         groups = [group for group in groups_data]
         print(len(groups))
-        print(groups[5][1][0])
-        print(groups[5][1][1])
+        # print(groups[5][1][0])
+        # print(groups[5][1][1])
 
         types = [data[0] for data in groups]
         results = []
@@ -565,7 +579,7 @@ class Doc2VecEvaluator:
             base_name = [types[i] for temp in range(len(base))]
             df_base = pd.DataFrame({'Value': base, 'Type': base_name})
             # print(df_base)
-            for j in range(1,7):
+            for j in range(1,len(groups)+1):
                 type_index = 0
                 compare = groups[i][j]
                 compare_list = compare.tolist()

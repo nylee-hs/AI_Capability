@@ -4,7 +4,7 @@ from tm_analysis import LDABuilder, LDAEvaluator
 from tm_input import TMInput
 from gensim.models import Doc2Vec
 import pandas as pd
-from datamanager import DataManager
+# from datamanager import DataManager
 import visualize_utils
 import multiprocessing
 import logging
@@ -14,7 +14,7 @@ import pickle
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 def main():
-    dm = DataManager()
+    # dm = DataManager()
     config = Configuration()
     while (True):
         print('================= MENU ==================')
@@ -28,7 +28,7 @@ def main():
         print('==== 8. Average Analysis(only)       ====')
         print('==== 9. Topic Modeling(build)        ====')
         print('==== 10. Topic Modeling(evaluation)  ====')
-        print('==== 11. END                         ====')
+        print('==== 0. END                          ====')
         print('=========================================')
 
 
@@ -128,15 +128,23 @@ def main():
 
         elif choice == '8':
             model = Doc2VecEvaluator(config=config)
-            model.get_average_value_groupBy()
+            types_input = input('  >> Input Types? (false or true) : ')
+
+            model.get_average_value_groupBy(type_input=(types_input == 'true'))
             model.anova_test()
 
         elif choice == '9':
             builder = LDABuilder(config=config)
             builder.num_topics = builder.getOptimalTopicNum()
             # builder.num_topics = 30
+            num_choice = input(' >> Input Topic Numbers? (yes or no) : ')
 
-            builder.main()
+            if num_choice == 'yes':
+                num_input = int(input(' >> How many topics? : '))
+                builder.num_topics = num_input
+                builder.main()
+            elif num_choice == 'no':
+                builder.main()
             model = LDAEvaluator(config=config)
             topics = []
             for i in range(builder.num_topics):

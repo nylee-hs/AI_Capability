@@ -1,10 +1,10 @@
 import pickle
 import os.path
 
-import pytagcloud
+# import pytagcloud
 from tqdm import tqdm
 import spacy
-from datamanager import DataManager
+# from datamanager import DataManager
 from gensim.models.doc2vec import TaggedDocument
 # from konlpy.tag import Mecab
 import gensim
@@ -165,8 +165,8 @@ class TMInput:
         stop_words_list = []
         if os.path.isfile(self.data_path+file):
             print('     -> Stop Words File is found')
-            dm = DataManager()
-            df = dm.load_csv(file=self.data_path + file, encoding='utf-8')
+            # dm = DataManager()
+            df = pd.load_csv(self.data_path + file, encoding='utf-8')
             stop_words_list = df['Stopwords'].tolist()
         else:
             print('     -> Stop Words File is not found')
@@ -174,7 +174,7 @@ class TMInput:
 
     def get_including_words(self):
         print('    -> Getting including word list...')
-        dm = DataManager()
+        # dm = DataManager()
         # tfidf_file = self.data_file_name+'_tf_idf.csv'
         # tf_idf_df = dm.load_csv(file=self.data_path+tfidf_file, encoding='utf-8')
         # tf_idf_sum = tf_idf_df.iloc[-1:]
@@ -188,7 +188,7 @@ class TMInput:
         if os.path.isfile(self.data_path+file):
             print('     -> Including Words File is found')
 
-            df = dm.load_csv(file=self.data_path+file, encoding='utf-8')
+            df = pd.load_csv(self.data_path+file, encoding='utf-8')
             including_words_list = df['Includingwords'].tolist()
         else:
             print('     -> Including Words File is not found')
@@ -201,8 +201,8 @@ class TMInput:
         including_words_list = []
         if os.path.isfile(self.data_path+file):
             print('     -> Including Words File is found')
-            dm = DataManager()
-            df = dm.load_csv(file=self.data_path+file, encoding='utf-8')
+            # dm = DataManager()
+            df = pd.load_csv(self.data_path+file, encoding='utf-8')
             including_words_list = df['Includingwords'].tolist()
         else:
             print('     -> Including Words File is not found')
@@ -260,9 +260,9 @@ class TMInput:
         file_name = input(' > file_name : ')
         return file_name
 
-    def get_word_cloud(self, word_count_dict):
-        taglist = pytagcloud.make_tags(word_count_dict.items(), maxsize=100)
-        pytagcloud.create_tag_image(taglist, self.data_path+self.data_file_name+'_word_cloud.jpg', size=(1200, 800), rectangular=False)
+    # def get_word_cloud(self, word_count_dict):
+    #     taglist = pytagcloud.make_tags(word_count_dict.items(), maxsize=100)
+    #     pytagcloud.create_tag_image(taglist, self.data_path+self.data_file_name+'_word_cloud.jpg', size=(1200, 800), rectangular=False)
 
     def get_word_graph(self, word_count_dict):
         plt.xlabel('Word')
@@ -318,8 +318,8 @@ class TMInput:
 
 
     def pre_prosseccing(self):
-        dm = DataManager()
-        data = dm.load_csv(file=self.data_path + self.data_file_name+'.csv', encoding='utf-8')
+        # dm = DataManager()
+        data = pd.load_csv(self.data_path + self.data_file_name+'.csv', encoding='utf-8')
         data = self.get_requirements_from_document(data)
         # description_reset = data.dropna(axis=0).reset_index(drop=True)
         description = data[self.factor]
